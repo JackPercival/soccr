@@ -10,7 +10,6 @@ const isProduction = environment === 'production';
 
 const routes = require('./routes');
 
-
 //Initialize express
 const app = express();
 
