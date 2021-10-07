@@ -201,7 +201,7 @@ main {
 #pic-info {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     position: absolute;
     bottom: 67px;
@@ -229,19 +229,26 @@ main {
 /* Footer code */
 footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    align-items: center;
     width: 100%;
     background-color: black;
     height: 56px;
 }
 
-footer * {
-    width: fit-content;
-}
-
 footer p {
     color: rgb(182, 182, 182);
-    font-family: helvetica,arial,sans-serif;
+    font-family: 'Roboto', helvetica,arial,sans-serif;
+    margin-right: 20px;
+}
+
+#devLinks {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#devLinks a {
+    margin: 0 20px;
 }
 
 .footer-icon {

@@ -6,37 +6,48 @@ import './MainPage.css';
 function MainPage({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
   const [search, setSearch] = useState('');
-  const [currentImage, setCurrentImage] = useState(1);
+  const [currentImage, setCurrentImage] = useState(4);
 
   const images = {
       1: {
-        url: 'https://www.spain.info/export/sites/segtur/.content/imagenes/cabeceras-grandes/cataluna/camp-nou-barcelona-c-fcbarcelona.jpg',
-        title: "Camp Nou, Barcelona",
-        author: "Jack Percival"
+        url: 'https://images.unsplash.com/photo-1624252972128-31c39d18cb9f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2069&q=80',
+        title: "Save in motion",
+        author: "JPrapoth Panchuea"
       },
       2: {
-        url: 'https://images2.minutemediacdn.com/image/fetch/w_2000,h_2000,c_fit/https%3A%2F%2Feverythingbarca.com%2Fwp-content%2Fuploads%2Fgetty-images%2F2018%2F08%2F1232931689.jpeg',
-        title: "The GOAT",
-        author: "Senor Messi"
+        url: 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80',
+        title: "Person Playing",
+        author: "Jannik Skorna"
       },
       3: {
-        url: 'https://e0.365dm.com/21/01/1600x900/skysports-france-fifa-world-cup_5245366.jpg?20210920080343',
-        title: "Champions du Monde",
-        author: "FIFA"
+        url: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80',
+        title: "Groupama Stadium",
+        author: "Thomas Serer"
       },
+      4: {
+        url: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80',
+        title: "Soccer at night",
+        author: "Abigail Keenan"
+      },
+      5: {
+        url: 'https://images.unsplash.com/photo-1510051640316-cee39563ddab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
+        title: "Goal Line",
+        author: "Nathan Rogers"
+      },
+
   }
 
-//   useEffect(() => {
-//       const interval = setInterval(() => {
-//         if (currentImage !== 3) {
-//             setCurrentImage(prevVal => prevVal + 1);
-//         } else {
-//             setCurrentImage(1);
-//         }
-//       }, 3000)
+  useEffect(() => {
+      const interval = setInterval(() => {
+        if (currentImage !== 5) {
+            setCurrentImage(prevVal => prevVal + 1);
+        } else {
+            setCurrentImage(1);
+        }
+      }, 8000)
 
-//       return () => clearInterval(interval)
-//   }, [currentImage])
+      return () => clearInterval(interval)
+  }, [currentImage])
 
   let sessionLinks;
   //If there is a session user, add a component to the main layout page of a logged in user
@@ -104,16 +115,18 @@ function MainPage({ isLoaded }){
             <div id="main-image" style={{backgroundImage: `url(${images[currentImage].url})`}}></div>
         <footer>
             <p>Developed by Jack Percival</p>
-            <a href="https://www.linkedin.com/in/jack-percival-900973a8/" target="_blank">
-                <div className="footer-icon">
-                    <i className="fab fa-linkedin"></i>
-                </div>
-            </a>
-            <a href="https://github.com/JackPercival" target="_blank">
-                <div className="footer-icon">
-                    <i className="fab fa-github"></i>
-                </div>
-            </a>
+            <div id="devLinks">
+                <a href="https://www.linkedin.com/in/jack-percival-900973a8/" target="_blank">
+                    <div className="footer-icon">
+                        <i className="fab fa-linkedin"></i>
+                    </div>
+                </a>
+                <a href="https://github.com/JackPercival" target="_blank">
+                    <div className="footer-icon">
+                        <i className="fab fa-github"></i>
+                    </div>
+                </a>
+            </div>
         </footer>
     </div>
   );
