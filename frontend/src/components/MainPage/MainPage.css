@@ -1,0 +1,206 @@
+body {
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    font-family: helvetica,arial,sans-serif;;
+}
+
+#search-mag {
+    width: 50px
+}
+
+/* Header code */
+header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 64px;
+    background-color: rgba(0, 0, 0, 0.25);
+    align-items: center;
+}
+
+#logoContents {
+    display: flex;
+    align-items: center;
+    padding-right: 145px;
+    padding-left: 24px;
+}
+
+#soccrLogo {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+#blueCircle {
+    background-color: #0063DC
+}
+
+#redCircle {
+    background-color: #FF0084;
+}
+
+.logoCircle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+#searchContainer {
+    width: 100%;
+    background-color: rgba(255, 255, 255, .8);
+    height: 33px;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+    margin-right: 90px;
+}
+
+#searchForm {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    height: fit-content;
+    width: 100%;
+    margin-left: 10px;
+}
+
+#searchButton {
+    background: none;
+	color: rgba(0, 0, 0, 0.25);
+	border: none;
+	padding: 0;
+	cursor: pointer;
+    width: fit-content;
+    margin-right: 5px;
+}
+
+#searchBar {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+}
+
+#searchBar:focus {
+    outline: none;
+}
+
+#userButtons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 24px;
+}
+
+#loginButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+}
+
+#loginButton a {
+    font-size: 16px;
+    text-align: center;
+    display: inline-block;
+    color: white;
+    font-weight: 450;
+    font-family: helvetica,arial,sans-serif;
+    text-decoration: none;
+}
+
+#signUpButton {
+    background-color: white;
+    border-radius: 3px;
+    padding: 0 10px;
+    width: 96px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#signUpButton a {
+    font-size: 16px;
+    text-align: center;
+    display: inline-block;
+    color: black;
+    font-weight: 450;
+    font-family: helvetica,arial,sans-serif;
+    text-decoration: none;
+}
+
+
+/* Main text code */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#mainText {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+#findInsp {
+    font-size: 56px;
+    line-height: 56px;
+    font-weight: 600;
+}
+
+#pic-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#main-image {
+    position: absolute;
+    bottom: 56px;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -5;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* Footer code */
+footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: black;
+    height: 56px;
+}
+
+footer * {
+    width: fit-content;
+}
+
+footer p {
+    color: rgb(182, 182, 182);
+    font-family: helvetica,arial,sans-serif;
+}
+
+.footer-icon {
+    color: rgb(182, 182, 182);
+    font-size: 30px;
+}
