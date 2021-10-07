@@ -56,11 +56,13 @@ function MainPage({ isLoaded }){
   return (
     <div className="container">
         <header>
-            <div id="logoContents">
-                <div className="logoCircle" id="blueCircle"></div>
-                <div className="logoCircle" id="redCircle"></div>
-                <div id="soccrLogo">soccr</div>
-            </div>
+            <NavLink to="/main" id="mainLink">
+                <div id="logoContents">
+                    <div className="logoCircle" id="blueCircle"></div>
+                    <div className="logoCircle" id="redCircle"></div>
+                    <div id="soccrLogo">soccr</div>
+                </div>
+            </NavLink>
             <div id="searchContainer">
                 <form id="searchForm">
                     <button id="searchButton">
