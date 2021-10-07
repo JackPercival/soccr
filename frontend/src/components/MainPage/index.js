@@ -67,7 +67,7 @@ function MainPage({ isLoaded }){
                 <form id="searchForm">
                     <button id="searchButton">
                         <div>
-                            <i class="fas fa-search"></i>
+                            <i className="fas fa-search"></i>
                         </div>
                     </button>
                     <input
@@ -91,12 +91,14 @@ function MainPage({ isLoaded }){
         <main>
             <div id="mainText">
                 <h1 id="findInsp">Find your inspiration.</h1>
-                <h2>Join the Soccr community, home to tens of billions of photos and 2 million groups.</h2>
-                <div>Start for free</div>
+                <h2 id="join">Join the Soccr community, home to tens of billions of photos and 2 million groups.</h2>
+                <div id="startFree">
+                    <NavLink to="/signup">Start for free</NavLink>
+                </div>
             </div>
             <div id="pic-info">
-                <p>{images[currentImage].title}</p>
-                <p>by {images[currentImage].author}</p>
+                <h4>{images[currentImage].title}</h4>
+                <h4>by {images[currentImage].author}</h4>
             </div>
         </main>
             <div id="main-image" style={{backgroundImage: `url(${images[currentImage].url})`}}></div>
@@ -104,12 +106,12 @@ function MainPage({ isLoaded }){
             <p>Developed by Jack Percival</p>
             <a href="https://www.linkedin.com/in/jack-percival-900973a8/" target="_blank">
                 <div className="footer-icon">
-                    <i class="fab fa-linkedin"></i>
+                    <i className="fab fa-linkedin"></i>
                 </div>
             </a>
             <a href="https://github.com/JackPercival" target="_blank">
                 <div className="footer-icon">
-                    <i class="fab fa-github"></i>
+                    <i className="fab fa-github"></i>
                 </div>
             </a>
         </footer>
