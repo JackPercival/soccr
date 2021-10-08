@@ -34,13 +34,15 @@ header {
 
 #mainLink {
     text-decoration: none;
+    display: inline-block;
+    width: fit-content;
+    margin-right: 145px;
+    margin-left: 24px;
 }
 
 #logoContents {
     display: flex;
     align-items: center;
-    padding-right: 145px;
-    padding-left: 24px;
     position: relative;
 }
 

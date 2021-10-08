@@ -6,7 +6,7 @@ import './MainPage.css';
 function MainPage({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
   const [search, setSearch] = useState('');
-  const [currentImage, setCurrentImage] = useState(6);
+  const [currentImage, setCurrentImage] = useState(4);
 
   const images = {
       1: {
