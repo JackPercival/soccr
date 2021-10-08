@@ -10,10 +10,11 @@
 #formContainer {
     width: 302px;
     padding: 24px;
-    margin: 10px auto;
+    margin: 30px auto;
     background-color: white;
     border-radius: 8px;
     justify-content: space-between;
+    box-shadow: 0 0 5px #898989;
 }
 
 .formLogo {
@@ -49,14 +50,18 @@
     background-color: transparent;
     position: relative;
     bottom: 20px;
-    left: 19px;
-    font-size: 20px;
+    left: 18px;
+    font-size: 17px;
     font-weight: 200;
     font-family: helvetica,arial,sans-serif;
 }
 
 .formInput:focus {
     outline: none;
+    bottom: 10px;
+}
+
+.formInputDone {
     bottom: 10px;
 }
 
@@ -76,9 +81,47 @@
     transition: all .2s ease-in-out;
 }
 
+.formLabelDone {
+    color: #898989;
+    font-size: 11px;
+    top: 8px;
+    transition: all ease-in-out;
+}
+
+.formButton {
+    width: 302px;
+    height: 24px;
+    padding: 8px 0;
+    font-family: helvetica,arial,sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: #128FDC;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-sizing: content-box;
+    margin-top: 25px;
+}
+
+.formButton:hover {
+    background-color: #319bdd;
+    cursor: pointer;
+}
+
 .already {
-    margin-top: 10px;
-    margin-bottom: 0;
+    border-top: 1px solid #dadada;
+    padding-top: 15px;
+    /* margin-top: 10px;
+    margin-bottom: 0; */
+    margin: 10px auto 0 auto;
+    font-family: helvetica,arial,sans-serif;
+    font-size: 13px;
+    text-align: center;
+}
+
+#loginHere {
+    text-decoration: none;
+    color: #006dac;
 }
 
 #signUpImage {
