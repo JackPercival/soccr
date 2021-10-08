@@ -63,53 +63,56 @@ function LoginFormPage() {
               </div>
           </NavLink>
       </header>
-      <div id="formContainer">
-        <div className="formLogo">
-          <div className="circleContainer">
-            <div className="logoCircle" id="blueCircle"></div>
-            <div className="logoCircle" id="redCircle"></div>
-          </div>
-          <div className="forSoccr">Log in to Soccr</div>
-        </div>
+      <div id="mainContainer">
 
-        <form onSubmit={handleSubmit} id="signUpForm">
-          <ul>
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </ul>
-          <div className="formField">
-            <label className={`formLabel ${userNameLabelFocus}`}>
-              Username or Email
-            </label>
-            <input
-              className={`formInput ${userNameInputFocus}`}
-              type="text"
-              value={credential}
-              required
-              onChange={(e) => setCredential(e.target.value)}
-              onFocus={() => setUserNameLabelFocus('formLabelFocus')}
-              onBlur={() => handleFocus(credential, setUserNameLabelFocus)}
-            />
+        <div id="formContainer">
+          <div className="formLogo">
+            <div className="circleContainer">
+              <div className="logoCircle" id="blueCircle"></div>
+              <div className="logoCircle" id="redCircle"></div>
+            </div>
+            <div className="forSoccr">Log in to Soccr</div>
           </div>
-          <div className="formField">
-            <label className={`formLabel ${passwordLabelFocus}`}>
-              Password
-            </label>
-            <input
-              className={`formInput ${passwordInputFocus}`}
-              type="password"
-              value={password}
-              required
-              onChange={(e) => setPassword(e.target.value)}
-              onFocus={() => setPasswordLabelFocus('formLabelFocus')}
-              onBlur={() => handleFocus(password, setPasswordLabelFocus)}
-            />
-          </div>
-          <div>
-            <button className="formButton" type="submit">Log In</button>
-            <button id="demoLoginButton"className="formButton">Demo Log In</button>
-          </div>
-        </form>
-        <p className="already">Not a Soccr member? <Link to="/signup" id="loginHere">Sign up here.</Link></p>
+
+          <form onSubmit={handleSubmit} id="signUpForm">
+            <ul>
+              {errors.map((error, idx) => <li className="loginError" key={idx}>{error}</li>)}
+            </ul>
+            <div className="formField">
+              <label className={`formLabel ${userNameLabelFocus}`}>
+                Username or Email
+              </label>
+              <input
+                className={`formInput ${userNameInputFocus}`}
+                type="text"
+                value={credential}
+                required
+                onChange={(e) => setCredential(e.target.value)}
+                onFocus={() => setUserNameLabelFocus('formLabelFocus')}
+                onBlur={() => handleFocus(credential, setUserNameLabelFocus)}
+              />
+            </div>
+            <div className="formField">
+              <label className={`formLabel ${passwordLabelFocus}`}>
+                Password
+              </label>
+              <input
+                className={`formInput ${passwordInputFocus}`}
+                type="password"
+                value={password}
+                required
+                onChange={(e) => setPassword(e.target.value)}
+                onFocus={() => setPasswordLabelFocus('formLabelFocus')}
+                onBlur={() => handleFocus(password, setPasswordLabelFocus)}
+              />
+            </div>
+            <div>
+              <button className="formButton" type="submit">Log In</button>
+              <button id="demoLoginButton"className="formButton">Demo Log In</button>
+            </div>
+          </form>
+          <p className="already">Not a Soccr member? <Link to="/signup" id="loginHere">Sign up here.</Link></p>
+        </div>
       </div>
       <div className="main-image" id="signUpImage"></div>
     </div>

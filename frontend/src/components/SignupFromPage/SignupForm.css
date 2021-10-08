@@ -58,13 +58,13 @@
 }
 
 .formInput {
-    width: 302px;
+    width: 280px;
     height: 54px;
     border: transparent;
     background-color: transparent;
     position: relative;
     bottom: 20px;
-    left: 18px;
+    padding-left: 19px;
     font-size: 17px;
     font-weight: 200;
     font-family: helvetica,arial,sans-serif;
@@ -125,8 +125,6 @@
 .already {
     border-top: 1px solid #dadada;
     padding-top: 15px;
-    /* margin-top: 10px;
-    margin-bottom: 0; */
     margin: 10px auto 0 auto;
     font-family: helvetica,arial,sans-serif;
     font-size: 13px;
