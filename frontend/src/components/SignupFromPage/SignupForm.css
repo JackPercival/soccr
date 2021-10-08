@@ -1,5 +1,87 @@
-form {
+#signUpHeader {
+    background-color: #212124;
+    height: 48px;
+}
+
+.circleContainer {
+    display: flex;
+}
+
+#formContainer {
+    width: 302px;
+    padding: 24px;
+    margin: 10px auto;
+    background-color: white;
+    border-radius: 8px;
+    justify-content: space-between;
+}
+
+.formLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.forSoccr {
+    font-family: helvetica,arial,sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    margin-top: 5px;
+}
+
+#signUpForm {
     display: flex;
     flex-direction: column;
     width: fit-content;
+}
+
+.formField {
+    width: 302px;
+    height: 54px;
+    border: 1px solid #898989;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.formInput {
+    width: 302px;
+    height: 54px;
+    border: transparent;
+    background-color: transparent;
+    position: relative;
+    bottom: 20px;
+    left: 19px;
+    font-size: 20px;
+    font-weight: 200;
+    font-family: helvetica,arial,sans-serif;
+}
+
+.formInput:focus {
+    outline: none;
+    bottom: 10px;
+}
+
+.formLabel {
+    position: relative;
+    left: 20px;
+    top: 20px;
+    font-family: helvetica,arial,sans-serif;
+    color: #898989;
+    transition: all .2s ease-in-out;
+}
+
+.formLabelFocus {
+    color: rgb(78, 142, 236);
+    font-size: 11px;
+    top: 8px;
+    transition: all .2s ease-in-out;
+}
+
+.already {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+#signUpImage {
+    background-image: url("https://images.unsplash.com/photo-1551958219-acbc608c6377?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80");
+    bottom: 0;
 }

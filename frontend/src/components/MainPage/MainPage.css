@@ -216,7 +216,7 @@ main {
     font-size: 13px;
 }
 
-#main-image {
+.main-image {
     position: absolute;
     bottom: 56px;
     width: 100%;

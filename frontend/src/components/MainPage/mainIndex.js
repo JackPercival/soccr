@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './MainPage.css';
 
@@ -7,7 +7,7 @@ function MainPage({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
   const [search, setSearch] = useState('');
   const [currentImage, setCurrentImage] = useState(4);
-
+  
   const images = {
       1: {
         url: 'https://images.unsplash.com/photo-1540379708242-14a809bef941?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2060&q=80',
@@ -119,7 +119,7 @@ function MainPage({ isLoaded }){
                 <h1 id="findInsp">Find your inspiration.</h1>
                 <h2 id="join">Join the Soccr community, home to tens of billions of photos and 2 million groups.</h2>
                 <div id="startFree">
-                    <NavLink to="/signup">Start for free</NavLink>
+                    <Link to="/signup">Start for free</Link>
                 </div>
             </div>
             <div id="pic-info">
@@ -127,7 +127,7 @@ function MainPage({ isLoaded }){
                 <h4>by {images[currentImage].author}</h4>
             </div>
         </main>
-            <div id="main-image" style={{backgroundImage: `url(${images[currentImage].url})`}}></div>
+        <div className="main-image" style={{backgroundImage: `url(${images[currentImage].url})`}}></div>
         <footer>
             <p>Developed by Jack Percival</p>
             <div id="devLinks">
