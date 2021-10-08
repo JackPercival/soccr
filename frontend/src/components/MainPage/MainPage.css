@@ -139,26 +139,21 @@ header {
     padding: 0 10px;
     width: 96px;
     height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#signUpButton a {
     font-size: 16px;
-    text-align: center;
     display: inline-block;
     color: black;
     font-weight: 500;
     font-family: 'Roboto', helvetica,arial,sans-serif;
     text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#signUpButton a:hover {
+#signUpButton:hover {
     color: rgb(161, 161, 161);
     transition: color .25s 0s;
 }
-
 
 /* Main text code */
 main {
@@ -194,14 +189,14 @@ main {
 }
 
 
-#startFree a {
+#startFree {
     color: black;
     font-size: 20px;
     font-family: helvetica,arial,sans-serif;
     font-weight: 900;
 }
 
-#startFree a:hover {
+#startFree:hover {
     color: rgb(161, 161, 161);
     transition: color .25s 0s;
 }

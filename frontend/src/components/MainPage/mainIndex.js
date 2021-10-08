@@ -7,7 +7,7 @@ import './MainPage.css';
 function MainPage({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
   const [search, setSearch] = useState('');
-  const [currentImage, setCurrentImage] = useState(8);
+  const [currentImage, setCurrentImage] = useState(1);
 
   const images = {
       1: {
@@ -16,24 +16,24 @@ function MainPage({ isLoaded }){
         author: "Pascal Müller"
       },
       2: {
-        url: 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80',
-        title: "Person Playing",
-        author: "Jannik Skorna"
-      },
-      3: {
-        url: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80',
-        title: "Groupama Stadium",
-        author: "Thomas Serer"
-      },
-      4: {
         url: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80',
         title: "Soccer at night",
         author: "Abigail Keenan"
       },
-      5: {
+      3: {
+        url: 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80',
+        title: "Person Playing",
+        author: "Jannik Skorna"
+      },
+      4: {
         url: 'https://images.unsplash.com/photo-1510051640316-cee39563ddab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
         title: "Goal Line",
         author: "Nathan Rogers"
+      },
+      5: {
+        url: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80',
+        title: "Groupama Stadium",
+        author: "Thomas Serer"
       },
       6: {
         url: 'https://images.unsplash.com/photo-1565099011766-1aa5ccfac7c6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
@@ -113,8 +113,8 @@ function MainPage({ isLoaded }){
                 <div id="loginButton">
                     <NavLink to="/login">Log In</NavLink>
                 </div>
-                <div id="signUpButton">
-                    <NavLink to="/signup">Sign Up</NavLink>
+                <div>
+                    <NavLink id="signUpButton" to="/signup"><p>Sign Up</p></NavLink>
                 </div>
             </div>
         </header>
@@ -122,9 +122,7 @@ function MainPage({ isLoaded }){
             <div id="mainText">
                 <h1 id="findInsp">Find your inspiration.</h1>
                 <h2 id="join">Join the Soccr community, home to tens of billions of photos and 2 million groups.</h2>
-                <div id="startFree">
-                    <Link to="/signup">Start for free</Link>
-                </div>
+                <Link id="startFree" to="/signup">Start for free</Link>
             </div>
             <div id="pic-info">
                 <h4>{images[currentImage].title}</h4>
