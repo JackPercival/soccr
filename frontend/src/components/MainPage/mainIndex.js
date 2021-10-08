@@ -11,52 +11,52 @@ function MainPage({ isLoaded }){
 
   const images = {
       1: {
-        url: 'https://images.unsplash.com/photo-1540379708242-14a809bef941?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2060&q=80',
-        title: "Soccer at Sunset",
+        url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734639/soccr/soccerSunset_qtvwk2.jpg',
+        title: "Sunset Stadium",
         author: "Pascal Müller"
       },
       2: {
-        url: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80',
+        url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734639/soccr/night_rkarsr.jpg',
         title: "Soccer at night",
         author: "Abigail Keenan"
       },
       3: {
-        url: 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80',
-        title: "Person Playing",
+        url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734639/soccr/personPlaying_mlgfsm.jpg',
+        title: "Dribble",
         author: "Jannik Skorna"
       },
       4: {
-        url: 'https://images.unsplash.com/photo-1510051640316-cee39563ddab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
+        url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734639/soccr/goalLine_wprlza.jpg',
         title: "Goal Line",
         author: "Nathan Rogers"
       },
       5: {
-        url: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80',
+        url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734639/soccr/groupama_gkihoy.jpg',
         title: "Groupama Stadium",
         author: "Thomas Serer"
       },
       6: {
-        url: 'https://images.unsplash.com/photo-1565099011766-1aa5ccfac7c6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
+        url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734638/soccr/flares_j2pqfh.jpg',
         title: "Fans with Flares",
         author: "Alexandre Brondino"
       },
       7: {
-        url: 'https://images.unsplash.com/photo-1609869496575-c9c35de76498?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1632&q=80',
+        url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734639/soccr/freeKick_oocmzn.jpg',
         title: "Free kick",
         author: "Omar Ram"
       },
       8: {
-        url: 'https://images.unsplash.com/photo-1521504846809-c3746c1fbf67?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+        url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734638/soccr/moreThan_s4lygy.jpg',
         title: "More than a club",
         author: "Edgar Chaparro"
       },
       9: {
-        url: 'https://images.unsplash.com/photo-1605135693932-f1d6fb1be3cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1444&q=80',
+        url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734639/soccr/goal_ceeamz.jpg',
         title: "Goal!",
         author: "Joshua Hoehne"
       },
       10: {
-        url: 'https://images.unsplash.com/photo-1494177310973-4841f7d5a882?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80',
+        url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734639/soccr/silhouette_inzqi2.jpg',
         title: "Silhouette goalkeeper catching the ball",
         author: "David Clarke"
       },
@@ -70,7 +70,7 @@ function MainPage({ isLoaded }){
         } else {
             setCurrentImage(1);
         }
-      }, 8000)
+      }, 10000)
 
       return () => clearInterval(interval)
   }, [currentImage])
