@@ -6,7 +6,7 @@ import './MainPage.css';
 function MainPage({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
   const [search, setSearch] = useState('');
-  const [currentImage, setCurrentImage] = useState(4);
+  const [currentImage, setCurrentImage] = useState(8);
 
   const images = {
       1: {
@@ -41,7 +41,7 @@ function MainPage({ isLoaded }){
       },
       7: {
         url: 'https://images.unsplash.com/photo-1609869496575-c9c35de76498?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1632&q=80',
-        title: "Penalty shot",
+        title: "Free kick",
         author: "Omar Ram"
       },
       8: {
@@ -49,12 +49,22 @@ function MainPage({ isLoaded }){
         title: "More than a club",
         author: "Edgar Chaparro"
       },
+      9: {
+        url: 'https://images.unsplash.com/photo-1605135693932-f1d6fb1be3cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1444&q=80',
+        title: "Goal!",
+        author: "Joshua Hoehne"
+      },
+      10: {
+        url: 'https://images.unsplash.com/photo-1494177310973-4841f7d5a882?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80',
+        title: "Silhouette goalkeeper catching the ball",
+        author: "David Clarke"
+      },
 
   }
 
   useEffect(() => {
       const interval = setInterval(() => {
-        if (currentImage !== 8) {
+        if (currentImage < 10) {
             setCurrentImage(prevVal => prevVal + 1);
         } else {
             setCurrentImage(1);
