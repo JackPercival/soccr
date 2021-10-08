@@ -34,6 +34,14 @@ function LoginFormPage() {
     <Redirect to="/" />
   );
 
+  const handleFocus = (element, setterFunction) => {
+    if (element.length > 0) {
+      setterFunction("formLabelDone")
+    } else {
+      setterFunction('')
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -61,31 +69,42 @@ function LoginFormPage() {
             <div className="logoCircle" id="blueCircle"></div>
             <div className="logoCircle" id="redCircle"></div>
           </div>
-          <div className="forSoccr">Sign up for Soccr</div>
+          <div className="forSoccr">Log in to Soccr</div>
         </div>
+
         <form onSubmit={handleSubmit}>
           <ul>
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
-          <label>
-            Username or Email
+          <div className="formField">
+            <label className={`formLabel ${userNameLabelFocus}`}>
+              Username or Email
+            </label>
             <input
+              className={`formInput ${userNameInputFocus}`}
               type="text"
               value={credential}
-              onChange={(e) => setCredential(e.target.value)}
               required
+              onChange={(e) => setCredential(e.target.value)}
+              onFocus={() => setUserNameLabelFocus('formLabelFocus')}
+              onBlur={() => handleFocus(credential, setUserNameLabelFocus)}
             />
-          </label>
-          <label>
-            Password
+          </div>
+          <div className="formField">
+            <label className={`formLabel ${passwordLabelFocus}`}>
+              Password
+            </label>
             <input
+              className={`formInput ${passwordInputFocus}`}
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
               required
+              onChange={(e) => setPassword(e.target.value)}
+              onFocus={() => setPasswordLabelFocus('formLabelFocus')}
+              onBlur={() => handleFocus(password, setPasswordLabelFocus)}
             />
-          </label>
-          <button type="submit">Log In</button>
+          </div>
+          <button className="formButton" type="submit">Log In</button>
         </form>
         <p className="already">Not a Soccr member? <Link to="/signup" id="loginHere">Sign up here.</Link></p>
       </div>
