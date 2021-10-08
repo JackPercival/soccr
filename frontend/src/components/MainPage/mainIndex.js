@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import Navigation from '../Navigation';
 import { useSelector } from 'react-redux';
 import './MainPage.css';
 
@@ -74,25 +75,18 @@ function MainPage({ isLoaded }){
       return () => clearInterval(interval)
   }, [currentImage])
 
-  let sessionLinks;
   //If there is a session user, add a component to the main layout page of a logged in user
-//   if (sessionUser) {
-//     //
-
-//     //Else show them the cool layout page
-//   } else {
-//     sessionLinks = (
-//       <>
-//         <NavLink to="/login">Log In</NavLink>
-//         <NavLink to="/signup">Sign Up</NavLink>
-//       </>
-//     );
-//   }
+  if (sessionUser) {
+    return (
+      //Placeholder navigation component for now
+      <Navigation isLoaded={isLoaded} />
+    )
+  }
 
   return (
     <div className="container">
         <header>
-            <NavLink to="/main" id="mainLink">
+            <NavLink to="/" id="mainLink">
                 <div id="logoContents">
                     <div className="logoCircle" id="blueCircle"></div>
                     <div className="logoCircle" id="redCircle"></div>

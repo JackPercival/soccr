@@ -52,10 +52,24 @@ function LoginFormPage() {
       });
   }
 
+  const demoLogin = () => {
+    const credential = 'Demo-lition';
+    const password = 'password';
+
+    setCredential(credential);
+    setPassword(password);
+
+    return dispatch(sessionActions.login({ credential, password }))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
+  }
+
   return (
     <div className="container">
       <header id="signUpHeader">
-          <NavLink to="/main" id="mainLink">
+          <NavLink to="/" id="mainLink">
               <div id="logoContents">
                   <div className="logoCircle" id="blueCircle"></div>
                   <div className="logoCircle" id="redCircle"></div>
@@ -108,7 +122,7 @@ function LoginFormPage() {
             </div>
             <div>
               <button className="formButton" type="submit">Log In</button>
-              <button id="demoLoginButton"className="formButton">Demo Log In</button>
+              <button id="demoLoginButton"className="formButton" onClick={demoLogin}>Demo Log In</button>
             </div>
           </form>
           <p className="already">Not a Soccr member? <Link to="/signup" id="loginHere">Sign up here.</Link></p>

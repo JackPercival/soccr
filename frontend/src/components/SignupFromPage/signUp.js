@@ -68,7 +68,7 @@ function SignupFormPage() {
   return (
     <div className="container">
         <header id="signUpHeader">
-            <NavLink to="/main" id="mainLink">
+            <NavLink to="/" id="mainLink">
                 <div id="logoContents">
                     <div className="logoCircle" id="blueCircle"></div>
                     <div className="logoCircle" id="redCircle"></div>
