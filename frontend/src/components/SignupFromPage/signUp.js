@@ -76,78 +76,80 @@ function SignupFormPage() {
                 </div>
             </NavLink>
         </header>
-        <div id="formContainer">
-          <div className="formLogo">
-            <div className="circleContainer">
-              <div className="logoCircle" id="blueCircle"></div>
-              <div className="logoCircle" id="redCircle"></div>
+        <div id="mainContainer">
+          <div id="formContainer">
+            <div className="formLogo">
+              <div className="circleContainer">
+                <div className="logoCircle" id="blueCircle"></div>
+                <div className="logoCircle" id="redCircle"></div>
+              </div>
+              <div className="forSoccr">Sign up for Soccr</div>
             </div>
-            <div className="forSoccr">Sign up for Soccr</div>
-          </div>
 
-          <form onSubmit={handleSubmit} id="signUpForm">
-            <ul>
-              {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
-            <div className="formField">
-              <label className={`formLabel ${emailLabelFocus}`}>
-                Email
-              </label>
-              <input
-                  className={`formInput ${emailInputFocus}`}
-                  type="text"
-                  value={email}
+            <form onSubmit={handleSubmit} id="signUpForm">
+              <ul>
+                {errors.map((error, idx) => <li className="loginError" key={idx}>{error}</li>)}
+              </ul>
+              <div className="formField">
+                <label className={`formLabel ${emailLabelFocus}`}>
+                  Email
+                </label>
+                <input
+                    className={`formInput ${emailInputFocus}`}
+                    type="text"
+                    value={email}
+                    required
+                    onChange={(e) => setEmail(e.target.value)}
+                    onFocus={() => setEmailLabelFocus('formLabelFocus')}
+                    onBlur={() => handleFocus(email, setEmailLabelFocus)}
+                />
+              </div>
+              <div className="formField">
+                <label className={`formLabel ${userNameLabelFocus}`}>
+                  Username
+                </label>
+                <input
+                    className={`formInput ${userNameInputFocus}`}
+                    type="text"
+                    value={username}
+                    required
+                    onChange={(e) => setUsername(e.target.value)}
+                    onFocus={() => setUserNameLabelFocus('formLabelFocus')}
+                    onBlur={() => handleFocus(username, setUserNameLabelFocus)}
+                />
+              </div>
+              <div className="formField">
+                <label className={`formLabel ${passwordLabelFocus}`}>
+                  Password
+                </label>
+                <input
+                  className={`formInput ${passwordInputFocus}`}
+                  type="password"
+                  value={password}
                   required
-                  onChange={(e) => setEmail(e.target.value)}
-                  onFocus={() => setEmailLabelFocus('formLabelFocus')}
-                  onBlur={() => handleFocus(email, setEmailLabelFocus)}
-              />
-            </div>
-            <div className="formField">
-              <label className={`formLabel ${userNameLabelFocus}`}>
-                Username
-              </label>
-              <input
-                  className={`formInput ${userNameInputFocus}`}
-                  type="text"
-                  value={username}
+                  onChange={(e) => setPassword(e.target.value)}
+                  onFocus={() => setPasswordLabelFocus('formLabelFocus')}
+                  onBlur={() => handleFocus(password, setPasswordLabelFocus)}
+                />
+              </div>
+              <div className="formField">
+                <label className={`formLabel ${confirmPasswordLabelFocus}`}>
+                  Confirm Password
+                </label>
+                <input
+                  className={`formInput ${confirmPasswordInputFocus}`}
+                  type="password"
+                  value={confirmPassword}
                   required
-                  onChange={(e) => setUsername(e.target.value)}
-                  onFocus={() => setUserNameLabelFocus('formLabelFocus')}
-                  onBlur={() => handleFocus(username, setUserNameLabelFocus)}
-              />
-            </div>
-            <div className="formField">
-              <label className={`formLabel ${passwordLabelFocus}`}>
-                Password
-              </label>
-              <input
-                className={`formInput ${passwordInputFocus}`}
-                type="password"
-                value={password}
-                required
-                onChange={(e) => setPassword(e.target.value)}
-                onFocus={() => setPasswordLabelFocus('formLabelFocus')}
-                onBlur={() => handleFocus(password, setPasswordLabelFocus)}
-              />
-            </div>
-            <div className="formField">
-              <label className={`formLabel ${confirmPasswordLabelFocus}`}>
-                Confirm Password
-              </label>
-              <input
-                className={`formInput ${confirmPasswordInputFocus}`}
-                type="password"
-                value={confirmPassword}
-                required
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                onFocus={() => setConfirmPasswordLabelFocus('formLabelFocus')}
-                onBlur={() => handleFocus(confirmPassword, setConfirmPasswordLabelFocus)}
-              />
-            </div>
-            <button className="formButton" type="submit">Sign Up</button>
-          </form>
-          <p className="already">Already a Soccr member? <Link to="/login" id="loginHere">Log in here.</Link></p>
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  onFocus={() => setConfirmPasswordLabelFocus('formLabelFocus')}
+                  onBlur={() => handleFocus(confirmPassword, setConfirmPasswordLabelFocus)}
+                />
+              </div>
+              <button className="formButton" type="submit">Sign Up</button>
+            </form>
+            <p className="already">Already a Soccr member? <Link to="/login" id="loginHere">Log in here.</Link></p>
+          </div>
         </div>
         <div className="main-image" id="signUpImage"></div>
       </div>

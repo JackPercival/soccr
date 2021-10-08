@@ -72,7 +72,7 @@ function LoginFormPage() {
           <div className="forSoccr">Log in to Soccr</div>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} id="signUpForm">
           <ul>
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
@@ -104,7 +104,10 @@ function LoginFormPage() {
               onBlur={() => handleFocus(password, setPasswordLabelFocus)}
             />
           </div>
-          <button className="formButton" type="submit">Log In</button>
+          <div>
+            <button className="formButton" type="submit">Log In</button>
+            <button id="demoLoginButton"className="formButton">Demo Log In</button>
+          </div>
         </form>
         <p className="already">Not a Soccr member? <Link to="/signup" id="loginHere">Sign up here.</Link></p>
       </div>
