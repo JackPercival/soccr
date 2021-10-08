@@ -155,7 +155,8 @@ header {
 }
 
 #signUpButton a:hover {
-    color: grey;
+    color: rgb(161, 161, 161);
+    transition: color .25s 0s;
 }
 
 
@@ -198,6 +199,11 @@ main {
     font-size: 20px;
     font-family: helvetica,arial,sans-serif;
     font-weight: 900;
+}
+
+#startFree a:hover {
+    color: rgb(161, 161, 161);
+    transition: color .25s 0s;
 }
 
 #join {

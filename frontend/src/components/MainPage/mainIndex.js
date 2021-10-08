@@ -7,7 +7,7 @@ function MainPage({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
   const [search, setSearch] = useState('');
   const [currentImage, setCurrentImage] = useState(4);
-  
+
   const images = {
       1: {
         url: 'https://images.unsplash.com/photo-1540379708242-14a809bef941?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2060&q=80',
