@@ -6,13 +6,13 @@ import './MainPage.css';
 function MainPage({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
   const [search, setSearch] = useState('');
-  const [currentImage, setCurrentImage] = useState(4);
+  const [currentImage, setCurrentImage] = useState(6);
 
   const images = {
       1: {
-        url: 'https://images.unsplash.com/photo-1624252972128-31c39d18cb9f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2069&q=80',
-        title: "Save in motion",
-        author: "JPrapoth Panchuea"
+        url: 'https://images.unsplash.com/photo-1540379708242-14a809bef941?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2060&q=80',
+        title: "Soccer at Sunset",
+        author: "Pascal Müller"
       },
       2: {
         url: 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80',
@@ -34,12 +34,27 @@ function MainPage({ isLoaded }){
         title: "Goal Line",
         author: "Nathan Rogers"
       },
+      6: {
+        url: 'https://images.unsplash.com/photo-1565099011766-1aa5ccfac7c6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
+        title: "Fans with Flares",
+        author: "Alexandre Brondino"
+      },
+      7: {
+        url: 'https://images.unsplash.com/photo-1609869496575-c9c35de76498?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1632&q=80',
+        title: "Penalty shot",
+        author: "Omar Ram"
+      },
+      8: {
+        url: 'https://images.unsplash.com/photo-1521504846809-c3746c1fbf67?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+        title: "More than a club",
+        author: "Edgar Chaparro"
+      },
 
   }
 
   useEffect(() => {
       const interval = setInterval(() => {
-        if (currentImage !== 5) {
+        if (currentImage !== 8) {
             setCurrentImage(prevVal => prevVal + 1);
         } else {
             setCurrentImage(1);
