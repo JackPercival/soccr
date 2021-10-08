@@ -103,6 +103,7 @@ header {
     width: 100%;
     border: none;
     background-color: transparent;
+    padding: 10px 0;
 }
 
 #searchBar:focus {

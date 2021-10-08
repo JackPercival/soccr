@@ -101,11 +101,11 @@ function MainPage({ isLoaded }){
                         </div>
                     </button>
                     <input
+                        id="searchBar"
                         type="text"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="Photos, people, or groups"
-                        id="searchBar"
                     />
                 </form>
             </div>
