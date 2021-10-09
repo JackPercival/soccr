@@ -1,0 +1,38 @@
+#normalHeader {
+    background-color: #212124;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 0 100px;
+    justify-content: space-between;
+}
+
+#normalLogo {
+    margin-right: 50px;
+}
+
+#logoutButton {
+    font-size: 16px;
+    text-align: center;
+    display: inline-block;
+    color: white;
+    font-weight: 450;
+    font-family: helvetica,arial,sans-serif;
+    text-decoration: none;
+}
+
+#logoutButton:hover {
+    cursor: pointer;
+}
+
+#normalSignUp {
+    color: white;
+    background-color: #128fdc;
+}
+
+#normalSignUp:hover {
+    color: rgb(212, 212, 212);
+    background-color: #006dac;
+    transition: color .25s 0s;
+    transition: background-color .25s 0s;
+}

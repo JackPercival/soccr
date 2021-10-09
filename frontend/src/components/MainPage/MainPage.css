@@ -23,7 +23,7 @@ a {
 }
 
 /* Main text code */
-main {
+#mainContainer {
     display: flex;
     flex-direction: column;
     align-items: center;

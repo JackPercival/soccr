@@ -40,7 +40,9 @@ function SignupFormPage() {
       setConfirmPasswordLabelFocus('formLabelFocus')
       setConfirmPasswordInputFocus('formInputDone')
     }
-  }, [email, username, password, confirmPassword])
+  }, [email, username, password, confirmPassword,
+    emailLabelFocus, userNameLabelFocus, passwordLabelFocus, confirmPasswordLabelFocus
+  ])
 
   if (sessionUser) return <Redirect to="/" />;
 

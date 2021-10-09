@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Navigation from '../Navigation';
 import MainHeader from '../MainHeader/mainHeader';
 import Footer from '../Footer/footer';
@@ -8,7 +8,6 @@ import './MainPage.css';
 
 function MainPage({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
-  const [search, setSearch] = useState('');
   const [currentImage, setCurrentImage] = useState(1);
 
   const images = {
@@ -88,7 +87,7 @@ function MainPage({ isLoaded }){
   return (
     <div className="container">
         <MainHeader />
-        <main>
+        <main id="mainContainer">
             <div id="mainText">
                 <h1 id="findInsp">Find your inspiration.</h1>
                 <h2 id="join">Join the Soccr community, home to tens of billions of photos and 2 million groups.</h2>

@@ -1,6 +1,9 @@
 #signUpHeader {
     background-color: #212124;
     height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 0 100px;
 }
 
 #mainContainer {

@@ -6,8 +6,8 @@ function MainHeader() {
     const [search, setSearch] = useState('');
 
     return (
-        <header>
-            <NavLink to="/" id="mainLink">
+        <header id="mainHeader">
+            <NavLink to="/" className="mainLink" id="mainLogo">
                 <div id="logoContents">
                     <div className="logoCircle" id="blueCircle"></div>
                     <div className="logoCircle" id="redCircle"></div>
@@ -31,11 +31,11 @@ function MainHeader() {
                 </form>
             </div>
             <div id="userButtons">
-                <div id="loginButton">
+                <div className="headerLink" id="loginButton">
                     <NavLink to="/login">Log In</NavLink>
                 </div>
                 <div>
-                    <NavLink id="signUpButton" to="/signup"><p>Sign Up</p></NavLink>
+                    <NavLink className="signUpButton" to="/signup"><p>Sign Up</p></NavLink>
                 </div>
             </div>
         </header>

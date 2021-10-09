@@ -28,7 +28,7 @@ function LoginFormPage() {
       setPasswordInputFocus('formInputDone')
     }
 
-  }, [credential, password])
+  }, [credential, password, userNameLabelFocus, passwordLabelFocus])
 
   if (sessionUser) return (
     <Redirect to="/" />
