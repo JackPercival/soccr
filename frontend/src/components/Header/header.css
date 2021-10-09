@@ -3,12 +3,24 @@
     height: 48px;
     display: flex;
     align-items: center;
-    padding: 0 100px;
+    padding: 0 8vw;
     justify-content: space-between;
 }
 
 #normalLogo {
     margin-right: 50px;
+}
+
+.loggedInButtons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 24px;
+}
+
+.uploadIcon {
+    color: white;
+    font-size: 30px;
 }
 
 #logoutButton {

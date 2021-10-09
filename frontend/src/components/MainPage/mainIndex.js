@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '../Navigation';
 import MainHeader from '../MainHeader/mainHeader';
+import ExplorePage from '../Explore/explore';
 import Footer from '../Footer/footer';
 import { useSelector } from 'react-redux';
 import './MainPage.css';
@@ -79,8 +80,9 @@ function MainPage({ isLoaded }){
   //If there is a session user, add a component to the main layout page of a logged in user
   if (sessionUser) {
     return (
-      //Placeholder navigation component for now
-      <Navigation isLoaded={isLoaded} />
+    
+      <ExplorePage />
+      // <Navigation isLoaded={isLoaded} />
     )
   }
 

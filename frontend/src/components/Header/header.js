@@ -59,12 +59,14 @@ function Header() {
                     </div>
                 </div>)}
             {sessionUser && (
-                <div id="userButtons">
+                <div className="loggedInButtons">
+                     <NavLink to="/upload">
+                        <div className="uploadIcon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                     </NavLink>
                     <div className="headerLink">
                         <p id="logoutButton" onClick={logout}>Log Out</p>
-                    </div>
-                    <div>
-                        <NavLink className="signUpButton" id="normalSignUp" to="/signup"><p>Sign Up</p></NavLink>
                     </div>
                 </div>)}
       </header>
