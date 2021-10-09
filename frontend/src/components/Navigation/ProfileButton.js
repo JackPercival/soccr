@@ -7,7 +7,12 @@ import './ProfileButton.css'
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const [languageVal, setLanguageVal] = useState(1)
+
+  function getRandom() {
+    return Math.floor(Math.random() * 10) + 1;
+  }
+
+  const [languageVal, setLanguageVal] = useState(getRandom())
 
   const language = {
     1: {
@@ -58,6 +63,14 @@ function ProfileButton({ user }) {
 
   const openMenu = () => {
     if (showMenu) return;
+
+    while (true) {
+      const number = getRandom();
+      if (number !== languageVal) {
+        setLanguageVal(number);
+        break;
+      }
+    }
     setShowMenu(true);
   };
 
