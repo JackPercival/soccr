@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import Navigation from '../Navigation';
+import MainHeader from '../MainHeader/mainHeader';
+import Footer from '../Footer/footer';
 import { useSelector } from 'react-redux';
 import './MainPage.css';
 
@@ -85,39 +87,7 @@ function MainPage({ isLoaded }){
 
   return (
     <div className="container">
-        <header>
-            <NavLink to="/" id="mainLink">
-                <div id="logoContents">
-                    <div className="logoCircle" id="blueCircle"></div>
-                    <div className="logoCircle" id="redCircle"></div>
-                    <div id="soccrLogo">soccr</div>
-                </div>
-            </NavLink>
-            <div id="searchContainer">
-                <form id="searchForm">
-                    <button id="searchButton">
-                        <div>
-                            <i className="fas fa-search"></i>
-                        </div>
-                    </button>
-                    <input
-                        id="searchBar"
-                        type="text"
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Photos, people, or groups"
-                    />
-                </form>
-            </div>
-            <div id="userButtons">
-                <div id="loginButton">
-                    <NavLink to="/login">Log In</NavLink>
-                </div>
-                <div>
-                    <NavLink id="signUpButton" to="/signup"><p>Sign Up</p></NavLink>
-                </div>
-            </div>
-        </header>
+        <MainHeader />
         <main>
             <div id="mainText">
                 <h1 id="findInsp">Find your inspiration.</h1>
@@ -130,21 +100,7 @@ function MainPage({ isLoaded }){
             </div>
         </main>
         <div className="main-image" style={{backgroundImage: `url(${images[currentImage].url})`}}></div>
-        <footer>
-            <p>Developed by Jack Percival</p>
-            <div id="devLinks">
-                <a href="https://www.linkedin.com/in/jack-percival-900973a8/" target="_blank">
-                    <div className="footer-icon">
-                        <i className="fab fa-linkedin"></i>
-                    </div>
-                </a>
-                <a href="https://github.com/JackPercival" target="_blank">
-                    <div className="footer-icon">
-                        <i className="fab fa-github"></i>
-                    </div>
-                </a>
-            </div>
-        </footer>
+        <Footer />
     </div>
   );
 }

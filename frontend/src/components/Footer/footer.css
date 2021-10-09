@@ -1,0 +1,28 @@
+footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    background-color: black;
+    height: 56px;
+}
+
+footer p {
+    color: rgb(182, 182, 182);
+    font-family: 'Roboto', helvetica,arial,sans-serif;
+    margin-right: 20px;
+}
+
+#devLinks {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#devLinks a {
+    margin: 0 20px;
+}
+
+.footer-icon {
+    color: rgb(182, 182, 182);
+    font-size: 30px;
+}
