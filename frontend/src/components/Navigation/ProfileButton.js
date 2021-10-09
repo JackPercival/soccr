@@ -7,6 +7,54 @@ import './ProfileButton.css'
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const [languageVal, setLanguageVal] = useState(1)
+
+  const language = {
+    1: {
+      hello: "Hola",
+      language: "Spanish"
+    },
+    2: {
+      hello: "Bonjour",
+      language: "French"
+    },
+    3: {
+      hello: "Hello",
+      language: "English"
+    },
+    4: {
+      hello: "Kon'nichiwa",
+      language: "Japanese"
+    },
+    5: {
+      hello: "Hei",
+      language: "Finnish"
+    },
+    5: {
+      hello: "Hallå",
+      language: "Swedish"
+    },
+    6: {
+      hello: "Ciao",
+      language: "Italian"
+    },
+    7: {
+      hello: "Hej",
+      language: "Danish"
+    },
+    8: {
+      hello: "Nǐ hǎo",
+      language: "Chinese"
+    },
+    9: {
+      hello: "Ahoj",
+      language: "Czech"
+    },
+    10: {
+      hello: "Privet",
+      language: "Russian"
+    }
+  }
 
   const openMenu = () => {
     if (showMenu) return;
@@ -37,7 +85,9 @@ function ProfileButton({ user }) {
       </div>
       {showMenu && (
         <div className="profile-dropdown">
-          <p id="helloUser">Hello, {user.username}!</p>
+          <div id="triangle"></div>
+          <p id="helloUser">{language[languageVal].hello}, {user.username}!</p>
+          <p id="language">Now you know how to greet people in {language[languageVal].language}</p>
           <div onClick={logout} id="logOutButton">Log Out</div>
         </div>
       )}

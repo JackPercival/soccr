@@ -15,20 +15,40 @@
 .profile-dropdown {
     position: absolute;
     background-color: white;
-    border: 1px solid rgb(168, 168, 168);
+    box-shadow: 0 0 5px #898989;
     border-radius: 3px;
     top: 54px;
-    right: 123px;
+    right: 9vw;
+    width: 200px;
     font-family: helvetica,arial,sans-serif;
-    padding: 5px;
+    padding: 10px;
+}
+
+#triangle {
+    width: 15px;
+    height: 15px;
+    transform: rotate(45deg);
+    background-color: white;
+    border-top: .5px solid #dddddd;
+    border-left: .5px solid #dddddd;
+    position: absolute;
+    top: -8px;
+    left: 175px;
+
 }
 
 #helloUser {
     padding-bottom: 5px;
     margin: 0;
     font-size: 20px;
-    border-bottom: 1px solid rgb(201, 201, 201);
     font-weight: bold;
+}
+
+#language {
+    color:#b3b3b3;
+    margin: 0;
+    padding: 5px 0;
+    border-bottom: 1px solid rgb(201, 201, 201);
 }
 
 #logOutButton {

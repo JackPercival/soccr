@@ -74,7 +74,7 @@ function Header() {
                                 <i class="fas fa-cloud-upload-alt"></i>
                             </div>
                         </NavLink>
-                    <ProfileButton user={sessionUser}/>
+                        <ProfileButton user={sessionUser}/>
                     </div>)}
             </div>
       </header>
