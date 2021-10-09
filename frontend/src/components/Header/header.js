@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-
+import ProfileButton from '../Navigation/ProfileButton';
 import './header.css'
 
 function Header() {
@@ -61,13 +61,14 @@ function Header() {
             {sessionUser && (
                 <div className="loggedInButtons">
                      <NavLink to="/upload">
-                        <div className="uploadIcon">
+                        <div className="uploadIcon" title="Upload">
                             <i class="fas fa-cloud-upload-alt"></i>
                         </div>
                      </NavLink>
-                    <div className="headerLink">
+                    {/* <div className="headerLink">
                         <p id="logoutButton" onClick={logout}>Log Out</p>
-                    </div>
+                    </div> */}
+                <ProfileButton user={sessionUser}/>
                 </div>)}
       </header>
     )
