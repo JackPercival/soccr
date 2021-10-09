@@ -48,7 +48,7 @@
     margin: 0 1px;
 }
 
-#searchContainer {
+.searchContainer {
     width: 100%;
     background-color: rgba(255, 255, 255, .8);
     height: 33px;
@@ -77,14 +77,14 @@
     margin-right: 5px;
 }
 
-#searchBar {
+.searchBar {
     width: 100%;
     border: none;
     background-color: transparent;
     padding: 10px 0;
 }
 
-#searchBar:focus {
+.searchBar:focus {
     outline: none;
 }
 

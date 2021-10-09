@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import * as sessionActions from '../../store/session';
 import ProfileButton from '../Navigation/ProfileButton';
 import './header.css'
 
@@ -11,65 +10,73 @@ function Header() {
     const sessionUser = useSelector(state => state.session.user);
     const [search, setSearch] = useState('');
 
-    const logout = (e) => {
-        e.preventDefault();
-        dispatch(sessionActions.logout());
-    };
+    const [searchFocus, setSearchFocus] = useState('');
+
+    const handleFocus = () => {
+        if (search.length === 0) {
+            setSearchFocus('');
+        }
+    }
 
     return (
         <header id="normalHeader">
-            <NavLink to="/" className="mainLink" id="normalLogo">
-                <div id="logoContents">
-                    <div className="logoCircle" id="blueCircle"></div>
-                    <div className="logoCircle" id="redCircle"></div>
-                    <div id="soccrLogo">soccr</div>
-                </div>
-            </NavLink>
-            {sessionUser && (
+            <div className="leftHeader">
+                <NavLink to="/" className="mainLink" id="normalLogo">
+                    <div id="logoContents">
+                        <div className="logoCircle" id="blueCircle"></div>
+                        <div className="logoCircle" id="redCircle"></div>
+                        <div id="soccrLogo">soccr</div>
+                    </div>
+                </NavLink>
+                {sessionUser && (
+                    <div className="headerLink">
+                        <NavLink to="/you" id="youLink">You</NavLink>
+                    </div>
+                )}
                 <div className="headerLink">
-                    <NavLink to="/you">You</NavLink>
+                    <NavLink to="/explore">Explore</NavLink>
                 </div>
-            )}
-            <div className="headerLink">
-                <NavLink to="/explore">Explore</NavLink>
             </div>
-            <div id="searchContainer">
-                    <form id="searchForm">
-                        <button id="searchButton">
-                            <div>
-                                <i className="fas fa-search"></i>
-                            </div>
-                        </button>
-                        <input
-                            id="searchBar"
-                            type="text"
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Photos, people, or groups"
-                        />
-                    </form>
-            </div>
-            {!sessionUser && (
-                <div id="userButtons">
-                    <div id="loginButton" className="headerLink">
-                        <NavLink to="/login">Log In</NavLink>
-                    </div>
-                    <div>
-                        <NavLink className="signUpButton" id="normalSignUp" to="/signup"><p>Sign Up</p></NavLink>
-                    </div>
-                </div>)}
-            {sessionUser && (
-                <div className="loggedInButtons">
-                     <NavLink to="/upload">
-                        <div className="uploadIcon" title="Upload">
-                            <i class="fas fa-cloud-upload-alt"></i>
+            <div className="rightHeader">
+                <div className={`normalSearchContainer ${searchFocus}`}>
+                        <form id="searchForm" autocomplete="off">
+                            <button id="searchButton">
+                                <div>
+                                    <i className="fas fa-search"></i>
+                                </div>
+                            </button>
+                            <input
+                                className={`normalSearchBar ${searchFocus}`}
+                                id="normalSearchBar"
+                                type="text"
+                                value={search}
+                                autocomplete="off"
+                                placeholder="Photos, people, or groups"
+                                onChange={(e) => setSearch(e.target.value)}
+                                onFocus={() => setSearchFocus('searchInputFocus')}
+                                onBlur={handleFocus}
+                            />
+                        </form>
+                </div>
+                {!sessionUser && (
+                    <div id="userButtons">
+                        <div id="loginButton" className="headerLink">
+                            <NavLink to="/login">Log In</NavLink>
                         </div>
-                     </NavLink>
-                    {/* <div className="headerLink">
-                        <p id="logoutButton" onClick={logout}>Log Out</p>
-                    </div> */}
-                <ProfileButton user={sessionUser}/>
-                </div>)}
+                        <div>
+                            <NavLink className="signUpButton" id="normalSignUp" to="/signup"><p>Sign Up</p></NavLink>
+                        </div>
+                    </div>)}
+                {sessionUser && (
+                    <div className="loggedInButtons">
+                        <NavLink to="/upload">
+                            <div className="uploadIcon" title="Upload">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                        </NavLink>
+                    <ProfileButton user={sessionUser}/>
+                    </div>)}
+            </div>
       </header>
     )
 }

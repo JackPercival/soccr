@@ -7,8 +7,48 @@
     justify-content: space-between;
 }
 
-#normalLogo {
-    margin-right: 50px;
+.leftHeader, .rightHeader {
+    display: flex;
+    align-items: center;
+}
+
+.headerLink a:hover {
+    color: rgb(194, 194, 194);
+}
+
+#youLink {
+    position: relative;
+    left: 10px;
+}
+
+.normalSearchContainer {
+    width: 100%;
+    background-color: rgba(255, 255, 255, .8);
+    height: 33px;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+    margin-right: 0;
+}
+
+.normalSearchBar {
+    border: none;
+    background-color: transparent;
+    padding: 10px 0;
+    min-width: 170px;
+}
+
+.normalSearchBar:focus {
+    outline: none;
+}
+
+.searchInputFocus {
+    min-width: 25vw;
+}
+
+.uploadIcon {
+    color: white;
+    font-size: 30px;
 }
 
 .loggedInButtons {
@@ -18,23 +58,12 @@
     margin-right: 24px;
 }
 
-.uploadIcon {
-    color: white;
-    font-size: 30px;
+.loggedInButtons a div:hover {
+    color: rgb(194, 194, 194);
 }
 
-#logoutButton {
-    font-size: 16px;
-    text-align: center;
-    display: inline-block;
-    color: white;
-    font-weight: 450;
-    font-family: helvetica,arial,sans-serif;
-    text-decoration: none;
-}
-
-#logoutButton:hover {
-    cursor: pointer;
+.loggedInButtons a {
+    margin: 0 20px;
 }
 
 #normalSignUp {

@@ -14,7 +14,7 @@ function MainHeader() {
                     <div id="soccrLogo">soccr</div>
                 </div>
             </NavLink>
-            <div id="searchContainer">
+            <div className="searchContainer">
                 <form id="searchForm">
                     <button id="searchButton">
                         <div>
@@ -22,7 +22,7 @@ function MainHeader() {
                         </div>
                     </button>
                     <input
-                        id="searchBar"
+                        className="searchBar"
                         type="text"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}

@@ -1,6 +1,11 @@
 #profButtonDiv {
     color: white;
     font-size: 30px;
+    cursor: pointer;
+}
+
+#profButtonDiv:hover {
+    color:rgb(194, 194, 194);
 }
 
 #profileButton {
@@ -10,8 +15,30 @@
 .profile-dropdown {
     position: absolute;
     background-color: white;
-    border: 1px solid rgb(95, 95, 95);
+    border: 1px solid rgb(168, 168, 168);
     border-radius: 3px;
-    top: 30px;
-    right: 140px;
+    top: 54px;
+    right: 123px;
+    font-family: helvetica,arial,sans-serif;
+    padding: 5px;
+}
+
+#helloUser {
+    padding-bottom: 5px;
+    margin: 0;
+    font-size: 20px;
+    border-bottom: 1px solid rgb(201, 201, 201);
+    font-weight: bold;
+}
+
+#logOutButton {
+    padding: 5px;
+    margin-top: 5px;
+
+    font-size: 13px;
+}
+
+#logOutButton:hover {
+    background-color: rgb(235, 235, 235);
+    cursor: pointer;
 }
