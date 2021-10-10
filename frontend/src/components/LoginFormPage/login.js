@@ -77,8 +77,7 @@ function LoginFormPage() {
               </div>
           </NavLink>
       </header>
-      <div id="mainContainer">
-
+      <div id="mainContainerAuth">
         <div id="formContainer">
           <div className="formLogo">
             <div className="circleContainer">
