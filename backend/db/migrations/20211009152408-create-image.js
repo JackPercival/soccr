@@ -12,7 +12,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      keywords: {
+      description: {
         allowNull: false,
         type: Sequelize.TEXT
       },
