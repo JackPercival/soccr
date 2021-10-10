@@ -39,7 +39,7 @@ function Header() {
             </div>
             <div className="rightHeader">
                 <div className={`normalSearchContainer ${searchFocus}`}>
-                        <form id="searchForm" autocomplete="off">
+                        <form id="searchForm" autoComplete="off">
                             <button id="searchButton">
                                 <div>
                                     <i className="fas fa-search"></i>
@@ -50,7 +50,7 @@ function Header() {
                                 id="normalSearchBar"
                                 type="text"
                                 value={search}
-                                autocomplete="off"
+                                autoComplete="off"
                                 placeholder="Photos, people, or groups"
                                 onChange={(e) => setSearch(e.target.value)}
                                 onFocus={() => setSearchFocus('searchInputFocus')}
@@ -71,7 +71,7 @@ function Header() {
                     <div className="loggedInButtons">
                         <NavLink to="/upload">
                             <div className="uploadIcon" title="Upload">
-                                <i class="fas fa-cloud-upload-alt"></i>
+                                <i className="fas fa-cloud-upload-alt"></i>
                             </div>
                         </NavLink>
                         <ProfileButton user={sessionUser}/>

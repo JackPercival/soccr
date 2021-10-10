@@ -15,7 +15,7 @@ function MainHeader() {
                 </div>
             </NavLink>
             <div className="searchContainer">
-                <form id="searchForm">
+                <form id="searchForm" autoComplete="off">
                     <button id="searchButton">
                         <div>
                             <i className="fas fa-search"></i>
@@ -25,6 +25,7 @@ function MainHeader() {
                         className="searchBar"
                         type="text"
                         value={search}
+                        autoComplete="off"
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="Photos, people, or groups"
                     />

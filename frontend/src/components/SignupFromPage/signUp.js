@@ -88,7 +88,7 @@ function SignupFormPage() {
               <div className="forSoccr">Sign up for Soccr</div>
             </div>
 
-            <form onSubmit={handleSubmit} id="signUpForm" autocomplete="off">
+            <form onSubmit={handleSubmit} id="signUpForm" autoComplete="off">
               <ul>
                 {errors.map((error, idx) => <li className="loginError" key={idx}>{error}</li>)}
               </ul>
@@ -101,7 +101,7 @@ function SignupFormPage() {
                     type="text"
                     value={email}
                     required
-                    autocomplete="off"
+                    autoComplete="off"
                     onChange={(e) => setEmail(e.target.value)}
                     onFocus={() => setEmailLabelFocus('formLabelFocus')}
                     onBlur={() => handleFocus(email, setEmailLabelFocus)}
@@ -116,7 +116,7 @@ function SignupFormPage() {
                     type="text"
                     value={username}
                     required
-                    autocomplete="off"
+                    autoComplete="off"
                     onChange={(e) => setUsername(e.target.value)}
                     onFocus={() => setUserNameLabelFocus('formLabelFocus')}
                     onBlur={() => handleFocus(username, setUserNameLabelFocus)}
@@ -131,7 +131,7 @@ function SignupFormPage() {
                   type="password"
                   value={password}
                   required
-                  autocomplete="off"
+                  autoComplete="off"
                   onChange={(e) => setPassword(e.target.value)}
                   onFocus={() => setPasswordLabelFocus('formLabelFocus')}
                   onBlur={() => handleFocus(password, setPasswordLabelFocus)}
@@ -146,7 +146,7 @@ function SignupFormPage() {
                   type="password"
                   value={confirmPassword}
                   required
-                  autocomplete="off"
+                  autoComplete="off"
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   onFocus={() => setConfirmPasswordLabelFocus('formLabelFocus')}
                   onBlur={() => handleFocus(confirmPassword, setConfirmPasswordLabelFocus)}

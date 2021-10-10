@@ -87,7 +87,7 @@ function LoginFormPage() {
             <div className="forSoccr">Log in to Soccr</div>
           </div>
 
-          <form onSubmit={handleSubmit} id="signUpForm" autocomplete="off">
+          <form onSubmit={handleSubmit} id="signUpForm" autoComplete="off">
             <ul>
               {errors.map((error, idx) => <li className="loginError" key={idx}>{error}</li>)}
             </ul>
@@ -100,7 +100,7 @@ function LoginFormPage() {
                 type="text"
                 value={credential}
                 required
-                autocomplete="off"
+                autoComplete="off"
                 onChange={(e) => setCredential(e.target.value)}
                 onFocus={() => setUserNameLabelFocus('formLabelFocus')}
                 onBlur={() => handleFocus(credential, setUserNameLabelFocus)}
@@ -115,7 +115,7 @@ function LoginFormPage() {
                 type="password"
                 value={password}
                 required
-                autocomplete="off"
+                autoComplete="off"
                 onChange={(e) => setPassword(e.target.value)}
                 onFocus={() => setPasswordLabelFocus('formLabelFocus')}
                 onBlur={() => handleFocus(password, setPasswordLabelFocus)}
