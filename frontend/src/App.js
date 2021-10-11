@@ -15,8 +15,7 @@ function App() {
   // const [imagesLoaded, setImagesLoaded]
 
   useEffect(() => {
-    dispatch(sessionActions.restoreUser())
-    dispatch(getAllImages()).then(() => setIsLoaded(true));
+    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (

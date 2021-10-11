@@ -7,10 +7,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getAllImages } from '../../store/images';
 
 function SingleImage() {
+    const dispatch = useDispatch();
+
     const { imageId } = useParams();
-    
     const image = useSelector(state => state.images[imageId]);
-    console.log(image)
+
+    useEffect(() => {
+        dispatch(getAllImages());
+    }, [dispatch]);
 
     return (
         <div className="container">
