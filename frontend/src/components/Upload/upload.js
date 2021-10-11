@@ -14,7 +14,6 @@ function Upload() {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
-    // console.log(sessionUser.id)
 
     const [image_url, setImageUrl] = useState('');
     const [description, setDescription] = useState('');
@@ -39,8 +38,6 @@ function Upload() {
 
         return validationErrors;
     }
-
-
     const handleAddClicked = () => {
             setAddClicked(true);
             setDisableAdd('disabledAdd');
@@ -104,7 +101,7 @@ function Upload() {
                             <ul>
                                 {validationErrors.map(error => <li className="loginError" key={error}>{error}</li>)}
                             </ul>
-                            <form onSubmit={handleImageUrlSubmit} autoComplete="off" className="imageEditForm">
+                            <form onSubmit={handleImageUrlSubmit} autoComplete="off" className="imageEditForm" autoComplete="off">
                                 <div>
                                     <label>Image URL</label>
                                     <input
@@ -112,6 +109,7 @@ function Upload() {
                                         value={image_url}
                                         autoComplete="off"
                                         required
+                                        autoComplete="off"
                                         onChange={(e) =>setImageUrl(e.target.value)}
                                     />
                                 </div>
@@ -119,7 +117,6 @@ function Upload() {
                             </form>
                         </div>
                     </>
-
                 )}
                 {showImageForm && (
                     <>
@@ -130,12 +127,13 @@ function Upload() {
                                     {validationUploadErrors.map(error => <li className="loginError" key={error}>{error}</li>)}
                                 </ul>
                                 <div>
-                                    <form className="imageEditForm" onSubmit={handleUpload}>
+                                    <form className="imageEditForm" onSubmit={handleUpload} autoComplete="off">
                                         <div>
                                             <label htmlFor="title">Add a Title</label>
                                             <input id="title"
                                             type="text"
                                             required
+                                            autoComplete="off"
                                             value={title}
                                             onChange={(e) => setTitle(e.target.value)}
                                             />
@@ -145,6 +143,7 @@ function Upload() {
                                             <input id="description"
                                             type="text"
                                             required
+                                            autoComplete="off"
                                             value={description}
                                             onChange={(e) => setDescription(e.target.value)}
                                             />

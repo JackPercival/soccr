@@ -69,6 +69,8 @@
     padding: 10px;
     background-color: rgb(35,35,35);
     height: 300px;
+    width: 173px;
+    box-sizing: border-box;
 }
 
 .imageEditFormContainer h3 {
