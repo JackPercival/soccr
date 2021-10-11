@@ -1,6 +1,7 @@
 .imageDisplay {
     background-color: rgb(52, 52, 58);
     padding: 10px 0;
+    position: relative;
 }
 
 .imageDisplay img {
@@ -8,4 +9,106 @@
     max-height: 70vh;
     margin: 0 auto;
     display: block;
+    z-index: 1;
+    cursor: zoom-in;
+    border: 1px solid black
+}
+
+.imageDisplay .grow {
+    transform: scale(1.4);
+    cursor: zoom-out;
+    position: relative;
+    top: 14vh;
+}
+
+.trashCan {
+    color: white;
+    font-size: 26px;
+    position: absolute;
+    width: fit-content;
+    bottom: 10px;
+    right: 2vw;
+    cursor: pointer;
+}
+
+.trashCan:hover {
+    color: rgb(161, 161, 161);
+    transition: color .25s 0s;
+}
+
+.modalBackground {
+    position: absolute;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(68, 68, 68, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.deleteForm {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 580px;
+    padding: 18px;
+}
+
+.topRowDelete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.topRowDelete h3 {
+    margin: 0;
+    font-weight: 200;
+}
+
+.topRowDelete div {
+    color: rgb(173, 173, 173);
+    cursor: pointer;
+}
+
+.doYouWant {
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.bottomRowDelete {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 60px;
+}
+
+.cancelDelete, .deleteDelete {
+    padding: 5px 20px;
+    margin-left: 15px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cancelDelete {
+    background-color: #979EA2;
+}
+
+.deleteDelete {
+    background-color: #E2292C;
+}
+
+.cancelDelete:hover {
+    background-color: #c4ccd1;
+    transition: background-color .25s 0s;
+}
+
+.deleteDelete:hover {
+    background-color: #fa6e71;
+    transition: background-color .25s 0s;
 }

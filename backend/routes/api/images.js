@@ -15,7 +15,7 @@ const validateImage = [
       .withMessage('Please provide a title.'),
     check('description')
       .exists({ checkFalsy: true })
-        .withMessage('Please provide an image URL.'),
+        .withMessage('Please provide a description.'),
     check('image_url')
       .exists({ checkFalsy: true })
       .withMessage('Please provide an image URL.'),
