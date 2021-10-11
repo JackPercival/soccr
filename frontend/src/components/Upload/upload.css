@@ -1,0 +1,18 @@
+.mainImageEditor {
+    background-color: rgb(52, 52, 58);
+}
+
+.addButton {
+    display: flex;
+}
+
+.addNewImage {
+    width: fit-content;
+    margin: 0;
+}
+
+.newImageDisplay img {
+    max-width: 400px;
+    max-height: 400px;
+    border: 3px solid rgb(255, 73, 103);
+}

@@ -6,13 +6,14 @@ import SignupFormPage from "./components/SignupFromPage/signUp";
 import MainPage from "./components/MainPage/mainIndex";
 import ExplorePage from "./components/Explore/explore";
 import SingleImage from "./components/SingleImage/singleImage";
+import Upload from "./components/Upload/upload";
 import * as sessionActions from "./store/session";
 import { getAllImages } from "./store/images";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path="/images/:imageId">
             <SingleImage />
+          </Route>
+          <Route path="/upload">
+            <Upload />
           </Route>
         </Switch>
       )}
