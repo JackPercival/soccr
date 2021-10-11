@@ -11,6 +11,7 @@ import './singleImage.css'
 function SingleImage() {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
+    const [grow, setGrow] = useState('')
 
     const { imageId } = useParams();
     const image = useSelector(state => state.images[imageId]);
@@ -19,13 +20,25 @@ function SingleImage() {
         dispatch(getAllImages()).then(() => setIsLoaded(true));
     }, [dispatch]);
 
+    const toggleGrow = () => {
+        if (grow === "grow") {
+            setGrow('')
+        } else {
+            setGrow('grow')
+        }
+    }
+
     return (
         <div className="container">
             <Header />
             <main>
                 { isLoaded && (
                 <div className="imageDisplay">
-                    <img src={image.image_url} title={image.title}/>
+                    <img
+                        src={image.image_url}
+                        title={image.title}
+                        className={grow}
+                        onClick={toggleGrow}/>
                 </div>
                 )}
                 <div className="imageDetails">
