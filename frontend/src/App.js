@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage/login";
 import SignupFormPage from "./components/SignupFromPage/signUp";
-import Navigation from "./components/Navigation";
 import MainPage from "./components/MainPage/mainIndex";
 import ExplorePage from "./components/Explore/explore";
+import SingleImage from "./components/SingleImage/singleImage";
 import * as sessionActions from "./store/session";
 
 function App() {
@@ -29,11 +29,11 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/nav">
-            <Navigation isLoaded={isLoaded} />
-          </Route>
           <Route path="/explore">
             <ExplorePage />
+          </Route>
+          <Route path="/images/:imageId">
+            <SingleImage />
           </Route>
         </Switch>
       )}

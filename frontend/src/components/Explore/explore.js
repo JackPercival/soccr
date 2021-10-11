@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 
 import Header from '../Header/header';
-import ImageHolder from '../ImageHolder/imageHolder';
 import Footer from '../Footer/footer';
+import ImageHolder from '../ImageHolder/imageHolder';
 
 import { getAllImages } from '../../store/images';
 
