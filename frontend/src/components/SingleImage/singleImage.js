@@ -33,18 +33,21 @@ function SingleImage() {
             <Header />
             <main>
                 { isLoaded && (
-                <div className="imageDisplay">
-                    <img
-                        src={image.image_url}
-                        title={image.title}
-                        className={grow}
-                        onClick={toggleGrow}/>
-                </div>
-                )}
-                <div className="imageDetails">
+                <>
+                    <div className="imageDisplay">
+                        <img
+                            src={image.image_url}
+                            title={image.title}
+                            className={grow}
+                            onClick={toggleGrow}/>
+                    </div>
+                    <div className="imageDetails">
+                        <h1>{image.User.username}</h1>
+                        <h2>{image.title}</h2>
 
-                </div>
-                {/* <h1>Review Section {image?.title}</h1> */}
+                    </div>
+                </>
+                )}
             </main>
             <Footer />
         </div>

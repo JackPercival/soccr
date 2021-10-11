@@ -15,9 +15,6 @@
     border: 1px solid black
 }
 
-/* .imageDisplay img:hover {
-} */
-
 .imageDisplay .grow {
     transform: scale(1.4);
     cursor: zoom-out;
