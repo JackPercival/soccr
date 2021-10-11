@@ -1,24 +1,14 @@
-import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Link } from 'react-router-dom';
 
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
 import ImageHolder from '../ImageHolder/imageHolder';
 
-import { getAllImages } from '../../store/images';
-
 import './explore.css'
 
 
 function ExplorePage() {
-    const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
     const images = useSelector(state => Object.values(state.images));
-
-    useEffect(()=> {
-        dispatch(getAllImages());
-    }, [dispatch]);
 
     return (
         <div className="container">
@@ -29,7 +19,7 @@ function ExplorePage() {
                 </div>
                 <div className="imagesContainer">
                     {images?.map(image => (
-                        <ImageHolder key={image.id} image={image} />
+                        <ImageHolder key={`image_${image.id}`} image={image} />
                     ))}
                 </div>
             </main>

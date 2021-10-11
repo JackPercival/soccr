@@ -10,7 +10,7 @@ const load = (list) => {
 };
 
 export const getAllImages = () => async dispatch => {
-    const response = await csrfFetch('api/images');
+    const response = await csrfFetch('/api/images');
 
     if (response.ok) {
         const list = await response.json();
@@ -23,7 +23,7 @@ const initialState = {
   };
 
 const imagesReducer = (state = initialState, action) => {
-    let newState;
+    // let newState;
     switch (action.type) {
         case LOAD: {
             const allImages = {};

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import ProfileButton from '../Navigation/ProfileButton';
 import './header.css'
 
 function Header() {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const [search, setSearch] = useState('');
 

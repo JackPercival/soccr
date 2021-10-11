@@ -7,13 +7,16 @@ import MainPage from "./components/MainPage/mainIndex";
 import ExplorePage from "./components/Explore/explore";
 import SingleImage from "./components/SingleImage/singleImage";
 import * as sessionActions from "./store/session";
+import { getAllImages } from "./store/images";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  // const [imagesLoaded, setImagesLoaded]
 
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(sessionActions.restoreUser())
+    dispatch(getAllImages()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (

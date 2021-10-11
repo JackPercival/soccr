@@ -35,27 +35,27 @@ function ProfileButton({ user }) {
       hello: "Hei",
       language: "Finnish"
     },
-    5: {
+    6: {
       hello: "Hallå",
       language: "Swedish"
     },
-    6: {
+    7: {
       hello: "Ciao",
       language: "Italian"
     },
-    7: {
+    8: {
       hello: "Hej",
       language: "Danish"
     },
-    8: {
+    9: {
       hello: "Nǐ hǎo",
       language: "Chinese"
     },
-    9: {
+    10: {
       hello: "Ahoj",
       language: "Czech"
     },
-    10: {
+    11: {
       hello: "Privet",
       language: "Russian"
     }

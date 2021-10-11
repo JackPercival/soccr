@@ -1,16 +1,28 @@
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { getAllImages } from '../../store/images';
 
 function SingleImage() {
     const { imageId } = useParams();
-    console.log(imageId)
+    
+    const image = useSelector(state => state.images[imageId]);
+    console.log(image)
 
     return (
         <div className="container">
             <Header />
             <main>
-                <h1>Single Image {imageId}</h1>
+                <div className="imageDisplay">
+
+                </div>
+                <div className="imageDetails">
+
+                </div>
+                <h1>Review Section {image?.title}</h1>
             </main>
             <Footer />
         </div>

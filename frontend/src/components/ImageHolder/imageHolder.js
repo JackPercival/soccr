@@ -1,6 +1,5 @@
-import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './imageHolder.css'
 
 function ImageHolder({image}) {
@@ -16,7 +15,7 @@ function ImageHolder({image}) {
     }
 
     return (
-        <NavLink to={`/images/${image.id}`}>
+        <Link to={`/images/${image.id}`}>
             <div className="imageExploreContainer" id={hovered}
                 onMouseOver={toggleInfo}
                 onMouseOut={toggleInfo}>
@@ -24,7 +23,7 @@ function ImageHolder({image}) {
                 <p className="imageTitle">{image.title}</p>
                 <p className="imageAuthor">{image.User? image.User.username: null}</p>
             </div>
-        </NavLink>
+        </Link>
     )
 }
 
