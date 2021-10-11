@@ -12,8 +12,7 @@ import { getAllImages } from "./store/images";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  // const [imagesLoaded, setImagesLoaded]
-
+  
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
