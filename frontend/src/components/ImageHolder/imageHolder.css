@@ -2,11 +2,38 @@
     flex-grow:1;
     margin: 2px;
     overflow: hidden;
-  }
+    max-height: 250px;
+}
 
 .imagesExplore {
     display: block;
     max-height: 250px;
     min-width: 100%;
     object-fit: cover;
+}
+
+.imageTitle, .imageAuthor {
+    color: transparent;
+}
+
+#imageHovered .imageTitle {
+    color: white;
+    text-shadow: 0 0 2px #000;
+    margin: 0;
+    position: relative;
+    top: -40px;
+    left: 7px;
+    transition: color .3s linear, text-shadow .3s linear;
+    /* transition: text-shadow 0.5s ease; */
+}
+
+#imageHovered .imageAuthor {
+    color: hsla(0,0%,100%,.7);
+    text-shadow: 0 0 2px #000;
+    font-size: 12px;
+    margin: 0;
+    position: relative;
+    top: -40px;
+    left: 7px;
+    transition: color .3s linear, text-shadow .3s linear;
 }
