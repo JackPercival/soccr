@@ -1,0 +1,18 @@
+.exploreHeader {
+    display: flex;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.exploreHeader h1 {
+    /* font-family: helvetica,arial,sans-serif; */
+    margin: 10px 0 5px 0;
+    font-weight: 200;
+}
+
+.imagesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}

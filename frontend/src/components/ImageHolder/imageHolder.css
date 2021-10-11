@@ -1,0 +1,12 @@
+.imageExploreContainer {
+    flex-grow:1;
+    margin: 2px;
+    overflow: hidden;
+  }
+
+.imagesExplore {
+    display: block;
+    max-height: 250px;
+    min-width: 100%;
+    object-fit: cover;
+}

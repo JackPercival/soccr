@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Header from '../Header/header';
 import { NavLink, Link } from 'react-router-dom';
+
+import Header from '../Header/header';
+import ImageHolder from '../ImageHolder/imageHolder';
+import Footer from '../Footer/footer';
+
 import { getAllImages } from '../../store/images';
 
-import Footer from '../Footer/footer';
+import './explore.css'
+
 
 function ExplorePage() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const images = useSelector(state => Object.values(state.images));
-
 
     useEffect(()=> {
         dispatch(getAllImages());
@@ -20,13 +24,14 @@ function ExplorePage() {
         <div className="container">
             <Header />
             <main>
-                <h1>Explore</h1>
-                {images.map(image => (
-                    <NavLink to={`/images/${image.id}`}>{image.title}</NavLink>
-                ))}
-                {/* <p>{images[1]?.id}</p>
-                <p>{images[1]?.title}</p>
-                <p>{images[1]?.image_url}</p> */}
+                <div className="exploreHeader">
+                    <h1>Explore</h1>
+                </div>
+                <div className="imagesContainer">
+                    {images?.map(image => (
+                        <ImageHolder key={image.id} image={image} />
+                    ))}
+                </div>
             </main>
             <Footer />
         </div>
