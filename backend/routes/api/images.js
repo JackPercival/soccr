@@ -42,8 +42,7 @@ router.post('/', validateImage, asyncHandler(async (req, res) => {
     return res.json(image)
 }))
 
-//Drop and reseed table
-//Write the thunk/dispatch it and test it
+//Write the thunk/dispatch it and test it with a button with fake data
 
 
 module.exports = router;

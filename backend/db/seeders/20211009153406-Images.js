@@ -27,6 +27,18 @@ module.exports = {
       image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633737080/soccr/quickshot_zx5by0.jpg',
       user_id: 1
      },
+     {
+      title: 'Iniesta vs Italy',
+      description: "person, ball, field",
+      image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633738063/soccr/iniestadribble_j0c3cb.jpg',
+      user_id: 1
+     },
+     {
+      title: 'Practice Time',
+      description: "person, ball, field",
+      image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633737080/soccr/practice_f0bxem.jpg',
+      user_id: 1
+     },
   ], {});
   },
 

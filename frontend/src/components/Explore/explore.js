@@ -9,7 +9,8 @@ import Footer from '../Footer/footer';
 function ExplorePage() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const images = useSelector(state => state.images);
+    const images = useSelector(state => Object.values(state.images));
+
 
     useEffect(()=> {
         dispatch(getAllImages());
@@ -20,9 +21,12 @@ function ExplorePage() {
             <Header />
             <main>
                 <h1>Explore</h1>
-                <p>{images[1]?.id}</p>
+                {images.map(image => (
+                    <NavLink to={`/images/${image.id}`}>{image.title}</NavLink>
+                ))}
+                {/* <p>{images[1]?.id}</p>
                 <p>{images[1]?.title}</p>
-                <p>{images[1]?.image_url}</p>
+                <p>{images[1]?.image_url}</p> */}
             </main>
             <Footer />
         </div>
