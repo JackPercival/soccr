@@ -1,18 +1,19 @@
-import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
-import ImageHolder from '../ImageHolder/imageHolder';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { getAllImages } from '../../store/images';
 
-import './explore.css'
+import './singleImage.css'
 
-
-function ExplorePage() {
+function SingleImage() {
     const dispatch = useDispatch();
-    const images = useSelector(state => Object.values(state.images));
     const [isLoaded, setIsLoaded] = useState(false);
+
+    const { imageId } = useParams();
+    const image = useSelector(state => state.images[imageId]);
 
     useEffect(() => {
         dispatch(getAllImages()).then(() => setIsLoaded(true));
@@ -22,18 +23,19 @@ function ExplorePage() {
         <div className="container">
             <Header />
             <main>
-                <div className="exploreHeader">
-                    <h1>Explore</h1>
+                { isLoaded && (
+                <div className="imageDisplay">
+                    <img src={image.image_url} title={image.title}/>
                 </div>
-                <div className="imagesContainer">
-                    {images?.map(image => (
-                        <ImageHolder key={`image_${image.id}`} image={image} />
-                    ))}
+                )}
+                <div className="imageDetails">
+
                 </div>
+                {/* <h1>Review Section {image?.title}</h1> */}
             </main>
             <Footer />
         </div>
     )
 }
 
-export default ExplorePage;
+export default SingleImage;

@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Image } = require('../../db/models');
+const { Image, User } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -24,7 +24,11 @@ const validateImage = [
 
 //Get all images
 router.get('/', asyncHandler(async (req, res) => {
-    const images = await Image.findAll();
+    const images = await Image.findAll({
+      include: {
+        model: User
+      }
+    });
     return res.json(images)
 }))
 

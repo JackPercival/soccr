@@ -1,0 +1,11 @@
+.imageDisplay {
+    background-color: rgb(52, 52, 58);
+    padding: 10px 0;
+}
+
+.imageDisplay img {
+    max-width: 80vw;
+    max-height: 70vh;
+    margin: 0 auto;
+    display: block;
+}
