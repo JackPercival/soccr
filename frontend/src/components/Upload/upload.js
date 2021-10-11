@@ -11,6 +11,8 @@ function Upload() {
     const sessionUser = useSelector(state => state.session.user);
 
     const [image_url, setImageUrl] = useState('');
+    const [description, setDescription] = useState('');
+    const [title, setTitle] = useState('');
     const [validationErrors, setValidationErrors] = useState([]);
 
     const [addClicked, setAddClicked] = useState(false);
@@ -44,7 +46,7 @@ function Upload() {
             <main className="mainImageEditor">
                 <div className="addButton" onClick={() => setAddClicked(true)}>
                     <i className="fas fa-plus-square"></i>
-                    <h4 className="addNewImage">Add</h4>
+                    <h4 className="addNewImageH4">Add</h4>
                 </div>
 
                 {addClicked && (
@@ -70,8 +72,31 @@ function Upload() {
                 {showImageForm && (
                     <>
                         <div className="imageEditorContainer">
-                            <div className="imageEditForm">
-
+                            <div className="imageEditFormContainer">
+                                <h3>Editing 1 Photo:</h3>
+                                <div>
+                                    <form className="imageEditForm">
+                                        <div>
+                                            <label htmlFor="title">Add a Title</label>
+                                            <input id="title"
+                                            type="text"
+                                            required
+                                            value={title}
+                                            onChange={(e) => setTitle(e.target.value)}
+                                            />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="description">Add a Description</label>
+                                            <input id="description"
+                                            type="text"
+                                            required
+                                            value={description}
+                                            onChange={(e) => setDescription(e.target.value)}
+                                            />
+                                        </div>
+                                        <button className="uploadImage" type="submit">Upload Photo</button>
+                                    </form>
+                                </div>
                             </div>
                             <div className="newImageDisplay">
                                 <img src={image_url} alt="New Image Upload" />
