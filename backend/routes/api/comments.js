@@ -27,4 +27,17 @@ router.get('/', asyncHandler(async (req, res) => {
     return res.json(comments)
 }))
 
+//Add comment
+router.post('/', validateComment, asyncHandler(async (req, res) => {
+  const { comment, image_id, user_id } = req.body;
+
+  const newComment = await Comment.create({
+      comment,
+      image_id,
+      user_id
+  });
+
+  return res.json(newComment)
+}))
+
 module.exports = router;

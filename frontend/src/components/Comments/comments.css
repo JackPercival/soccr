@@ -30,5 +30,54 @@
 .singleCommentContainer p {
     font-size: 14px;
     font-weight: 400;
-    margin-left: 28px;
+    margin: 5px 0 0 28px;
+}
+
+.addCommentProfIcon {
+    position: relative;
+    top: -34px;
+}
+
+.addCommentContainer:hover {
+    background-color: white;
+}
+
+.commentField {
+    resize: none;
+    width: 445px;
+    box-sizing: border-box;
+    height: 90px;
+    margin-left: 10px;
+    font-family: helvetica,arial,sans-serif;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid rgb(197, 197, 197);
+}
+
+.commentField:focus {
+    outline: none;
+    border: 1px solid rgb(159, 177, 255);
+}
+
+.addCommentForm {
+    position: relative;
+}
+
+.commentButton {
+    position: absolute;
+    right: 0px;
+    bottom: -38px;
+    font-family: helvetica,arial,sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: #128FDC;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.commentButton:hover {
+    background-color: #319bdd;
+    cursor: pointer;
 }
