@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './imageHolder.css'
 
 function ImageHolder({image}) {
-    console.log("********", image.User)
+    // console.log("********", image.User)
     const [hovered, setHovered] = useState('');
 
     const toggleInfo = () => {

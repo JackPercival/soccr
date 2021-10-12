@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom';
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
 import { useSelector, useDispatch } from 'react-redux';
-
-import { getAllImages } from '../../store/images';
+import { useHistory } from 'react-router-dom';
+import { getAllImages, deleteSingleImage } from '../../store/images';
 
 import './singleImage.css'
 
 function SingleImage() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
 
     const { imageId } = useParams();
@@ -32,6 +33,16 @@ function SingleImage() {
         }
     }
 
+    const deleteImage = async () => {
+        const wasDeleted = await dispatch(deleteSingleImage({imageId}))
+
+        if (wasDeleted) {
+            history.push('/explore')
+        } else {
+            alert("An error occured. Please refresh the page and try again.")
+        }
+    }
+
     return (
         <div className="container">
             <Header />
@@ -40,11 +51,11 @@ function SingleImage() {
                 <>
                     <div className="imageDisplay">
                         <img
-                            src={image.image_url}
-                            title={image.title}
+                            src={image?.image_url}
+                            title={image?.title}
                             className={grow}
                             onClick={toggleGrow}/>
-                        {image.User.id === sessionUser.id?
+                        {image?.User.id === sessionUser?.id?
                             <div className="trashCan"
                                 onClick={() => setShowDelete(true)}>
                                 <i className="fas fa-trash-alt"></i>
@@ -52,8 +63,8 @@ function SingleImage() {
                             : null}
                     </div>
                     <div className="imageDetails">
-                        <h1>{image.User.username}</h1>
-                        <h2>{image.title}</h2>
+                        <h1>{image?.User.username}</h1>
+                        <h2>{image?.title}</h2>
 
                     </div>
                     {showDelete && (
@@ -67,7 +78,7 @@ function SingleImage() {
                                     <div className="doYouWant">Do you want to permanently delete this photo?</div>
                                     <div className="bottomRowDelete">
                                         <div className="cancelDelete" onClick={() => setShowDelete(false)}>Cancel</div>
-                                        <div className="deleteDelete">Delete</div>
+                                        <div className="deleteDelete" onClick={deleteImage}>Delete</div>
                                     </div>
                                 </div>
                             </div>

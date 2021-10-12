@@ -46,7 +46,18 @@ router.post('/', validateImage, asyncHandler(async (req, res) => {
     return res.json(image)
 }))
 
-//Write the thunk/dispatch it and test it with a button with fake data
+//Delete image
+router.delete('/', asyncHandler(async (req, res) => {
+  const {imageId} = req.body;
 
+  const findImage = await Image.findByPk(imageId);
+
+    if (findImage) {
+        await findImage.destroy();
+        res.status(204).end();
+      } else {
+        next();
+      }
+}))
 
 module.exports = router;

@@ -25,11 +25,13 @@ function ExplorePage() {
                 <div className="exploreHeader">
                     <h1>Explore</h1>
                 </div>
+            {isLoaded && (
                 <div className="imagesContainer">
                     {images?.map(image => (
                         <ImageHolder key={`image_${image.id}`} image={image} />
                     ))}
                 </div>
+            )}
             </main>
             <Footer />
         </div>
