@@ -1,39 +1,36 @@
 .imageExploreContainer {
-    flex-grow:1;
+    height: 35vh;
+    flex-grow: 1;
     margin: 2px;
-    overflow: hidden;
-    max-height: 250px;
+    padding: 0;
+    list-style: none;
 }
 
 .imagesExplore {
-    display: block;
-    max-height: 250px;
+    max-height: 100%;
     min-width: 100%;
     object-fit: cover;
+    vertical-align: bottom;
 }
 
 .imageTitle, .imageAuthor {
     color: transparent;
+    position: relative;
+    top: -40px;
+    left: 7px;
+    width: fit-content;
+    margin: 0;
 }
 
 #imageHovered .imageTitle {
     color: white;
     text-shadow: 0 0 2px #000;
-    margin: 0;
-    position: relative;
-    top: -40px;
-    left: 7px;
     transition: color .3s linear, text-shadow .3s linear;
-    /* transition: text-shadow 0.5s ease; */
 }
 
 #imageHovered .imageAuthor {
     color: hsla(0,0%,100%,.7);
     text-shadow: 0 0 2px #000;
     font-size: 12px;
-    margin: 0;
-    position: relative;
-    top: -40px;
-    left: 7px;
     transition: color .3s linear, text-shadow .3s linear;
 }

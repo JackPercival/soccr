@@ -53,7 +53,7 @@ function LoginFormPage() {
   }
 
   const demoLogin = () => {
-    const credential = 'Demo-lition';
+    const credential = 'DemoUser';
     const password = 'password';
 
     setCredential(credential);

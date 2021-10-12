@@ -15,15 +15,15 @@ function ImageHolder({image}) {
     }
 
     return (
-        <Link to={`/images/${image.id}`}>
-            <div className="imageExploreContainer" id={hovered}
-                onMouseOver={toggleInfo}
-                onMouseOut={toggleInfo}>
+        <li className="imageExploreContainer" id={hovered}
+            onMouseOver={toggleInfo}
+            onMouseOut={toggleInfo}>
+            <Link to={`/images/${image.id}`}>
                 <img className="imagesExplore" src={image.image_url} alt={image.title}/>
                 <p className="imageTitle">{image.title}</p>
                 <p className="imageAuthor">{image.User? image.User.username: null}</p>
-            </div>
-        </Link>
+            </Link>
+        </li>
     )
 }
 
