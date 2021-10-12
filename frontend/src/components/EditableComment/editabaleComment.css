@@ -1,0 +1,23 @@
+.singleCommentContainer {
+    border: 1px solid black;
+}
+
+.topRowComment {
+    display: flex;
+    justify-content: space-between;
+}
+
+.editCommentButtons {
+    display: flex;
+}
+
+.editCommentButtons div {
+    margin-left: 5px;
+    cursor: pointer;
+    color: rgb(173, 173, 173);
+    visibility:hidden;
+}
+
+#editCommentIcon {
+    visibility: visible;
+}

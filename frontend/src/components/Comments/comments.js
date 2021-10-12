@@ -1,5 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
+import EditableComment from '../EditableComment/editableComment';
+
 import './comments.css';
 
 import { loadComments, addNewComment } from '../../store/comments';
@@ -57,17 +59,26 @@ function Comments({image}) {
         <div className="commentsContainer">
             {isLoaded && (
                 <>
-                    {comments.map(comment => (
-                        <div key={comment.id} className="singleCommentContainer">
-                            <div className="commentDetails">
-                                <div className="commentProfIcon">
-                                    <i className="fas fa-user-circle" id="profileButton"/>
+                    {comments.map(comment => {
+                        if (comment.user_id === sessionUser.id) {
+                            return (
+                                <EditableComment comment={comment} sessionUser={sessionUser}/>
+                            )
+                        }
+                        return (
+                            <>
+                                <div key={comment.id} className="singleCommentContainer">
+                                    <div className="commentDetails">
+                                        <div className="commentProfIcon">
+                                            <i className="fas fa-user-circle" id="profileButton"/>
+                                        </div>
+                                        <h4>{comment?.User? comment.User.username : sessionUser.username}</h4>
+                                    </div>
+                                    <p>{comment?.comment}</p>
                                 </div>
-                                <h4>{comment?.User? comment.User.username : sessionUser.username}</h4>
-                            </div>
-                            <p>{comment?.comment}</p>
-                        </div>
-                    ))}
+                            </>
+                        )
+                    })}
                     <div className="singleCommentContainer addCommentContainer">
                             <div className="commentDetails">
                                 <div className="commentProfIcon addCommentProfIcon">
