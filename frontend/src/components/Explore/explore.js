@@ -16,6 +16,9 @@ function ExplorePage() {
 
     useEffect(() => {
         dispatch(getAllImages()).then(() => setIsLoaded(true));
+        return () => {
+            setIsLoaded()
+        }
     }, [dispatch]);
 
     useEffect(() => {

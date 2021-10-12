@@ -1,0 +1,9 @@
+.addButtonContainer a {
+    text-decoration: none;
+    color: black;
+}
+
+.addButtonContainer a:hover {
+    color: grey;
+    transition: color .25s 0s;
+}
