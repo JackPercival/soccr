@@ -39,6 +39,10 @@ function EditImage() {
         }
     }, [image?.description, image?.title, image?.image_url])
 
+    useEffect(() => {
+        document.title = "Edit | Soccr";
+    }, []);
+
     const handleUpload = async (e) => {
         e.preventDefault();
 
