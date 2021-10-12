@@ -6,9 +6,10 @@ import { loadComments } from '../../store/comments';
 
 
 function Comments({image}) {
-    console.log(image.id, "*********")
     const dispatch = useDispatch();
-    const images = useSelector(state => Object.values(state.images));
+    const comments = useSelector(state => Object.values(state.comments).filter(comment => comment.image_id === image.id));
+    console.log("------------------------", comments)
+
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
@@ -21,7 +22,23 @@ function Comments({image}) {
 
 
     return (
-        <h1>Comments</h1>
+        <div className="commentsContainer">
+            {isLoaded && (
+                <>
+                    {comments.map(comment => (
+                        <div className="singleCommentContainer">
+                            <div className="commentDetails">
+                                <div className="commentProfIcon">
+                                    <i className="fas fa-user-circle" id="profileButton"/>
+                                </div>
+                                <h4>{comment?.User.username}</h4>
+                            </div>
+                            <p>{comment.comment}</p>
+                        </div>
+                    ))}
+                </>
+            )}
+        </div>
     )
 }
 

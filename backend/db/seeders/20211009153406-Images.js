@@ -29,8 +29,8 @@ module.exports = {
      },
      {
       title: 'Iniesta vs Italy',
-      description: "person, ball, field",
-      image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633738063/soccr/iniestadribble_j0c3cb.jpg',
+      description: "Iniesta dominating the midfield against Italy during Euro 2012. An outstanding player on top of his game, as five Italians struggle to get the ball from him.",
+      image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_1200/v1634068114/soccr/iniesta_abfeku.jpg',
       user_id: 1
      },
      {

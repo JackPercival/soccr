@@ -76,11 +76,6 @@ function SingleImage() {
                             </div>
                             : null}
                     </div>
-                    <div className="imageDetails">
-                        <h1>{image?.User.username}</h1>
-                        <h2>{image?.title}</h2>
-
-                    </div>
                     {showDelete && (
                         <>
                             <div className="modalBackground">
@@ -98,7 +93,19 @@ function SingleImage() {
                             </div>
                         </>
                     )}
-                <Comments image={image}/>
+                    <div className="imageDetailsContainer">
+                        <div className="imageDetails">
+                            <div className="profIcon">
+                                <i className="fas fa-user-circle" id="profileButton"/>
+                            </div>
+                            <div className="imageInfo">
+                                <h1>{image?.User.username}</h1>
+                                <h2>{image?.title}</h2>
+                            </div>
+                        </div>
+                        <p className="imageDescription">{image?.description}</p>
+                        <Comments image={image}/>
+                    </div>
                 </>
                 )}
             </main>
