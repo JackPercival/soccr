@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import MainHeader from '../MainHeader/mainHeader';
-import ExplorePage from '../Explore/explore';
 import Footer from '../Footer/footer';
 import { useSelector } from 'react-redux';
 import './MainPage.css';
@@ -80,9 +79,7 @@ function MainPage({ isLoaded }){
   if (sessionUser) {
     document.title = "Explore | Soccr";
 
-    return (
-      <ExplorePage />
-    )
+    return <Redirect to="/explore" />;
   }
 
   document.title = "Find your inspiration. | Soccr";

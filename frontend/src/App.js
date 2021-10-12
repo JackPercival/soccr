@@ -7,6 +7,7 @@ import MainPage from "./components/MainPage/mainIndex";
 import ExplorePage from "./components/Explore/explore";
 import SingleImage from "./components/SingleImage/singleImage";
 import Upload from "./components/Upload/upload";
+import EditImage from "./components/EditImage/editImage";
 import * as sessionActions from "./store/session";
 
 function App() {
@@ -24,19 +25,22 @@ function App() {
           <Route exact path="/">
             <MainPage isLoaded={isLoaded}/>
           </Route>
-          <Route path="/login">
+          <Route exact path="/login">
             <LoginFormPage />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/explore">
+          <Route exact path="/explore">
             <ExplorePage />
           </Route>
-          <Route path="/images/:imageId">
+          <Route exact path="/images/:imageId">
             <SingleImage />
           </Route>
-          <Route path="/upload">
+          <Route exact path="/images/:imageId/edit">
+            <EditImage />
+          </Route>
+          <Route exact path="/upload">
             <Upload />
           </Route>
         </Switch>

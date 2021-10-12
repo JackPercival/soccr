@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
 import { useSelector, useDispatch } from 'react-redux';
@@ -61,9 +61,17 @@ function SingleImage() {
                             alt={`${image?.title} `}
                             onClick={toggleGrow}/>
                         {image?.User.id === sessionUser?.id?
-                            <div className="trashCan"
-                                onClick={() => setShowDelete(true)}>
-                                <i className="fas fa-trash-alt"></i>
+                            <div className="userEditContainer">
+                                <Link to={`/images/${image.id}/edit`}>
+                                    <div className="userEdits editButton" title="Edit Image">
+                                        <i className="fas fa-edit"></i>
+                                    </div>
+                                </Link>
+                                <div className="userEdits trashCan"
+                                    onClick={() => setShowDelete(true)}
+                                    title="Delete Image">
+                                    <i className="fas fa-trash-alt"></i>
+                                </div>
                             </div>
                             : null}
                     </div>

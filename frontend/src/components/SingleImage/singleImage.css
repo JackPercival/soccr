@@ -21,17 +21,22 @@
     top: 14vh;
 }
 
-.trashCan {
-    color: white;
-    font-size: 26px;
+.userEditContainer {
     position: absolute;
-    width: fit-content;
+    display: flex;
     bottom: 10px;
     right: 2vw;
-    cursor: pointer;
 }
 
-.trashCan:hover {
+.userEdits {
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+    width: fit-content;
+    margin: 0 5px;
+}
+
+.userEdits:hover {
     color: rgb(161, 161, 161);
     transition: color .25s 0s;
 }

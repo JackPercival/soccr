@@ -46,6 +46,21 @@ router.post('/', validateImage, asyncHandler(async (req, res) => {
     return res.json(image)
 }))
 
+//Update Image
+router.put('/', validateImage, asyncHandler(async (req, res) => {
+  const { id, title, description } = req.body;
+
+  const editedImage = await Image.findByPk(id);
+
+  editedImage.title = title;
+  editedImage.description = description;
+
+  await editedImage.save()
+
+  return res.json(editedImage)
+}))
+
+
 //Delete image
 router.delete('/', asyncHandler(async (req, res) => {
   const {imageId} = req.body;
