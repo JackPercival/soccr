@@ -28,7 +28,7 @@ function Upload() {
 
     const validateURL = () => {
         const validationErrors = [];
-        const regex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/
+        const regex = /[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/
 
         if (!image_url) {
             validationErrors.push("Please provide an Image URL.")
@@ -101,13 +101,12 @@ function Upload() {
                             <ul>
                                 {validationErrors.map(error => <li className="loginError" key={error}>{error}</li>)}
                             </ul>
-                            <form onSubmit={handleImageUrlSubmit} autoComplete="off" className="imageEditForm" autoComplete="off">
+                            <form onSubmit={handleImageUrlSubmit} autoComplete="off" className="imageEditForm">
                                 <div>
                                     <label>Image URL</label>
                                     <input
                                         type="text"
                                         value={image_url}
-                                        autoComplete="off"
                                         required
                                         autoComplete="off"
                                         onChange={(e) =>setImageUrl(e.target.value)}
@@ -153,7 +152,7 @@ function Upload() {
                                 </div>
                             </div>
                             <div className="newImageDisplay">
-                                <img src={image_url} alt="New Image Upload" />
+                                <img src={image_url} alt="New Upload" />
                             </div>
                         </div>
                     </>

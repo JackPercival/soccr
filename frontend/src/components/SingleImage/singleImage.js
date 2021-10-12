@@ -54,6 +54,7 @@ function SingleImage() {
                             src={image?.image_url}
                             title={image?.title}
                             className={grow}
+                            alt={`${image?.title} `}
                             onClick={toggleGrow}/>
                         {image?.User.id === sessionUser?.id?
                             <div className="trashCan"
