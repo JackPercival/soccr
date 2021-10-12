@@ -78,10 +78,14 @@ function MainPage({ isLoaded }){
 
   //If there is a session user, add a component to the main layout page of a logged in user
   if (sessionUser) {
+    document.title = "Explore | Soccr";
+
     return (
       <ExplorePage />
     )
   }
+
+  document.title = "Find your inspiration. | Soccr";
 
   return (
     <div className="container">

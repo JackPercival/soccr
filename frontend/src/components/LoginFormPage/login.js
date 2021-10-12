@@ -17,6 +17,9 @@ function LoginFormPage() {
   const [passwordLabelFocus, setPasswordLabelFocus] = useState('');
   const [passwordInputFocus, setPasswordInputFocus] = useState('');
 
+  useEffect(() => {
+    document.title = "Login | Soccr";
+  }, []);
 
   useEffect(() => {
     if (credential.length > 0 && userNameLabelFocus !== 'formLabelDone') {

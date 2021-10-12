@@ -24,6 +24,10 @@ function SignupFormPage() {
   const [confirmPasswordInputFocus, setConfirmPasswordInputFocus] = useState('');
 
   useEffect(() => {
+    document.title = "Sign Up | Soccr";
+  }, []);
+
+  useEffect(() => {
     if (email.length > 0 && emailLabelFocus !== 'formLabelDone') {
       setEmailLabelFocus('formLabelFocus')
       setEmailInputFocus('formInputDone')

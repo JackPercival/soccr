@@ -19,7 +19,7 @@ function ImageHolder({image}) {
             onMouseOver={toggleInfo}
             onMouseOut={toggleInfo}>
             <Link to={`/images/${image.id}`}>
-                <img className="imagesExplore" src={image.image_url} alt={image.title}/>
+                <img className="imagesExplore" src={image.image_url} alt={image.title} loading="lazy"/>
                 <p className="imageTitle">{image.title}</p>
                 <p className="imageAuthor">{image.User? image.User.username: null}</p>
             </Link>

@@ -18,6 +18,10 @@ function ExplorePage() {
         dispatch(getAllImages()).then(() => setIsLoaded(true));
     }, [dispatch]);
 
+    useEffect(() => {
+        document.title = "Explore | Soccr";
+    }, []);
+
     return (
         <div className="container">
             <Header />

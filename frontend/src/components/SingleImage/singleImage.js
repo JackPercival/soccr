@@ -25,6 +25,10 @@ function SingleImage() {
         dispatch(getAllImages()).then(() => setIsLoaded(true));
     }, [dispatch]);
 
+    useEffect(() => {
+        document.title = `${image?.title} | Soccr`;
+    }, [image?.title]);
+
     const toggleGrow = () => {
         if (grow === "grow") {
             setGrow('')
