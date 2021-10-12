@@ -7,7 +7,7 @@ import { loadComments, addNewComment } from '../../store/comments';
 
 function Comments({image}) {
     const dispatch = useDispatch();
-    const comments = useSelector(state => Object.values(state.comments).filter(comment => comment.image_id === image.id));
+    const comments = useSelector(state => Object.values(state.comments).filter(comment => comment.image_id === image?.id));
 
     const sessionUser = useSelector(state => state.session.user);
 
@@ -24,8 +24,16 @@ function Comments({image}) {
         }
     }, [dispatch]);
 
-    const handleNewComment = (e) => {
+    const toggleCommentButton = () => {
+        if (comment.length === 0) {
+            setShowAddComment(false)
+        }
+    }
+
+    const handleNewComment = async (e) => {
         e.preventDefault();
+        console.log("Clicked")
+
         setErrors([]);
 
         const payload= {
@@ -34,13 +42,14 @@ function Comments({image}) {
             user_id: sessionUser.id
         }
 
-        console.log("Dispatched")
-
-        return dispatch(addNewComment(payload))
+        await dispatch(addNewComment(payload))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
         });
+
+        setComment('')
+        setShowAddComment(false)
 
     }
 
@@ -54,9 +63,9 @@ function Comments({image}) {
                                 <div className="commentProfIcon">
                                     <i className="fas fa-user-circle" id="profileButton"/>
                                 </div>
-                                <h4>{comment?.User.username}</h4>
+                                <h4>{comment?.User? comment.User.username : sessionUser.username}</h4>
                             </div>
-                            <p>{comment.comment}</p>
+                            <p>{comment?.comment}</p>
                         </div>
                     ))}
                     <div className="singleCommentContainer addCommentContainer">
@@ -69,11 +78,16 @@ function Comments({image}) {
                                         <textarea
                                             className="commentField"
                                             placeholder="Add a comment"
+                                            value={comment}
                                             onChange={(e) => setComment(e.target.value)}
                                             onClick={() => setShowAddComment(true)}
-                                            onBlur={() => setShowAddComment(false)}
+                                            onBlur={toggleCommentButton}
                                         ></textarea>
-                                        {showAddComment && <button className="commentButton">Comment</button>}
+                                        {showAddComment &&
+                                            <button
+                                                className="commentButton"
+                                            >Comment</button>
+                                        }
                                     </form>
                                     <ul>
                                         {errors.map((error, idx) => <li className="loginError" key={idx}>{error}</li>)}

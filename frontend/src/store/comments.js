@@ -35,6 +35,7 @@ export const addNewComment = (payload) => async dispatch => {
     if (response.ok) {
         const comment = await response.json();
         dispatch(addComment(comment));
+        return comment;
     }
 }
 

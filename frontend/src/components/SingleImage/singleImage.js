@@ -48,6 +48,10 @@ function SingleImage() {
         }
     }
 
+    if (isLoaded && !image) {
+        history.push('/explore')
+    }
+
     return (
         <div className="container">
             <Header />

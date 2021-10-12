@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Image.associate = function(models) {
     Image.belongsTo(models.User, {foreignKey: 'user_id'})
-    Image.hasMany(models.Comment, {foreignKey: 'image_id'})
+    Image.hasMany(models.Comment, {foreignKey: 'image_id', onDelete: "CASCADE", hooks: true})
   };
   return Image;
 };

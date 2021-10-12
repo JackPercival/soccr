@@ -8,6 +8,7 @@ import ExplorePage from "./components/Explore/explore";
 import SingleImage from "./components/SingleImage/singleImage";
 import Upload from "./components/Upload/upload";
 import EditImage from "./components/EditImage/editImage";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
 import * as sessionActions from "./store/session";
 
 function App() {
@@ -42,6 +43,9 @@ function App() {
           </Route>
           <Route exact path="/upload">
             <Upload />
+          </Route>
+          <Route>
+            <PageNotFound />
           </Route>
         </Switch>
       )}
