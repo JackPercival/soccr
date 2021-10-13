@@ -96,9 +96,16 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <div onClick={openMenu} id="profButtonDiv">
-        <i className="fas fa-user-circle" id="profileButton"/>
-      </div>
+      {user.profile_pic && (
+        <div onClick={openMenu} className="customProf">
+          <img src={user.profile_pic} alt="Profile Picture"/>
+        </div>
+      )}
+      {!user.profile_pic && (
+        <div onClick={openMenu} id="profButtonDiv">
+          <i className="fas fa-user-circle" id="profileButton"/>
+        </div>
+      )}
       {showMenu && (
         <div className="profile-dropdown">
           <div id="triangle"></div>

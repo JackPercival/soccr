@@ -18,6 +18,8 @@ function Header() {
         }
     }
 
+    console.log("***********",sessionUser)
+
     return (
         <header id="normalHeader">
             <div className="leftHeader">
