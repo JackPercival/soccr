@@ -142,13 +142,27 @@
     margin-right: 15px;
 }
 
+.profIcon a {
+    color: inherit;
+}
+
 .imageInfo * {
     margin: 0px 0px;
+}
+
+.imageInfo a {
+    color: inherit;
 }
 
 .imageInfo h1 {
     font-weight: 500;
     font-size: 26px;
+}
+
+.imageInfo a:hover {
+    text-decoration: underline;
+    color: #006dac;
+    transition: color .25s 0s;
 }
 
 .imageInfo h2 {

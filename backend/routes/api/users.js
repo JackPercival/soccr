@@ -45,4 +45,24 @@ router.post(
     }),
 );
 
+//Get all users
+router.get('/', asyncHandler(async (req, res) => {
+  const users = await User.findAll();
+
+  return res.json(users)
+}))
+
+//Update comment
+router.put('/', asyncHandler(async (req, res) => {
+  const { id, profile_pic } = req.body;
+
+  const editedUser = await User.findByPk(id);
+
+  editedUser.profile_pic = profile_pic;
+
+  await editedUser.save()
+
+  return res.json(editedUser)
+}))
+
 module.exports = router;

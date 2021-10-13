@@ -1,0 +1,92 @@
+.profilePageDetails {
+    display: flex;
+    position: relative;
+    max-width: 85vw;
+    margin: 20px auto;
+    align-items: center;
+}
+
+.profileDetailIcon img {
+    width: auto;
+    height: auto;
+    max-width: 200px;
+    max-height: 200px;
+    box-shadow: 0 0 5px #898989;
+}
+
+.userNameAndButton {
+    margin-left: 20px;
+}
+
+.userNameAndButton h1 {
+    font-family: 'Roboto', helvetica,arial,sans-serif;
+    font-weight: 300;
+    margin: 0;
+}
+
+.changeProfPic {
+    background-color: #128FDC;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    width: fit-content;
+}
+
+.changeProfPic:hover {
+    background-color: #319bdd;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.updatePicContainer {
+    margin-top: 3px;
+    position: relative;
+}
+
+.profPicInput {
+    border-radius: 3px;
+    border: 1px solid rgb(197, 197, 197);
+    padding: 2px;
+}
+
+.profPicInput:focus {
+    outline: none;
+    border: 1px solid rgb(159, 177, 255);
+}
+
+.updatePicButtons {
+    position: absolute;
+    top: 30px;
+}
+
+.updatePicButtons button {
+    margin-right: 4px;
+}
+
+.updatePicButtons button {
+    background-color: #128FDC;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    width: fit-content;
+    border: none;
+}
+
+.updatePicButtons button:hover {
+    background-color: #319bdd;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+
+#cancelUpdate {
+    background-color: #E2292C;
+}
+
+#cancelUpdate:hover {
+    background-color: #fa6e71;
+    cursor: pointer;
+    transition: background-color .25s 0s;
+}

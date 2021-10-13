@@ -34,3 +34,7 @@
     font-size: 12px;
     transition: color .3s linear, text-shadow .3s linear;
 }
+
+#imageHovered .imageAuthor:hover {
+    color:white;
+}

@@ -1,8 +1,10 @@
-import './editabaleComment.css';
-
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { deleteSingleComment, updateComment } from '../../store/comments';
+
+import './editabaleComment.css';
+
 
 function EditableComment({comment, sessionUser}) {
     const dispatch = useDispatch();
@@ -92,25 +94,33 @@ function EditableComment({comment, sessionUser}) {
                             if (comment.User?.profile_pic) {
                                 return (
                                     <div className="customCommentIcon">
-                                        <img src={sessionUser.profile_pic} alt="Profile Icon"/>
+                                        <Link to={`/people/${comment.user_id}`}>
+                                            <img src={sessionUser.profile_pic} alt=""/>
+                                        </Link>
                                     </div>
                                 )
                             } else if (comment.user_id === sessionUser.id && sessionUser.profile_pic) {
                                 return (
                                     <div className="customCommentIcon">
-                                        <img src={sessionUser.profile_pic} alt="Profile Icon"/>
+                                        <Link to={`/people/${comment.user_id}`}>
+                                            <img src={sessionUser.profile_pic} alt=""/>
+                                        </Link>
                                     </div>
                                 )
                             } else {
                                 return (
                                     <div className="commentProfIcon">
-                                <i className="fas fa-user-circle" id="profileButton"/>
-                            </div>
+                                        <Link to={`/people/${comment.user_id}`}>
+                                            <i className="fas fa-user-circle" id="profileButton"/>
+                                        </Link>
+                                    </div>
                                 )
                             }
                         })()
                     }
-                    <h4>{comment?.User? comment.User.username : sessionUser.username}</h4>
+                    <Link to={`/people/${comment?.User? comment.User.id : sessionUser?.id}`} className="commentUsername">
+                        <h4>{comment?.User? comment.User.username : sessionUser.username}</h4>
+                    </Link>
                 </div>
                 <div className="editCommentButtons">
                     <div id={showButton}
@@ -149,8 +159,8 @@ function EditableComment({comment, sessionUser}) {
             )}
             {showDelete && (
                 <div className="deleteButtons">
-                    <button className="" id="deleteComment" onClick={deleteComment}>Delete Comment</button>
-                    <button className="" id="cancelComment" onClick={hideDeleteButtons}>Cancel</button>
+                    <button id="deleteComment" onClick={deleteComment}>Delete Comment</button>
+                    <button id="cancelComment" onClick={hideDeleteButtons}>Cancel</button>
                 </div>
             )}
         </div>

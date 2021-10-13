@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import EditableComment from '../EditableComment/editableComment';
 
 import './comments.css';
@@ -76,15 +77,21 @@ function Comments({image}) {
                                 <div className="commentDetails">
                                     {comment.User?.profile_pic? (
                                         <div className="customCommentIcon">
-                                        <img src={comment.User.profile_pic} alt="Profile Icon "/>
-                                    </div>
+                                            <Link to={`/people/${comment.user_id}`}>
+                                                <img src={comment.User.profile_pic} alt=""/>
+                                            </Link>
+                                        </div>
                                     ):
                                     (
                                         <div className="commentProfIcon">
-                                            <i className="fas fa-user-circle" id="profileButton"/>
+                                            <Link to={`/people/${comment.user_id}`}>
+                                                <i className="fas fa-user-circle" id="profileButton"/>
+                                            </Link>
                                         </div>
                                     )}
-                                    <h4>{comment?.User? comment.User.username : sessionUser?.username}</h4>
+                                    <Link to={`/people/${comment?.User? comment.User.id : sessionUser?.id}`} className="commentUsername">
+                                        <h4>{comment?.User? comment.User.username : sessionUser?.username}</h4>
+                                    </Link>
                                 </div>
                                 <p>{comment?.comment}</p>
                             </div>
@@ -95,7 +102,7 @@ function Comments({image}) {
                                 <div className="commentDetails">
                                     {sessionUser.profile_pic? (
                                         <div className="customCommentIcon" id="addCommentProfIcon">
-                                            <img src={sessionUser.profile_pic} alt="Profile Icon"/>
+                                            <img src={sessionUser.profile_pic} alt=""/>
                                         </div>
                                     ):
                                     (
