@@ -1,12 +1,7 @@
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 function PageNotFound() {
-    const history = useHistory();
-    history.push('/explore')
-
-    return (
-        <></>
-    )
+    return <Redirect to="/explore" />;
 }
 
 export default PageNotFound;
