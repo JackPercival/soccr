@@ -21,7 +21,9 @@ function ImageHolder({image}) {
             <Link to={`/images/${image.id}`}>
                 <img className="imagesExplore" src={image.image_url} alt={image.title} loading="lazy"/>
                 <p className="imageTitle">{image.title}</p>
-                <p className="imageAuthor">{image.User? image.User.username: null}</p>
+                <Link to={`/people/${image.user_id}`}>
+                    <p className="imageAuthor">{image.User? image.User.username: null}</p>
+                </Link>
             </Link>
         </li>
     )

@@ -18,13 +18,13 @@
 }
 
 .customCommentIcon img {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
 }
 
 .commentProfIcon {
-    font-size: 20px;
+    font-size: 30px;
 }
 
 .commentDetails h4 {
@@ -37,7 +37,7 @@
 .singleCommentContainer p {
     font-size: 14px;
     font-weight: 400;
-    margin: 5px 0 0 28px;
+    margin: 5px 0 0 40px;
     overflow-wrap: break-word;
     width: 438px;
 }
