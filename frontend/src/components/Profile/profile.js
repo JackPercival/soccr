@@ -137,8 +137,8 @@ function Profile() {
                         )}
                         {images?.length === 0 && user?.id !== sessionUser?.id && (
                             <div className="noImages">
-                            <h3>{`${user?.username} hasn't made any photos public yet.`}</h3>
-                        </div>
+                                <h3>{`${user?.username} hasn't made any photos public yet.`}</h3>
+                            </div>
                         )}
                     </>
                 )}

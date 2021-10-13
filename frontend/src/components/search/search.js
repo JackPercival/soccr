@@ -69,16 +69,23 @@ function SearchResults() {
                 </div>
             )}
             {isLoaded && (
-                <ul className="imagesContainer">
-                    {searchResults.map(image => {
-                        if (image.id) {
-                            return <ImageHolder key={`image_${image.id}`} image={image} />
-                        } else {
-                            return null;
-                        }
-                    })}
-                    <li id="emptyLi"></li>
-                </ul>
+                <>
+                    <ul className="imagesContainer">
+                        {searchResults.length > 0 && searchResults.map(image => {
+                            if (image.id) {
+                                return <ImageHolder key={`image_${image.id}`} image={image} />
+                            } else {
+                                return null;
+                            }
+                        })}
+                        <li id="emptyLi"></li>
+                    </ul>
+                    {searchResults.length === 0 && (
+                        <div className="noImages">
+                            <h3>{`Oops! There are no matches for “${searchParameters}”. Please try broadening your search.`}</h3>
+                        </div>
+                    )}
+                </>
             )}
             </main>
             <Footer />
