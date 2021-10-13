@@ -40,6 +40,19 @@ router.post('/', validateComment, asyncHandler(async (req, res) => {
   return res.json(newComment)
 }))
 
+//Update comment
+router.put('/', validateComment, asyncHandler(async (req, res) => {
+  const { id, comment } = req.body;
+
+  const editedComment = await Comment.findByPk(id);
+
+  editedComment.comment = comment;
+
+  await editedComment.save()
+
+  return res.json(editedComment)
+}))
+
 //Delete comment
 router.delete('/', asyncHandler(async (req, res) => {
   const {commentId} = req.body;

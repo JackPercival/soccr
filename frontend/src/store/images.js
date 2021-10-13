@@ -68,7 +68,6 @@ export const updateImage = (payload) => async dispatch => {
     }
 }
 
-
 export const deleteSingleImage = (payload) => async dispatch => {
     const response = await csrfFetch('/api/images', {
         method: 'DELETE',

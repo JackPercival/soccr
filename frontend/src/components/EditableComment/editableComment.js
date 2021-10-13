@@ -2,7 +2,7 @@ import './editabaleComment.css';
 
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteSingleComment } from '../../store/comments';
+import { deleteSingleComment, updateComment } from '../../store/comments';
 
 function EditableComment({comment, sessionUser}) {
     const dispatch = useDispatch();
@@ -10,7 +10,8 @@ function EditableComment({comment, sessionUser}) {
     const [showEditCommentForm, setShowEditCommentForm] = useState(false);
     const [showDelete, setShowDelete] = useState(false)
     const [showButton, setShowButton] = useState('')
-    const [commentText, setCommentText] = useState(comment.comment)
+    const [commentText, setCommentText] = useState(comment.comment);
+    const [errors, setErrors] = useState([])
 
     //Clean up function for unmounted components- when they get deleted
     useEffect(() => {
@@ -33,21 +34,50 @@ function EditableComment({comment, sessionUser}) {
         setShowDelete(false)
     }
 
-    const handleEditComment = (e) => {
-        e.preventDefault();
-
-        setShowEditCommentForm(false)
-        setShowButton('')
-    }
-
-    const deleteImage = async () => {
+    const deleteComment = async () => {
         const commentId = comment.id;
         const wasDeleted = await dispatch(deleteSingleComment({commentId}))
 
         if (!wasDeleted) {
             alert("An error occured. Please refresh the page and try again.");
         }
+
         hideDeleteButtons();
+    }
+
+    const handleEditComment = async (e) => {
+        e.preventDefault();
+
+        if (commentText.length === 0) {
+            setErrors(["Comment cannot be empty."])
+            return;
+        }
+
+        if (commentText.length > 500) {
+            setErrors(["Comment must be 500 characters or less."])
+            return;
+        }
+
+        const payload= {
+            id: comment.id,
+            user_id: sessionUser.id,
+            image_id: comment.image_id,
+            comment: commentText
+        }
+
+        const updatedComment = await dispatch(updateComment(payload))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+                console.log(errors)
+             });
+
+        // if (!updatedComment) {
+        //     alert("An error occured. Please refresh the page and try again.");
+        // }
+
+        setShowEditCommentForm(false)
+        setShowButton('')
     }
 
     return (
@@ -92,14 +122,14 @@ function EditableComment({comment, sessionUser}) {
                                 <button className="commentButton" id="doneEditCommentButton">Done</button>
                         </form>
                         <ul>
-                            {/* {errors.map((error, idx) => <li className="loginError" key={idx}>{error}</li>)} */}
+                            {errors.map((error, idx) => <li className="loginError commentError" key={idx}>{error}</li>)}
                         </ul>
                     </div>
                 </div>
             )}
             {showDelete && (
                 <div className="deleteButtons">
-                    <button className="" id="deleteComment" onClick={deleteImage}>Delete Comment</button>
+                    <button className="" id="deleteComment" onClick={deleteComment}>Delete Comment</button>
                     <button className="" id="cancelComment" onClick={hideDeleteButtons}>Cancel</button>
                 </div>
             )}

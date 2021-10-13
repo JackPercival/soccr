@@ -78,3 +78,11 @@
     cursor: pointer;
     transition: background-color .25s 0s;
 }
+
+.commentError {
+    position: relative;
+    top: -40px;
+    font-size: 12px;
+    list-style-type:none;
+    width: fit-content;
+}
