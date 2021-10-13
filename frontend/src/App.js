@@ -8,6 +8,7 @@ import ExplorePage from "./components/Explore/explore";
 import SingleImage from "./components/SingleImage/singleImage";
 import Upload from "./components/Upload/upload";
 import EditImage from "./components/EditImage/editImage";
+import Profile from "./components/Profile/profile";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import * as sessionActions from "./store/session";
 
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route exact path="/upload">
             <Upload />
+          </Route>
+          <Route exact path="/people/:userId">
+            <Profile />
           </Route>
           <Route>
             <PageNotFound />

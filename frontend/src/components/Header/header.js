@@ -30,7 +30,7 @@ function Header() {
                 </NavLink>
                 {sessionUser && (
                     <div className="headerLink">
-                        <NavLink to="/you" id="youLink">You</NavLink>
+                        <NavLink to={`people/${sessionUser?.id}`} id="youLink">You</NavLink>
                     </div>
                 )}
                 <div className="headerLink">

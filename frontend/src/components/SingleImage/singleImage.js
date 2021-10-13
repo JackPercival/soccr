@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
 import Comments from '../Comments/comments'
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { getAllImages, deleteSingleImage } from '../../store/images';
 
 import './singleImage.css'
