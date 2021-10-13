@@ -4,7 +4,8 @@
 
 .singleCommentContainer {
     padding: 7px;
-    margin: 5px 0 0 20px;
+    margin: 5px 0 0 27px;
+    position: relative;
 }
 
 .singleCommentContainer:hover {
@@ -33,6 +34,10 @@
     margin: 5px 0 0 28px;
     overflow-wrap: break-word;
     width: 438px;
+}
+
+.addCommentContainer {
+    height: 127px;
 }
 
 .addCommentProfIcon {
@@ -82,4 +87,5 @@
 .commentButton:hover {
     background-color: #319bdd;
     cursor: pointer;
+    transition: all .2s ease-in-out;
 }

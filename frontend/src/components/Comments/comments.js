@@ -62,21 +62,19 @@ function Comments({image}) {
                     {comments.map(comment => {
                         if (comment.user_id === sessionUser.id) {
                             return (
-                                <EditableComment comment={comment} sessionUser={sessionUser}/>
+                                <EditableComment key={`${comment.id} `} comment={comment} sessionUser={sessionUser}/>
                             )
                         }
                         return (
-                            <>
-                                <div key={comment.id} className="singleCommentContainer">
-                                    <div className="commentDetails">
-                                        <div className="commentProfIcon">
-                                            <i className="fas fa-user-circle" id="profileButton"/>
-                                        </div>
-                                        <h4>{comment?.User? comment.User.username : sessionUser.username}</h4>
+                            <div key={comment.id} className="singleCommentContainer">
+                                <div className="commentDetails">
+                                    <div className="commentProfIcon">
+                                        <i className="fas fa-user-circle" id="profileButton"/>
                                     </div>
-                                    <p>{comment?.comment}</p>
+                                    <h4>{comment?.User? comment.User.username : sessionUser.username}</h4>
                                 </div>
-                            </>
+                                <p>{comment?.comment}</p>
+                            </div>
                         )
                     })}
                     <div className="singleCommentContainer addCommentContainer">
