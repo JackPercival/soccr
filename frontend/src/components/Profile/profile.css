@@ -75,7 +75,7 @@
 }
 
 .updatePicButtons button:hover {
-    background-color: #319bdd;
+    background-color: #54a7db;
     cursor: pointer;
     transition: all .2s ease-in-out;
 }
@@ -89,4 +89,43 @@
     background-color: #fa6e71;
     cursor: pointer;
     transition: background-color .25s 0s;
+}
+
+.noImages {
+    width: fit-content;
+    margin: 10vh auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.noImages * {
+    padding: 0;
+    margin: 8px;
+}
+
+.noImages h3 {
+    font-size: 28px;
+    font-weight: 300;
+}
+
+.noImages h4 {
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.uploadPhotoLink {
+    background-color: #128FDC;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    width: fit-content;
+    border: none;
+}
+
+.uploadPhotoLink:hover {
+    background-color: #54a7db;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
 }

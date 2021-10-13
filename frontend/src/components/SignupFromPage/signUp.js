@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Link } from 'react-router-dom';
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import { loadUsers } from "../../store/users";
 import './SignupForm.css';
 
 function SignupFormPage() {
@@ -62,11 +63,15 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
+      dispatch(sessionActions.signup({ email, username, password }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
         });
+
+      //Reset the users state after new user signs up
+      dispatch(loadUsers())
+      return
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };

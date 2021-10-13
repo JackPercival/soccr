@@ -33,7 +33,9 @@ function Profile() {
     }, [dispatch]);
 
     useEffect(() => {
-        document.title = `${user?.username} | Soccr`;
+        if (user) {
+            document.title = `${user?.username} | Soccr`;
+        }
     }, [user]);
 
     if (isLoaded && !user) {
@@ -62,7 +64,7 @@ function Profile() {
 
         //This resets the icon in the header
         dispatch(restoreUser())
-        
+
         setShowChangePic(false);
         setProfileUrl('');
     }
@@ -99,7 +101,7 @@ function Profile() {
                                         <form className="">
                                             <input
                                                 className="profPicInput"
-                                                placeholder="Profile Pic URL"
+                                                placeholder="Add a URL"
                                                 value={profile_url}
                                                 onChange={(e) => setProfileUrl(e.target.value)}
                                             />
@@ -112,18 +114,32 @@ function Profile() {
                                 )}
                             </div>
                         </div>
-                    <div className="exploreHeader">
-                        <h1>Photostream</h1>
-                    </div>
-                    <ul className="imagesContainer">
-                        {images?.map(image => {
-                            if (image.id) {
-                                return <ImageHolder key={`image_${image.id}`} image={image} />
-                            } else {
-                                return null;
-                            }
-                        })}
-                    </ul>
+                        <div className="exploreHeader">
+                            <h1>Photostream</h1>
+                        </div>
+                        <ul className="imagesContainer">
+                            {images?.length > 0 && images?.map(image => {
+                                if (image.id) {
+                                    return <ImageHolder key={`image_${image.id}`} image={image} />
+                                } else {
+                                    return null;
+                                }
+                            })}
+                        </ul>
+                        {images?.length === 0 && user?.id === sessionUser?.id && (
+                            <div className="noImages">
+                                <h3>Don't forget to upload your photos.</h3>
+                                <h4>Your photostream is your public-facing portfolio. Upload photos to populate your photostream.</h4>
+                                <Link to="/upload">
+                                    <div className="uploadPhotoLink">Upload Photos</div>
+                                </Link>
+                            </div>
+                        )}
+                        {images?.length === 0 && user?.id !== sessionUser?.id && (
+                            <div className="noImages">
+                            <h3>{`${user?.username} hasn't made any photos public yet.`}</h3>
+                        </div>
+                        )}
                     </>
                 )}
             </main>

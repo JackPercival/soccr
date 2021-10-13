@@ -15,6 +15,7 @@ function ExplorePage() {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
+        // dispatch(loadUsers())
         dispatch(getAllImages()).then(() => setIsLoaded(true));
         return () => {
             setIsLoaded()
