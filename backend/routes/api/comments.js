@@ -40,4 +40,18 @@ router.post('/', validateComment, asyncHandler(async (req, res) => {
   return res.json(newComment)
 }))
 
+//Delete comment
+router.delete('/', asyncHandler(async (req, res) => {
+  const {commentId} = req.body;
+
+  const findComment = await Comment.findByPk(commentId);
+
+    if (findComment) {
+        await findComment.destroy();
+        res.status(204).end();
+      } else {
+        next();
+      }
+}))
+
 module.exports = router;

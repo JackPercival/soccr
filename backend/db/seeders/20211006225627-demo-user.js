@@ -12,7 +12,7 @@ module.exports = {
       },
       {
         email: faker.internet.email(),
-        username: 'MessiIsTheGOAT',
+        username: 'MessiTheGOAT',
         hashedPassword: bcrypt.hashSync(faker.internet.password()),
       },
       {

@@ -1,12 +1,27 @@
 import './editabaleComment.css';
 
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteSingleComment } from '../../store/comments';
 
 function EditableComment({comment, sessionUser}) {
+    const dispatch = useDispatch();
+
     const [showEditCommentForm, setShowEditCommentForm] = useState(false);
     const [showDelete, setShowDelete] = useState(false)
     const [showButton, setShowButton] = useState('')
     const [commentText, setCommentText] = useState(comment.comment)
+
+    //Clean up function for unmounted components- when they get deleted
+    useEffect(() => {
+
+        return () => {
+            setShowEditCommentForm(false);
+            setShowDelete(false);
+            setShowButton('');
+            setCommentText('');
+        }
+    }, []);
 
     const displayDeleteButtons = () => {
         setShowButton('')
@@ -23,6 +38,16 @@ function EditableComment({comment, sessionUser}) {
 
         setShowEditCommentForm(false)
         setShowButton('')
+    }
+
+    const deleteImage = async () => {
+        const commentId = comment.id;
+        const wasDeleted = await dispatch(deleteSingleComment({commentId}))
+
+        if (!wasDeleted) {
+            alert("An error occured. Please refresh the page and try again.");
+        }
+        hideDeleteButtons();
     }
 
     return (
@@ -73,8 +98,8 @@ function EditableComment({comment, sessionUser}) {
                 </div>
             )}
             {showDelete && (
-                <div class="deleteButtons">
-                    <button className="" id="deleteComment">Delete Comment</button>
+                <div className="deleteButtons">
+                    <button className="" id="deleteComment" onClick={deleteImage}>Delete Comment</button>
                     <button className="" id="cancelComment" onClick={hideDeleteButtons}>Cancel</button>
                 </div>
             )}
