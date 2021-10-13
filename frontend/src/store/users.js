@@ -1,6 +1,7 @@
 import { csrfFetch } from './csrf';
 
 const LOAD = 'users/Load';
+const UPDATE = 'users/Update'
 
 const load = (users) => {
     return {
@@ -8,6 +9,13 @@ const load = (users) => {
         users
     };
 };
+
+const update = user => {
+    return {
+        type: UPDATE,
+        user
+    }
+}
 
 export const loadUsers = () => async dispatch => {
     const response = await csrfFetch('/api/users')
@@ -17,6 +25,20 @@ export const loadUsers = () => async dispatch => {
         dispatch(load(users));
     }
 }
+
+export const updateProfilePic = (payload) => async dispatch => {
+    const response = await csrfFetch('/api/users', {
+        method: 'PUT',
+        body: JSON.stringify(payload)
+    })
+
+    if (response.ok) {
+        const updatedUser = await response.json();
+        dispatch(update(updatedUser));
+        return updatedUser;
+    }
+}
+
 
 const initialState = {
     users: [],
@@ -32,6 +54,14 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...allUsers,
+            }
+        case UPDATE:
+            return {
+                ...state,
+                [action.user.id]: {
+                    ...state[action.user.id],
+                    ...action.user
+                }
             }
         default:
             return state;

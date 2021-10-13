@@ -6,7 +6,8 @@ import Footer from '../Footer/footer';
 import ImageHolder from '../ImageHolder/imageHolder';
 
 import { getAllImages } from '../../store/images';
-import { loadUsers } from '../../store/users';
+import { loadUsers, updateProfilePic } from '../../store/users';
+import { restoreUser } from '../../store/session';
 
 import './profile.css'
 
@@ -37,6 +38,33 @@ function Profile() {
 
     if (isLoaded && !user) {
         history.push('/explore')
+    }
+
+    const handleCancel = () => {
+        setShowChangePic(false);
+        setProfileUrl('');
+    }
+
+    const handleProfilePictureUpdate = async (e) => {
+        e.preventDefault();
+
+        const payload= {
+            id: Number(userId),
+            profile_pic: profile_url
+        }
+
+        const updatedProfPic = await dispatch(updateProfilePic(payload))
+
+
+        if (!updatedProfPic) {
+            alert("An error occured. Please refresh the page and try again.");
+        }
+
+        //This resets the icon in the header
+        dispatch(restoreUser())
+        
+        setShowChangePic(false);
+        setProfileUrl('');
     }
 
     return (
@@ -76,8 +104,8 @@ function Profile() {
                                                 onChange={(e) => setProfileUrl(e.target.value)}
                                             />
                                             <div className="updatePicButtons">
-                                                <button >Update</button>
-                                                <button id="cancelUpdate"onClick={() => setShowChangePic(false)}>Cancel</button>
+                                                <button onClick={handleProfilePictureUpdate}>Update</button>
+                                                <button id="cancelUpdate"onClick={handleCancel}>Cancel</button>
                                             </div>
                                         </form>
                                     </div>
