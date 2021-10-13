@@ -45,6 +45,8 @@
 .deleteButtons {
     position: relative;
     left: 264px;
+    top: 5px;
+    width: fit-content;
 }
 
 .deleteButtons button {

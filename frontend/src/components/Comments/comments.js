@@ -60,7 +60,7 @@ function Comments({image}) {
             {isLoaded && (
                 <>
                     {comments.map(comment => {
-                        if (comment.user_id === sessionUser.id) {
+                        if (comment.user_id === sessionUser?.id) {
                             return (
                                 <EditableComment key={`${comment.id} `} comment={comment} sessionUser={sessionUser}/>
                             )
@@ -71,39 +71,41 @@ function Comments({image}) {
                                     <div className="commentProfIcon">
                                         <i className="fas fa-user-circle" id="profileButton"/>
                                     </div>
-                                    <h4>{comment?.User? comment.User.username : sessionUser.username}</h4>
+                                    <h4>{comment?.User? comment.User.username : sessionUser?.username}</h4>
                                 </div>
                                 <p>{comment?.comment}</p>
                             </div>
                         )
                     })}
-                    <div className="singleCommentContainer addCommentContainer">
-                            <div className="commentDetails">
-                                <div className="commentProfIcon addCommentProfIcon">
-                                    <i className="fas fa-user-circle" id="profileButton"/>
+                    {sessionUser && (
+                        <div className="singleCommentContainer addCommentContainer">
+                                <div className="commentDetails">
+                                    <div className="commentProfIcon addCommentProfIcon">
+                                        <i className="fas fa-user-circle" id="profileButton"/>
+                                    </div>
+                                    <div className="addCommentContainer">
+                                        <form className="addCommentForm" onSubmit={handleNewComment}>
+                                            <textarea
+                                                className="commentField"
+                                                placeholder="Add a comment"
+                                                value={comment}
+                                                onChange={(e) => setComment(e.target.value)}
+                                                onClick={() => setShowAddComment(true)}
+                                                onBlur={toggleCommentButton}
+                                            ></textarea>
+                                            {showAddComment &&
+                                                <button
+                                                    className="commentButton"
+                                                >Comment</button>
+                                            }
+                                        </form>
+                                        <ul>
+                                            {errors.map((error, idx) => <li className="loginError newCommentError" key={idx}>{error}</li>)}
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div className="addCommentContainer">
-                                    <form className="addCommentForm" onSubmit={handleNewComment}>
-                                        <textarea
-                                            className="commentField"
-                                            placeholder="Add a comment"
-                                            value={comment}
-                                            onChange={(e) => setComment(e.target.value)}
-                                            onClick={() => setShowAddComment(true)}
-                                            onBlur={toggleCommentButton}
-                                        ></textarea>
-                                        {showAddComment &&
-                                            <button
-                                                className="commentButton"
-                                            >Comment</button>
-                                        }
-                                    </form>
-                                    <ul>
-                                        {errors.map((error, idx) => <li className="loginError" key={idx}>{error}</li>)}
-                                    </ul>
-                                </div>
-                            </div>
-                    </div>
+                        </div>
+                    )}
                 </>
             )}
         </div>
