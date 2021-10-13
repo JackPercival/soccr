@@ -9,6 +9,7 @@ import SingleImage from "./components/SingleImage/singleImage";
 import Upload from "./components/Upload/upload";
 import EditImage from "./components/EditImage/editImage";
 import Profile from "./components/Profile/profile";
+import SearchResults from "./components/search/search";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import * as sessionActions from "./store/session";
 
@@ -47,6 +48,9 @@ function App() {
           </Route>
           <Route exact path="/people/:userId">
             <Profile />
+          </Route>
+          <Route exact path="/search/:searchParameters">
+            <SearchResults />
           </Route>
           <Route>
             <PageNotFound />
