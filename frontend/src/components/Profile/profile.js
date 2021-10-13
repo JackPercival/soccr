@@ -38,9 +38,12 @@ function Profile() {
         }
     }, [user]);
 
-    if (isLoaded && !user) {
-        history.push('/explore')
-    }
+    //Redirect if the image does not exist
+    useEffect(() => {
+        if (isLoaded && !user) {
+            history.push('/explore')
+        }
+    })
 
     const handleCancel = () => {
         setShowChangePic(false);
@@ -107,7 +110,7 @@ function Profile() {
                                             />
                                             <div className="updatePicButtons">
                                                 <button onClick={handleProfilePictureUpdate}>Update</button>
-                                                <button id="cancelUpdate"onClick={handleCancel}>Cancel</button>
+                                                <button type="button" id="cancelUpdate"onClick={handleCancel}>Cancel</button>
                                             </div>
                                         </form>
                                     </div>

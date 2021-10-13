@@ -21,9 +21,11 @@ function Header() {
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
-        const searchParameters = search;
 
-        history.push(`/search/${searchParameters}`);
+        const searchParameters = search;
+        const cleanedSearch = encodeURIComponent(searchParameters);
+        
+        history.push(`/search/${cleanedSearch}`);
         setSearch('');
     }
 

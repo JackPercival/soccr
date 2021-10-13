@@ -37,7 +37,7 @@ function SearchResults() {
             const imageResults = new Set();
 
             //Remove spaces and commas from the search parameters
-            const cleanParams = searchParameters.toLowerCase().split(/,| /)
+            const cleanParams = searchParameters.toLowerCase().split(/\s+|,\s+/)
 
             //Loop through all search parameters and images
             for (const searchParam of cleanParams) {

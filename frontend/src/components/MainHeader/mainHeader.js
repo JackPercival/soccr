@@ -9,8 +9,9 @@ function MainHeader() {
     const handleSearchSubmit = (e) => {
         e.preventDefault();
         const searchParameters = search;
-
-        history.push(`/search/${searchParameters}`);
+        
+        const cleanedSearch = encodeURIComponent(searchParameters)
+        history.push(`/search/${cleanedSearch}`);
         setSearch('');
     }
 
