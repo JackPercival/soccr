@@ -1,0 +1,21 @@
+.profilePageDetails {
+    display: flex;
+    max-width: 85vw;
+    margin: 0 auto;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.profileDetailIcon img {
+    width: auto;
+    height: auto;
+    max-width: 100px;
+    max-height: 200px;
+    box-shadow: 0 0 5px #898989;
+}
+
+.profilePageDetails h1 {
+    font-family: 'Roboto', helvetica,arial,sans-serif;
+    font-weight: 300;
+    margin: 0 0 0 20px;
+}

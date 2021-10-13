@@ -15,8 +15,9 @@ function Profile() {
     const history = useHistory();
 
     const { userId } = useParams();
-    const userPage = useSelector(state => state.users[userId])
+    const user = useSelector(state => state.users[userId])
     const sessionUser = useSelector(state => state.session.user);
+
     const images = useSelector(state => Object.values(state.images).filter(image => image.user_id === Number(userId)));
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -29,10 +30,10 @@ function Profile() {
     }, [dispatch]);
 
     useEffect(() => {
-        document.title = "You | Soccr";
-    }, []);
+        document.title = `${user?.username} | Soccr`;
+    }, [user]);
 
-    if (isLoaded && !userPage) {
+    if (isLoaded && !user) {
         history.push('/explore')
     }
 
@@ -40,26 +41,40 @@ function Profile() {
         <div className="container">
             <Header />
             <main>
-                <div className="exploreHeader">
-                    <h1>Your Photos</h1>
-                </div>
-            {!isLoaded && (
-                <div className="loadingContainer">
-                    <h3>Loading Images</h3>
-                    <img src="https://res.cloudinary.com/dt8q1ngxj/image/upload/v1634015808/soccr/soccerLoading_ngtigi.png" alt="Loading" />
-                </div>
-            )}
-            {isLoaded && (
-                <ul className="imagesContainer">
-                    {images?.map(image => {
-                        if (image.id) {
-                            return <ImageHolder key={`image_${image.id}`} image={image} />
-                        } else {
-                            return null;
-                        }
-                    })}
-                </ul>
-            )}
+                {!isLoaded && (
+                    <div className="loadingContainer">
+                        <h3>Loading Page</h3>
+                        <img src="https://res.cloudinary.com/dt8q1ngxj/image/upload/v1634015808/soccr/soccerLoading_ngtigi.png" alt="Loading" />
+                    </div>
+                )}
+                {isLoaded && (
+                    <>
+                        <div className="profilePageDetails">
+                            {user?.profile_pic? (
+                                <div className="profileDetailIcon">
+                                    <img src={user.profile_pic} alt="Profile"/>
+                                </div>
+                            ): (
+                                <div className="profIcon">
+                                    <i className="fas fa-user-circle" id="profileButton"/>
+                                </div>
+                            )}
+                            <h1>{user?.username}</h1>
+                        </div>
+                    <div className="exploreHeader">
+                        <h1>Photostream</h1>
+                    </div>
+                    <ul className="imagesContainer">
+                        {images?.map(image => {
+                            if (image.id) {
+                                return <ImageHolder key={`image_${image.id}`} image={image} />
+                            } else {
+                                return null;
+                            }
+                        })}
+                    </ul>
+                    </>
+                )}
             </main>
             <Footer />
         </div>
