@@ -20,7 +20,6 @@ function SingleImage() {
     const [grow, setGrow] = useState('')
     const [showDelete, setShowDelete] = useState(false);
 
-
     useEffect(() => {
         dispatch(getAllImages()).then(() => setIsLoaded(true));
     }, [dispatch]);
@@ -28,6 +27,13 @@ function SingleImage() {
     useEffect(() => {
         document.title = `${image?.title} | Soccr`;
     }, [image?.title]);
+
+    //Redirect if the image does not exist
+    useEffect(() => {
+        if (isLoaded && !image) {
+            history.push('/explore')
+        }
+    })
 
     const toggleGrow = () => {
         if (grow === "grow") {
@@ -47,9 +53,6 @@ function SingleImage() {
         }
     }
 
-    if (isLoaded && !image) {
-        history.push('/explore')
-    }
 
     return (
         <div className="container">
@@ -98,21 +101,21 @@ function SingleImage() {
                     )}
                     <div className="imageDetailsContainer">
                         <div className="imageDetails">
-                            {image.User.profile_pic? (
+                            {image?.User.profile_pic? (
                                 <div className="customIcon">
-                                    <Link to={`/people/${image.user_id}`}>
-                                        <img src={image.User.profile_pic} alt=""/>
+                                    <Link to={`/people/${image?.user_id}`}>
+                                        <img src={image?.User.profile_pic} alt=""/>
                                     </Link>
                                 </div>
                             ): (
                                 <div className="profIcon">
-                                    <Link to={`/people/${image.user_id}`}>
+                                    <Link to={`/people/${image?.user_id}`}>
                                         <i className="fas fa-user-circle" id="profileButton"/>
                                     </Link>
                                 </div>
                             )}
                             <div className="imageInfo">
-                                <Link to={`/people/${image.user_id}`}>
+                                <Link to={`/people/${image?.user_id}`}>
                                     <h1>{image?.User.username}</h1>
                                 </Link>
                                 <h2>{image?.title}</h2>

@@ -66,14 +66,14 @@ function Comments({image}) {
         <div className="commentsContainer">
             {isLoaded && (
                 <>
-                    {comments.map(comment => {
+                    {comments.map((comment, index) => {
                         if (comment.user_id === sessionUser?.id) {
                             return (
-                                <EditableComment key={`${comment.id} `} comment={comment} sessionUser={sessionUser}/>
+                                <EditableComment key={`${comment.id} ${index}`} comment={comment} sessionUser={sessionUser}/>
                             )
                         }
                         return (
-                            <div key={comment.id} className="singleCommentContainer">
+                            <div key={`${comment.id} ${index}`} className="singleCommentContainer">
                                 <div className="commentDetails">
                                     {comment.User?.profile_pic? (
                                         <div className="customCommentIcon">

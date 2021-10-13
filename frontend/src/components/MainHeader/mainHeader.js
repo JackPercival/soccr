@@ -1,9 +1,18 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import './mainHeader.css'
 
 function MainHeader() {
+    const history = useHistory();
     const [search, setSearch] = useState('');
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        const searchParameters = search;
+
+        history.push(`/search/${searchParameters}`);
+        setSearch('');
+    }
 
     return (
         <header id="mainHeader">
@@ -15,7 +24,7 @@ function MainHeader() {
                 </div>
             </NavLink>
             <div className="searchContainer">
-                <form id="searchForm" autoComplete="off">
+                <form id="searchForm" autoComplete="off" onSubmit={handleSearchSubmit}>
                     <button id="searchButton">
                         <div>
                             <i className="fas fa-search"></i>

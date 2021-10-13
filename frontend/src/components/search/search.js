@@ -17,7 +17,9 @@ function SearchResults() {
 
     const [isLoaded, setIsLoaded] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
-    const [stopSearch, setStopSearch] = useState(false)
+    const [stopSearch, setStopSearch] = useState(false);
+
+    document.title = `Search Results | Soccr`;
 
     useEffect(() => {
         dispatch(getAllImages()).then(() => setIsLoaded(true));
