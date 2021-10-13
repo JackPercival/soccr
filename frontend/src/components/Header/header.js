@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 // import { useDispatch } from 'react-redux';
 import ProfileButton from '../Navigation/ProfileButton';
@@ -7,6 +7,7 @@ import './header.css'
 
 function Header() {
     // const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const [search, setSearch] = useState('');
 
@@ -16,6 +17,13 @@ function Header() {
         if (search.length === 0) {
             setSearchFocus('');
         }
+    }
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        const searchParameters = search;
+
+        history.push(`/search/${searchParameters}`)
     }
 
     return (
@@ -39,7 +47,7 @@ function Header() {
             </div>
             <div className="rightHeader">
                 <div className={`normalSearchContainer ${searchFocus}`}>
-                        <form id="searchForm" autoComplete="off">
+                        <form id="searchForm" autoComplete="off" onSubmit={handleSearchSubmit}>
                             <button id="searchButton">
                                 <div>
                                     <i className="fas fa-search"></i>
