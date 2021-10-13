@@ -20,6 +20,8 @@ function Profile() {
 
     const images = useSelector(state => Object.values(state.images).filter(image => image.user_id === Number(userId)));
     const [isLoaded, setIsLoaded] = useState(false);
+    const [showChangePic, setShowChangePic] = useState(false)
+    const [profile_url, setProfileUrl] = useState('')
 
     useEffect(() => {
         dispatch(loadUsers())
@@ -59,7 +61,28 @@ function Profile() {
                                     <i className="fas fa-user-circle" id="profileButton"/>
                                 </div>
                             )}
-                            <h1>{user?.username}</h1>
+                            <div className="userNameAndButton">
+                                <h1>{user?.username}</h1>
+                                {!showChangePic && user?.id === sessionUser?.id && (
+                                    <div className="changeProfPic" onClick={() => setShowChangePic(true)}>Change Profile Picture</div>
+                                )}
+                                {showChangePic && user?.id === sessionUser?.id && (
+                                    <div className="updatePicContainer">
+                                        <form className="">
+                                            <input
+                                                className="profPicInput"
+                                                placeholder="Profile Pic URL"
+                                                value={profile_url}
+                                                onChange={(e) => setProfileUrl(e.target.value)}
+                                            />
+                                            <div className="updatePicButtons">
+                                                <button >Update</button>
+                                                <button id="cancelUpdate"onClick={() => setShowChangePic(false)}>Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     <div className="exploreHeader">
                         <h1>Photostream</h1>

@@ -149,8 +149,8 @@ function EditableComment({comment, sessionUser}) {
             )}
             {showDelete && (
                 <div className="deleteButtons">
-                    <button className="" id="deleteComment" onClick={deleteComment}>Delete Comment</button>
-                    <button className="" id="cancelComment" onClick={hideDeleteButtons}>Cancel</button>
+                    <button id="deleteComment" onClick={deleteComment}>Delete Comment</button>
+                    <button id="cancelComment" onClick={hideDeleteButtons}>Cancel</button>
                 </div>
             )}
         </div>
