@@ -128,6 +128,7 @@ function Profile() {
                                     return null;
                                 }
                             })}
+                            <li id="emptyLi"></li>
                         </ul>
                         {images?.length === 0 && user?.id === sessionUser?.id && (
                             <div className="noImages">
