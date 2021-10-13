@@ -1,7 +1,8 @@
 #profButtonDiv {
     color: white;
-    font-size: 30px;
+    font-size: 40px;
     cursor: pointer;
+    margin-top: 3px;
 }
 
 #profButtonDiv:hover {
@@ -12,13 +13,26 @@
     position: static;
 }
 
+.customProf img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: 3px;
+    cursor: pointer;
+    border: 2px solid transparent
+}
+
+.customProf img:hover {
+    border: 2px solid rgb(194, 194, 194);
+}
+
 .profile-dropdown {
     position: absolute;
     background-color: white;
     box-shadow: 0 0 5px #898989;
     border-radius: 3px;
-    top: 54px;
-    right: 8vw;
+    top: 60px;
+    right: 8.5vw;
     width: 280px;
     font-family: helvetica,arial,sans-serif;
     padding: 10px;

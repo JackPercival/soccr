@@ -9,16 +9,18 @@ module.exports = {
         email: 'demo@user.io',
         username: 'DemoUser',
         hashedPassword: bcrypt.hashSync('password'),
+        profile_pic: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1634139339/soccr/demoprofile_er3vaj.jpg'
       },
       {
         email: faker.internet.email(),
         username: 'JackPercival',
-        hashedPassword: bcrypt.hashSync(faker.internet.password()),
+        hashedPassword: bcrypt.hashSync('password'),
+        profile_pic: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1634139516/soccr/barcabadge_bzcfgk.png'
       },
       {
         email: faker.internet.email(),
-        username: 'Brad Smith',
-        hashedPassword: bcrypt.hashSync(faker.internet.password()),
+        username: 'BradSimpson',
+        hashedPassword: bcrypt.hashSync('password'),
       },
     ], {});
   },

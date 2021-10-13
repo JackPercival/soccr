@@ -99,9 +99,15 @@ function SingleImage() {
                     )}
                     <div className="imageDetailsContainer">
                         <div className="imageDetails">
-                            <div className="profIcon">
-                                <i className="fas fa-user-circle" id="profileButton"/>
-                            </div>
+                            {image.User.profile_pic? (
+                                <div className="customIcon">
+                                    <img src={image.User.profile_pic} alt="Profile"/>
+                                </div>
+                            ): (
+                                <div className="profIcon">
+                                    <i className="fas fa-user-circle" id="profileButton"/>
+                                </div>
+                            )}
                             <div className="imageInfo">
                                 <h1>{image?.User.username}</h1>
                                 <h2>{image?.title}</h2>

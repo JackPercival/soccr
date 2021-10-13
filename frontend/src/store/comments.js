@@ -100,12 +100,18 @@ const commentsReducer = (state = initialState, action) => {
         case ADD_COMMENT:
             return {
                 ...state,
-                [action.comment.id]: action.comment
+                [action.comment.id]: {
+                    ...state[action.comment.id],
+                    ...action.comment
+                }
             }
         case UPDATE_COMMENT:
             return {
                 ...state,
-                [action.comment.id]: action.comment
+                [action.comment.id]: {
+                    ...state[action.comment.id],
+                    ...action.comment
+                }
             }
         case DELETE_COMMENT:
             const newState = {...state}
