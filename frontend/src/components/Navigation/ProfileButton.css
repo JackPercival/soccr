@@ -1,7 +1,8 @@
 #profButtonDiv {
     color: white;
-    font-size: 30px;
+    font-size: 40px;
     cursor: pointer;
+    margin-top: 3px;
 }
 
 #profButtonDiv:hover {

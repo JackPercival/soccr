@@ -10,7 +10,6 @@ import { loadComments, addNewComment } from '../../store/comments';
 function Comments({image}) {
     const dispatch = useDispatch();
     const comments = useSelector(state => Object.values(state.comments).filter(comment => comment.image_id === image?.id));
-
     const sessionUser = useSelector(state => state.session.user);
 
     const [isLoaded, setIsLoaded] = useState(false);
@@ -34,9 +33,16 @@ function Comments({image}) {
 
     const handleNewComment = async (e) => {
         e.preventDefault();
-        console.log("Clicked")
 
-        setErrors([]);
+        if (comment.length === 0) {
+            setErrors(["Comment cannot be empty."])
+            return;
+        }
+
+        if (comment.length > 500) {
+            setErrors(["Comment must be 500 characters or less."])
+            return;
+        }
 
         const payload= {
             comment,
@@ -45,10 +51,10 @@ function Comments({image}) {
         }
 
         await dispatch(addNewComment(payload))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-        });
+        //     .catch(async (res) => {
+        //         const data = await res.json();
+        //         if (data && data.errors) setErrors(data.errors);
+        // });
 
         setComment('')
         setShowAddComment(false)
@@ -68,9 +74,16 @@ function Comments({image}) {
                         return (
                             <div key={comment.id} className="singleCommentContainer">
                                 <div className="commentDetails">
-                                    <div className="commentProfIcon">
-                                        <i className="fas fa-user-circle" id="profileButton"/>
+                                    {comment.User.profile_pic? (
+                                        <div className="customCommentIcon">
+                                        <img src={comment.User.profile_pic} alt="Profile Picture"/>
                                     </div>
+                                    ):
+                                    (
+                                        <div className="commentProfIcon">
+                                            <i className="fas fa-user-circle" id="profileButton"/>
+                                        </div>
+                                    )}
                                     <h4>{comment?.User? comment.User.username : sessionUser?.username}</h4>
                                 </div>
                                 <p>{comment?.comment}</p>
@@ -80,9 +93,16 @@ function Comments({image}) {
                     {sessionUser && (
                         <div className="singleCommentContainer addCommentContainer">
                                 <div className="commentDetails">
-                                    <div className="commentProfIcon addCommentProfIcon">
-                                        <i className="fas fa-user-circle" id="profileButton"/>
-                                    </div>
+                                    {sessionUser.profile_pic? (
+                                        <div className="customCommentIcon" id="addCommentProfIcon">
+                                            <img src={sessionUser.profile_pic} alt="Profile Picture"/>
+                                        </div>
+                                    ):
+                                    (
+                                        <div className="commentProfIcon" id="addCommentProfIcon">
+                                            <i className="fas fa-user-circle" id="profileButton"/>
+                                        </div>
+                                    )}
                                     <div className="addCommentContainer">
                                         <form className="addCommentForm" onSubmit={handleNewComment}>
                                             <textarea

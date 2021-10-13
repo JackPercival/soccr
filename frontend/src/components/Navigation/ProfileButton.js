@@ -96,12 +96,11 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      {user.profile_pic && (
+      {user.profile_pic? (
         <div onClick={openMenu} className="customProf">
           <img src={user.profile_pic} alt="Profile Picture"/>
         </div>
-      )}
-      {!user.profile_pic && (
+      ) : (
         <div onClick={openMenu} id="profButtonDiv">
           <i className="fas fa-user-circle" id="profileButton"/>
         </div>

@@ -130,12 +130,20 @@
     display: flex;
 }
 
+.customIcon img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
 .profIcon {
-    font-size: 45px;
+    font-size: 60px;
+    margin-right: 15px;
 }
 
 .imageInfo * {
-    margin: 0px 20px;
+    margin: 0px 0px;
 }
 
 .imageInfo h1 {
@@ -150,7 +158,7 @@
 }
 
 .imageDescription {
-    margin: 10px 0 0 64px;
+    margin: 10px 0 0 75px;
     padding-bottom: 20px;
     font-size: 15px;
     font-weight: 400;

@@ -66,15 +66,14 @@ function EditableComment({comment, sessionUser}) {
         }
 
         const updatedComment = await dispatch(updateComment(payload))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-                console.log(errors)
-             });
+            // .catch(async (res) => {
+            //     const data = await res.json();
+            //     if (data && data.errors) setErrors(data.errors);
+            //  });
 
-        // if (!updatedComment) {
-        //     alert("An error occured. Please refresh the page and try again.");
-        // }
+        if (!updatedComment) {
+            alert("An error occured. Please refresh the page and try again.");
+        }
 
         setShowEditCommentForm(false)
         setShowButton('')
@@ -87,9 +86,17 @@ function EditableComment({comment, sessionUser}) {
         >
             <div className="topRowComment">
                 <div className="commentDetails">
-                    <div className="commentProfIcon">
-                        <i className="fas fa-user-circle" id="profileButton"/>
-                    </div>
+                    {comment.User?.profile_pic || comment.user_id === sessionUser.id?
+                        (
+                            <div className="customCommentIcon">
+                                <img src={sessionUser.profile_pic} alt="Profile Picture"/>
+                            </div>
+                        ):
+                        (
+                            <div className="commentProfIcon">
+                                <i className="fas fa-user-circle" id="profileButton"/>
+                            </div>
+                        )}
                     <h4>{comment?.User? comment.User.username : sessionUser.username}</h4>
                 </div>
                 <div className="editCommentButtons">
