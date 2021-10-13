@@ -4,7 +4,7 @@
 
 .singleCommentContainer {
     padding: 7px;
-    margin: 5px 0 0 27px;
+    margin: 0 0 0 27px;
     position: relative;
 }
 
@@ -14,7 +14,7 @@
 
 .commentDetails {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .customCommentIcon img {
@@ -27,19 +27,34 @@
     font-size: 30px;
 }
 
+.commentProfIcon a {
+    color: inherit;
+}
+
+.commentUsername {
+    color: #006DAC;
+    height: fit-content;
+}
+
+.commentUsername:hover {
+    text-decoration: underline;
+}
+
 .commentDetails h4 {
-    margin: 0 0 0 10px;
+    margin: 4px 0 0 10px;
     padding: 0;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 14px;
 }
 
 .singleCommentContainer p {
     font-size: 14px;
     font-weight: 400;
-    margin: 5px 0 0 40px;
+    margin: 0 0 0 40px;
     overflow-wrap: break-word;
     width: 438px;
+    position: relative;
+    top: -10px;
 }
 
 .addCommentContainer {
@@ -57,7 +72,7 @@
 
 .commentField {
     resize: none;
-    width: 445px;
+    width: 426px;
     box-sizing: border-box;
     height: 90px;
     margin-left: 10px;
@@ -74,7 +89,7 @@
 
 #addCommentProfIcon {
     position: relative;
-    top: -30px;
+    top: 20px;
 }
 
 .addCommentForm {

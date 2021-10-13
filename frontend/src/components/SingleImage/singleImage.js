@@ -100,15 +100,21 @@ function SingleImage() {
                         <div className="imageDetails">
                             {image.User.profile_pic? (
                                 <div className="customIcon">
-                                    <img src={image.User.profile_pic} alt="Profile"/>
+                                    <Link to={`/people/${image.user_id}`}>
+                                        <img src={image.User.profile_pic} alt=""/>
+                                    </Link>
                                 </div>
                             ): (
                                 <div className="profIcon">
-                                    <i className="fas fa-user-circle" id="profileButton"/>
+                                    <Link to={`/people/${image.user_id}`}>
+                                        <i className="fas fa-user-circle" id="profileButton"/>
+                                    </Link>
                                 </div>
                             )}
                             <div className="imageInfo">
-                                <h1>{image?.User.username}</h1>
+                                <Link to={`/people/${image.user_id}`}>
+                                    <h1>{image?.User.username}</h1>
+                                </Link>
                                 <h2>{image?.title}</h2>
                             </div>
                         </div>
