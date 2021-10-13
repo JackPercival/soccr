@@ -48,6 +48,7 @@ function ExplorePage() {
                             return null;
                         }
                     })}
+                    <li id="emptyLi"></li>
                 </ul>
             )}
             </main>

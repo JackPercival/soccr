@@ -25,17 +25,17 @@ module.exports = {
       comment: "Seriously love this photo. The ball colors are so cool!"
      },
      {
-      user_id: 1,
+      user_id: 2,
       image_id: 2,
       comment: "I wish I was there! Beautiful photo."
      },
      {
-       user_id: 2,
+       user_id: 3,
        image_id: 2,
        comment: "Throwback to their old stadium. The new one just doesn't compare."
       },
       {
-        user_id: 2,
+        user_id: 1,
         image_id: 3,
         comment: "Love the action in this photo. Great shot!"
        },
@@ -50,9 +50,9 @@ module.exports = {
         comment: "Yeah, that guy has got to be in the Top 5 Greatest Midfielders of all time! Truly a special player."
        },
        {
-        user_id: 1,
+        user_id: 2,
         image_id: 4,
-        comment: "Iniesta and Xavi... I sure do miss those two bossing the midfield with Busquets. How Barcelona has fallen..."
+        comment: "Iniesta and Xavi... I sure do miss those two bossing the midfield with Busquets."
        },
   ], {});
   },
