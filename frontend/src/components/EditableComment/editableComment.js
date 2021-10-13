@@ -4,13 +4,18 @@ import { useEffect, useState } from 'react';
 
 function EditableComment({comment, sessionUser}) {
     const [showEditCommentForm, setShowEditCommentForm] = useState(false);
-    const [showDeleteCommentModal, setShowDeleteCommentModal] = useState(false)
+    const [showDelete, setShowDelete] = useState(false)
     const [showButton, setShowButton] = useState('')
     const [commentText, setCommentText] = useState(comment.comment)
 
-    const showDeleteModal = () => {
-        setShowDeleteCommentModal(true)
+    const displayDeleteButtons = () => {
         setShowButton('')
+        setShowDelete(true)
+    }
+
+    const hideDeleteButtons = () => {
+        setShowButton('')
+        setShowDelete(false)
     }
 
     const handleEditComment = (e) => {
@@ -21,7 +26,7 @@ function EditableComment({comment, sessionUser}) {
     }
 
     return (
-        <div key={comment.id} className="singleCommentContainer" id={showEditCommentForm? 'stopHover' : null}
+        <div key={comment.id} className="singleCommentContainer" id={showEditCommentForm || showDelete? 'stopHover' : null}
         onMouseOver={() => setShowButton('editCommentIcon')}
         onMouseOut={() => setShowButton('')}
         >
@@ -41,7 +46,7 @@ function EditableComment({comment, sessionUser}) {
                     </div>
                     <div id={showButton}
                         title="Delete Comment"
-                        onClick={showDeleteModal}
+                        onClick={displayDeleteButtons}
                     >
                         <i className="fas fa-trash-alt"></i>
                     </div>
@@ -67,21 +72,10 @@ function EditableComment({comment, sessionUser}) {
                     </div>
                 </div>
             )}
-            {showDeleteCommentModal && (
-                <div className="editModalBackground">
-                    <div className="deleteForm">
-                        <div className="topRowDelete">
-                            <h3>Delete Comment</h3>
-                            <div onClick={() => setShowDeleteCommentModal(false)}>X</div>
-                        </div>
-                        <div className="doYouWant">Do you want to permanently delete this comment?</div>
-                        <div className="bottomRowDelete">
-                            <div className="cancelDelete" onClick={() => setShowDeleteCommentModal(false)}>Cancel</div>
-                            <div className="deleteDelete"
-                            // onClick={deleteImage}
-                            >Delete</div>
-                        </div>
-                    </div>
+            {showDelete && (
+                <div class="deleteButtons">
+                    <button className="" id="deleteComment">Delete Comment</button>
+                    <button className="" id="cancelComment" onClick={hideDeleteButtons}>Cancel</button>
                 </div>
             )}
         </div>

@@ -42,16 +42,39 @@
     width: 93px;
 }
 
-.editModalBackground {
-    z-index: 6;
-    position: absolute;
-    box-sizing: border-box;
-    width: 90vw;
-    height: 400px;
-    top: -80px;
-    left: -100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
+.deleteButtons {
+    position: relative;
+    left: 264px;
+}
+
+.deleteButtons button {
+    font-family: helvetica,arial,sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    font-weight: 400;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+#deleteComment {
+    background-color: #E2292C;
+}
+
+#deleteComment:hover {
+    background-color: #fa6e71;
+    cursor: pointer;
+    transition: background-color .25s 0s;
+}
+
+#cancelComment {
+    background-color: #128FDC;
+}
+
+#cancelComment:hover {
+    background-color: #319bdd;
+    cursor: pointer;
+    transition: background-color .25s 0s;
 }
