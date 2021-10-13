@@ -8,21 +8,31 @@ import Header from '../Header/header';
 import Footer from '../Footer/footer';
 import ImageHolder from '../ImageHolder/imageHolder';
 
+import './search.css';
+
 function SearchResults() {
     const dispatch = useDispatch();
     const { searchParameters } = useParams();
     const images = useSelector(state => Object.values(state.images));
 
     const [isLoaded, setIsLoaded] = useState(false);
-    const [searchResults, setSearchResults] = useState([])
+    const [searchResults, setSearchResults] = useState([]);
+    const [stopSearch, setStopSearch] = useState(false)
 
     useEffect(() => {
         dispatch(getAllImages()).then(() => setIsLoaded(true));
     }, [dispatch]);
 
+    //This is needed if you want to run another search while on the Search page
     useEffect(() => {
-        if (isLoaded) {
-            const imageResults = [];
+        setStopSearch(false)
+    }, [searchParameters])
+
+    useEffect(() => {
+        //This only runs once- once the images have been loaded
+        if (isLoaded && !stopSearch) {
+            //Use a set to remove duplicates
+            const imageResults = new Set();
 
             //Remove spaces and commas from the search parameters
             const cleanParams = searchParameters.toLowerCase().split(/,| /)
@@ -31,15 +41,19 @@ function SearchResults() {
             for (const searchParam of cleanParams) {
                 for (const image of images) {
                     if (image?.description?.toLowerCase().includes(searchParam) || image?.title?.toLowerCase().includes(searchParam)) {
-                        imageResults.push(image)
+                        imageResults.add(image)
                     }
                 }
             }
 
-            setSearchResults(imageResults)
+            //Spreat set back into an array to map over
+            setSearchResults([...imageResults])
+
+            //Stop searching
+            setStopSearch(true)
         }
 
-    },[isLoaded])
+    },[isLoaded, searchParameters, stopSearch, images])
 
     return (
         <div className="container">
@@ -63,6 +77,7 @@ function SearchResults() {
                             return null;
                         }
                     })}
+                    <li id="emptyLi"></li>
                 </ul>
             )}
             </main>

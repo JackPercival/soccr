@@ -23,7 +23,8 @@ function Header() {
         e.preventDefault();
         const searchParameters = search;
 
-        history.push(`/search/${searchParameters}`)
+        history.push(`/search/${searchParameters}`);
+        setSearch('');
     }
 
     return (
