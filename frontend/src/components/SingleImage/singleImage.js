@@ -101,7 +101,7 @@ function SingleImage() {
                         <div className="imageDetails">
                             {image.User.profile_pic? (
                                 <div className="customIcon">
-                                    <img src={image.User.profile_pic} alt="Profile Picture"/>
+                                    <img src={image.User.profile_pic} alt="Profile"/>
                                 </div>
                             ): (
                                 <div className="profIcon">

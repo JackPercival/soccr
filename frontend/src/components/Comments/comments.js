@@ -74,9 +74,9 @@ function Comments({image}) {
                         return (
                             <div key={comment.id} className="singleCommentContainer">
                                 <div className="commentDetails">
-                                    {comment.User.profile_pic? (
+                                    {comment.User?.profile_pic? (
                                         <div className="customCommentIcon">
-                                        <img src={comment.User.profile_pic} alt="Profile Picture"/>
+                                        <img src={comment.User.profile_pic} alt="Profile Icon "/>
                                     </div>
                                     ):
                                     (
@@ -95,7 +95,7 @@ function Comments({image}) {
                                 <div className="commentDetails">
                                     {sessionUser.profile_pic? (
                                         <div className="customCommentIcon" id="addCommentProfIcon">
-                                            <img src={sessionUser.profile_pic} alt="Profile Picture"/>
+                                            <img src={sessionUser.profile_pic} alt="Profile Icon"/>
                                         </div>
                                     ):
                                     (

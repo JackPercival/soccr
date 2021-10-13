@@ -86,17 +86,30 @@ function EditableComment({comment, sessionUser}) {
         >
             <div className="topRowComment">
                 <div className="commentDetails">
-                    {comment.User?.profile_pic || comment.user_id === sessionUser.id?
-                        (
-                            <div className="customCommentIcon">
-                                <img src={sessionUser.profile_pic} alt="Profile Picture"/>
-                            </div>
-                        ):
-                        (
-                            <div className="commentProfIcon">
+                    {/* Logic to determine what type of icon to appear next to editable comments */}
+                    {
+                        (() => {
+                            if (comment.User?.profile_pic) {
+                                return (
+                                    <div className="customCommentIcon">
+                                        <img src={sessionUser.profile_pic} alt="Profile Icon"/>
+                                    </div>
+                                )
+                            } else if (comment.user_id === sessionUser.id && sessionUser.profile_pic) {
+                                return (
+                                    <div className="customCommentIcon">
+                                        <img src={sessionUser.profile_pic} alt="Profile Icon"/>
+                                    </div>
+                                )
+                            } else {
+                                return (
+                                    <div className="commentProfIcon">
                                 <i className="fas fa-user-circle" id="profileButton"/>
                             </div>
-                        )}
+                                )
+                            }
+                        })()
+                    }
                     <h4>{comment?.User? comment.User.username : sessionUser.username}</h4>
                 </div>
                 <div className="editCommentButtons">

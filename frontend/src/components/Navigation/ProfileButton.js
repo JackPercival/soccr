@@ -98,7 +98,7 @@ function ProfileButton({ user }) {
     <>
       {user.profile_pic? (
         <div onClick={openMenu} className="customProf">
-          <img src={user.profile_pic} alt="Profile Picture"/>
+          <img src={user.profile_pic} alt="Profile Icon"/>
         </div>
       ) : (
         <div onClick={openMenu} id="profButtonDiv">
