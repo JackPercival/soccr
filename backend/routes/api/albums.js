@@ -38,7 +38,7 @@ router.post('/', validateAlbum, asyncHandler(async (req, res) => {
 router.delete('/', asyncHandler(async (req, res) => {
   const {albumId} = req.body;
 
-  const findAlbum = await Comment.Album(commentId);albumId
+  const findAlbum = await Album.findByPk(albumId);
 
     if (findAlbum) {
         await findAlbum.destroy();

@@ -50,6 +50,7 @@
 
 .editAlbumButtons {
     display: flex;
+    align-items: flex-end;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -58,12 +59,31 @@
 }
 
 .editAlbumButtons div {
-    color: white;
+    color: rgba(255, 255, 255, .6);
     margin-right: 5px;
-    text-shadow: 0 0 2px #000;
-    transition: color .5s;
+    font-size: 20px;
+    transition: all .5s;
 }
 
 .singleAlbum:hover .editAlbumButtons div {
-    color: rgb(226, 226, 226)
+    color: rgb(226, 226, 226);
+    text-shadow: 0 0 2px #000;
+}
+
+#deleteAlbum:hover {
+    color: #e0585a;
+    font-size: 40px;
+}
+
+#editAlbum:hover {
+    color:#59a7d8;
+    font-size: 40px;
+}
+
+.deleteAlbumConfirm {
+    background-color: white;
+    width: 200px;
+    border-radius: 5px;
+    z-index: 99;
+    position: relative;
 }
