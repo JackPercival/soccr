@@ -32,6 +32,10 @@ function AlbumContents() {
         }
     }, [dispatch]);
 
+    useEffect(() => {
+        document.title = `${album?.title} | Soccr`;
+    }, [album?.title]);
+
     //Redirect if the image does not exist
     useEffect(() => {
         if (isLoaded && !album) {
