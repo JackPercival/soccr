@@ -22,7 +22,7 @@ router.get('/', asyncHandler(async (req, res) => {
     return res.json(albums)
 }))
 
-//Add image
+//Add an album
 router.post('/', validateAlbum, asyncHandler(async (req, res) => {
   const { title, user_id } = req.body;
 
@@ -32,6 +32,20 @@ router.post('/', validateAlbum, asyncHandler(async (req, res) => {
   });
 
   return res.json(album)
+}))
+
+//Delete an album
+router.delete('/', asyncHandler(async (req, res) => {
+  const {albumId} = req.body;
+
+  const findAlbum = await Comment.Album(commentId);albumId
+
+    if (findAlbum) {
+        await findAlbum.destroy();
+        res.status(204).end();
+      } else {
+        next();
+      }
 }))
 
 module.exports = router;

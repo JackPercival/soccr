@@ -12,6 +12,7 @@
     justify-content: flex-end;
     margin: 14px;
     cursor: pointer;
+    position: relative;
 }
 
 .singleAlbum:hover h5 {
@@ -45,4 +46,24 @@
 #noImagesInAlbum {
     background-color: rgb(224, 224, 224);
     background-image: url('https://res.cloudinary.com/dt8q1ngxj/image/upload/v1634234840/soccr/noImage_hhesil.png');
+}
+
+.editAlbumButtons {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: fit-content;
+    margin: 8px;
+}
+
+.editAlbumButtons div {
+    color: white;
+    margin-right: 5px;
+    text-shadow: 0 0 2px #000;
+    transition: color .5s;
+}
+
+.singleAlbum:hover .editAlbumButtons div {
+    color: rgb(226, 226, 226)
 }

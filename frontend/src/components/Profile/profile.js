@@ -26,7 +26,7 @@ function Profile() {
     const [profile_url, setProfileUrl] = useState('')
 
     const [showChangePic, setShowChangePic] = useState(false)
-    const [showAlbum, setShowAlbum] = useState(false)
+    const [showAlbum, setShowAlbum] = useState(true)
 
     useEffect(() => {
         dispatch(loadUsers())
