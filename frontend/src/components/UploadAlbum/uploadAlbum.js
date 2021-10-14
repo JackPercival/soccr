@@ -16,11 +16,24 @@ function UploadAlbum() {
 
     const [isLoaded, setIsLoaded] = useState(false);
     const [title, setTitle] = useState('');
-    const [selectedImages, setSelectedImages] = useState([]);
+    const [selectedImages, setSelectedImages] = useState(new Set());
 
     useEffect(() => {
         dispatch(getAllImages()).then(() => setIsLoaded(true));
     }, [dispatch]);
+
+    //Add or remove images to the selectedImages state
+    const toggleSelectedImages = (imageId) => {
+        const currentImages = selectedImages;
+
+        if (currentImages.has(imageId)) {
+            currentImages.delete(imageId)
+        } else {
+            currentImages.add(imageId);
+        }
+
+        setSelectedImages(currentImages);
+    }
 
     return (
         <div className="container">
@@ -64,7 +77,7 @@ function UploadAlbum() {
                                 {images?.map((image, index) => {
                                     if (image.id) {
                                         return (
-                                                <div className="divUploadHolder" key={image.id} onClick={() => console.log(image.id)}>
+                                                <div className="divUploadHolder" key={image.id} onClick={() => toggleSelectedImages(image.id)}>
                                                     <UploadAlbumImageHolder image={image} />
                                                 </div>
                                             )
