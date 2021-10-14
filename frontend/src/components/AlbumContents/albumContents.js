@@ -81,7 +81,7 @@ function AlbumContents() {
                     )}
                     {showDelete && (
                         <div className="deleteAlbumPopUp">
-                            <div className="confirmDeleteAlbum" onClick={deleteAlbum}>Confirm Album Delete </div>
+                            <div className="confirmDeleteAlbum" onClick={deleteAlbum}>Confirm Album Deletion </div>
                             <div className="cancelDeleteAlbum" onClick={() => setShowDelete(false)}>Cancel</div>
                         </div>
                     )}

@@ -6,8 +6,8 @@
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    width: 85vw;
-    margin: 0 auto;
+    width: fit-content;
+    margin: 0;
 }
 
 .editAlbumOnAlbumPageButtons div {

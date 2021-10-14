@@ -141,6 +141,10 @@
     margin-bottom: 20px;
 }
 
+.profileNav {
+    justify-content: flex-start;
+}
+
 .profileNav h3 {
     font-weight: 200;
     border-bottom: 2px solid transparent;

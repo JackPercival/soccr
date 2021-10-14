@@ -13,7 +13,6 @@ function Album({user, loggedInUser}) {
 
     const albums = useSelector(state => Object.values(state.albums).filter(albums => albums.user_id === user?.id));
 
-    const [showCreateAlbum, setShowCreateAlbum] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
@@ -27,9 +26,9 @@ function Album({user, loggedInUser}) {
 
     return (
         <>
-            {isLoaded && !showCreateAlbum && (
+            {isLoaded && (
                 <>
-                    {albums.length > 0 && !showCreateAlbum && (
+                    {albums.length > 0 && (
                         <div className="userAlbumsDisplay">
                         {albums?.map(album => {
                                 if (album.id) {
@@ -41,7 +40,7 @@ function Album({user, loggedInUser}) {
                         )}
                         </div>
                     )}
-                    {loggedInUser && (
+                    {loggedInUser && albums.length > 0 && (
                         <Link to="/create-album">
                             <div className="uploadAlbumButtonContainer">
                                 <div className="uploadPhotoLink" id="uploadAlbumButton">Create New Album</div>
@@ -50,7 +49,7 @@ function Album({user, loggedInUser}) {
                     )}
 
                     {/* No albums case, for logged in and non logged in user */}
-                    {albums.length === 0 && !showCreateAlbum && (
+                    {albums.length === 0 && (
                         <>
                             {loggedInUser? (
                                 <div className="noImages">

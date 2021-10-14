@@ -3,7 +3,7 @@ import Footer from '../Footer/footer';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { useHistory, Redirect, useParams, Link } from 'react-router-dom';
+import { useHistory, useParams, Link } from 'react-router-dom';
 
 import { getAllImages, updateImage } from '../../store/images';
 

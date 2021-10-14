@@ -1,5 +1,6 @@
 .exploreHeader {
     display: flex;
+    justify-content: space-between;
     max-width: 85%;
     margin: 0 auto;
 }
@@ -7,6 +8,7 @@
 .exploreHeader h1 {
     margin: 10px 0 5px 0;
     font-weight: 200;
+    width: fit-content;
 }
 
 .loadingContainer {
