@@ -75,6 +75,7 @@ function Upload() {
 
     if (sessionUser) {
         document.title = "Upload | Soccr";
+        
 
         return (
         <div className="container">

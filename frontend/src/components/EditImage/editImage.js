@@ -66,9 +66,12 @@ function EditImage() {
 
     }
 
-    if (isLoaded && image?.User?.id !== sessionUser?.id) {
-        return <Redirect to="/explore" />;
-    }
+    //Redirect if the image does not belong to the user
+    useEffect(() => {
+        if (isLoaded && image?.User?.id !== sessionUser?.id) {
+            history.push('/explore')
+        }
+    })
 
     return (
         <div className="container">

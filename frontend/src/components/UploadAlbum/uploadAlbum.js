@@ -29,6 +29,13 @@ function UploadAlbum() {
         }
     }, [isLoaded, dispatch]);
 
+    //Redirect if the image does not belong to the user
+    useEffect(() => {
+        if (isLoaded && !sessionUser?.id) {
+            history.push('/explore')
+        }
+    })
+
     //Add or remove images to the selectedImages state
     const toggleSelectedImages = (imageId) => {
         const currentImages = selectedImages;
