@@ -1,0 +1,6 @@
+.userAlbumsDisplay {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 87vw;
+    margin: 0 auto;
+}

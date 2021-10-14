@@ -20,6 +20,15 @@ module.exports = {
       {
        album_id: 1,
        image_id: 8
+      }
+       ,
+      {
+       album_id: 2,
+       image_id: 7,
+      },
+      {
+       album_id: 1,
+       image_id: 2
        }
        ,
       {

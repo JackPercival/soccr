@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
+
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
 import ImageHolder from '../ImageHolder/imageHolder';

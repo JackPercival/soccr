@@ -4,8 +4,10 @@ import { Link, useParams, useHistory } from 'react-router-dom';
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
 import ImageHolder from '../ImageHolder/imageHolder';
+import Album from '../Album/album';
 
 import { getAllImages } from '../../store/images';
+import { loadAlbumContents } from '../../store/albumContents';
 import { loadUsers, updateProfilePic } from '../../store/users';
 import { restoreUser } from '../../store/session';
 
@@ -21,8 +23,10 @@ function Profile() {
 
     const images = useSelector(state => Object.values(state.images).filter(image => image.user_id === Number(userId)));
     const [isLoaded, setIsLoaded] = useState(false);
-    const [showChangePic, setShowChangePic] = useState(false)
     const [profile_url, setProfileUrl] = useState('')
+
+    const [showChangePic, setShowChangePic] = useState(false)
+    const [showAlbum, setShowAlbum] = useState(false)
 
     useEffect(() => {
         dispatch(loadUsers())
@@ -117,32 +121,45 @@ function Profile() {
                                 )}
                             </div>
                         </div>
-                        <div className="exploreHeader">
-                            <h1>Photostream</h1>
+                        <div className="navHeader">
+                            <div className="exploreHeader profileNav">
+                                <h3 id={!showAlbum? 'keepUnderline' : null} onClick={() => setShowAlbum(false)}>Photostream</h3>
+                                <h3 id={showAlbum? 'keepUnderline' : null} onClick={() => setShowAlbum(true)}>Albums</h3>
+                            </div>
                         </div>
-                        <ul className="imagesContainer">
-                            {images?.length > 0 && images?.map(image => {
-                                if (image.id) {
-                                    return <ImageHolder key={`image_${image.id}`} image={image} />
-                                } else {
-                                    return null;
-                                }
-                            })}
-                            <li id="emptyLi"></li>
-                        </ul>
-                        {images?.length === 0 && user?.id === sessionUser?.id && (
-                            <div className="noImages">
-                                <h3>Don't forget to upload your photos.</h3>
-                                <h4>Your photostream is your public-facing portfolio. Upload photos to populate your photostream.</h4>
-                                <Link to="/upload">
-                                    <div className="uploadPhotoLink">Upload Photos</div>
-                                </Link>
-                            </div>
+                        {!showAlbum && (
+                            <>
+                                {images?.length > 0 && (
+                                    <ul className="imagesContainer">
+                                        {images?.map(image => {
+                                                if (image.id) {
+                                                    return <ImageHolder key={`image_${image.id}`} image={image} />
+                                                } else {
+                                                    return null;
+                                                }
+                                            }
+                                        )}
+                                        <li id="emptyLi"></li>
+                                    </ul>
+                                )}
+                                {images?.length === 0 && user?.id === sessionUser?.id && (
+                                    <div className="noImages">
+                                        <h3>Don't forget to upload your photos.</h3>
+                                        <h4>Your photostream is your public-facing portfolio. Upload photos to populate your photostream.</h4>
+                                        <Link to="/upload">
+                                            <div className="uploadPhotoLink">Upload Photos</div>
+                                        </Link>
+                                    </div>
+                                )}
+                                {images?.length === 0 && user?.id !== sessionUser?.id && (
+                                    <div className="noImages">
+                                        <h3>{`${user?.username} hasn't made any photos public yet.`}</h3>
+                                    </div>
+                                )}
+                            </>
                         )}
-                        {images?.length === 0 && user?.id !== sessionUser?.id && (
-                            <div className="noImages">
-                                <h3>{`${user?.username} hasn't made any photos public yet.`}</h3>
-                            </div>
+                        {showAlbum && (
+                            <Album user={user} loggedInUser={user?.id === sessionUser?.id}/>
                         )}
                     </>
                 )}
