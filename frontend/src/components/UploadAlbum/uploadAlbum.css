@@ -25,8 +25,8 @@
     border: 2px solid transparent;
 }
 
-#uploadAlbumImageContainer li p {
-    top: -20px;
+#divUploadHolder li p {
+    top: -10px;
 }
 
 #No_border {
