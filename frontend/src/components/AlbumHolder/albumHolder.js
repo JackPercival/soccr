@@ -1,12 +1,13 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { deleteSingleAlbum,  } from '../../store/albums';
 
 import './albumHolder.css';
 
 function AlbumHolder({ album }) {
     const dispatch = useDispatch();
+    const history = useHistory();
+
     const sessionUser = useSelector(state => state.session.user);
     const albumContents = useSelector(state => Object.values(state.albumContents).filter(contents => contents.album_id === album.id));
 
@@ -22,6 +23,11 @@ function AlbumHolder({ album }) {
         }
     }
 
+    const redirectToEditPage = (e) => {
+        e.preventDefault();
+        history.push(`/albums/${album.id}/edit`)
+    }
+
     return (
         <>
         <Link to={`/albums/${album.id}`}>
@@ -34,7 +40,7 @@ function AlbumHolder({ album }) {
                         <div
                             id="editAlbum"
                             title="Edit Album"
-                            // onClick={() => setShowEditCommentForm(true)}
+                            onClick={redirectToEditPage}
                         >
                             <i className="fas fa-edit"></i>
                         </div>
@@ -57,7 +63,7 @@ function AlbumHolder({ album }) {
                         <div
                             id="editAlbum"
                             title="Edit Album"
-                            // onClick={() => setShowEditCommentForm(true)}
+                            onClick={redirectToEditPage}
                         >
                             <i className="fas fa-edit"></i>
                         </div>
