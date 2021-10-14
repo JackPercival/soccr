@@ -33,7 +33,7 @@ module.exports = {
        ,
       {
        album_id: 1,
-       image_id: 14
+       image_id: 15
        }
   ], {});
   },

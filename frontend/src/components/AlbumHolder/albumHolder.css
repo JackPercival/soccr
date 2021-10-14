@@ -42,3 +42,8 @@
     margin: 0 0 15px 15px;
     transition: margin .5s;
 }
+
+#noImagesInAlbum {
+    background-color: rgb(224, 224, 224);
+    background-image: url('https://res.cloudinary.com/dt8q1ngxj/image/upload/v1634234840/soccr/noImage_hhesil.png');
+}
