@@ -9,10 +9,14 @@ module.exports = {
       Example:
       */
    return queryInterface.bulkInsert('Albums', [
-     {
+    {
      title: 'Barcelona',
      user_id: 1
-    }
+    },
+    {
+      title: 'Stadium',
+      user_id: 1
+     }
   ], {});
   },
 

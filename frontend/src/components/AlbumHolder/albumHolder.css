@@ -1,0 +1,44 @@
+.singleAlbum {
+    background-size: cover;
+    width: 18vw;
+    height: 18vw;
+    max-width: 280px;
+    max-height: 280px;
+    min-width: 200px;
+    min-height: 200px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: 14px;
+    margin-right: 14px;
+    cursor: pointer;
+}
+
+.singleAlbum:hover h5 {
+    margin-bottom: 50px;
+}
+
+.singleAlbum h4 {
+    width: fit-content;
+    max-width: 150px;
+    overflow-wrap: break-word;
+    color: white;
+    text-shadow: 0 0 2px #000;
+    font-weight: 400;
+    font-size: 21px;
+    margin: 0 0 0 15px;
+}
+
+.singleAlbum h5 {
+    width: fit-content;
+    max-width: 150px;
+    overflow-wrap: break-word;
+    color: white;
+    text-shadow: 0 0 2px #000;
+    font-weight: 400;
+    font-size: 13px;
+    margin: 0;
+    margin: 0 0 15px 15px;
+    transition: margin .5s;
+}

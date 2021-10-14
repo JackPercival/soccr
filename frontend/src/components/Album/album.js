@@ -10,7 +10,7 @@ import './album.css';
 function Album({user, loggedInUser}) {
     const dispatch = useDispatch();
 
-    const albums = useSelector(state => Object.values(state.albums).filter(albums => albums.user_id === user.id));
+    const albums = useSelector(state => Object.values(state.albums).filter(albums => albums.user_id === user?.id));
 
     const [showCreateAlbum, setShowCreateAlbum] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -29,18 +29,16 @@ function Album({user, loggedInUser}) {
             {isLoaded && (
                 <>
                     {albums.length > 0 && !showCreateAlbum && (
-                        <ul className="imagesContainer">
-                            {albums?.map(album => {
-                                    if (album.id) {
-                                        // return <ImageHolder key={`image_${image.id}`} image={image} />
-                                        return <AlbumHolder key={album.id} album={album}/>
-                                    } else {
-                                        return null;
-                                    }
+                        <div className="userAlbumsDisplay">
+                        {albums?.map(album => {
+                                if (album.id) {
+                                    return <AlbumHolder key={album.id} album={album}/>
+                                } else {
+                                    return null;
                                 }
-                            )}
-                            <li id="emptyLi"></li>
-                        </ul>
+                            }
+                        )}
+                        </div>
                     )}
                     {/* No albums case, for logged in and non logged in user */}
                     {albums.length === 0 && !showCreateAlbum && (
