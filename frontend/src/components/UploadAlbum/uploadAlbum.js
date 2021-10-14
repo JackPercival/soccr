@@ -4,19 +4,19 @@ import UploadAlbumImageHolder from '../UploadAlbumImageHolder/uploadAlbumImageHo
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { useHistory, Redirect, useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { getAllImages } from '../../store/images';
 
 import './uploadAlbum.css'
 
-function CreateAlbum() {
+function UploadAlbum() {
     const dispatch = useDispatch();
     const images = useSelector(state => Object.values(state.images));
 
     const [isLoaded, setIsLoaded] = useState(false);
     const [title, setTitle] = useState('');
-    const [selectedImage, setSelectedImaged] = useState([]);
+    const [selectedImages, setSelectedImages] = useState([]);
 
     useEffect(() => {
         dispatch(getAllImages()).then(() => setIsLoaded(true));
@@ -60,17 +60,20 @@ function CreateAlbum() {
                         </div>
                         <div className="selectionContainer">
                             <h1>Select Images to Add to Album</h1>
-                            <ul className="imagesContainer" id="uploadAlbumImageContainer">
-                                {images?.map(image => {
+                            <ul className="imagesContainer2" id="uploadAlbumImageContainer">
+                                {images?.map((image, index) => {
                                     if (image.id) {
-                                        return <UploadAlbumImageHolder key={`image_${image.id}`} image={image} />
+                                        return (
+                                                <div className="divUploadHolder" key={image.id} onClick={() => console.log(image.id)}>
+                                                    <UploadAlbumImageHolder image={image} />
+                                                </div>
+                                            )
                                     } else {
                                         return null;
                                     }
                                 })}
-                    <li id="emptyLi"></li>
-                </ul>
-
+                                <li id="emptyLi"></li>
+                            </ul>
                         </div>
                     </div>
                 </>
@@ -81,4 +84,4 @@ function CreateAlbum() {
     )
 }
 
-export default CreateAlbum;
+export default UploadAlbum;

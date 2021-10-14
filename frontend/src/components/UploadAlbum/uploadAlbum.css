@@ -7,9 +7,21 @@
     font-weight: 300;
 }
 
+.imagesContainer2 {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 85vw;
+    margin: 0 auto 20px auto;
+    padding: 0;
+}
+
+.divUploadHolder {
+    flex-grow: 1;
+}
+
 #uploadAlbumImageContainer li {
     height: 20vh;
-    margin: 5px;
+    margin: 2px;
     border: 2px solid transparent;
 }
 
