@@ -27,7 +27,6 @@ const albumContentReducer = (state = initialState, action) => {
         case LOAD:
             const allAlbumContents = {};
             action.albumContents.forEach(row => {
-                console.log(row)
                 allAlbumContents[row.id] = row;
             });
             return {

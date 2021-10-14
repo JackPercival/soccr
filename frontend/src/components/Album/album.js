@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { loadAlbums } from '../../store/albums';
 import { loadAlbumContents } from '../../store/albumContents';
@@ -26,7 +27,7 @@ function Album({user, loggedInUser}) {
 
     return (
         <>
-            {isLoaded && (
+            {isLoaded && !showCreateAlbum && (
                 <>
                     {albums.length > 0 && !showCreateAlbum && (
                         <div className="userAlbumsDisplay">
@@ -40,6 +41,14 @@ function Album({user, loggedInUser}) {
                         )}
                         </div>
                     )}
+                    {loggedInUser && (
+                        <Link to="/create-album">
+                            <div className="uploadAlbumButtonContainer">
+                                <div className="uploadPhotoLink" id="uploadAlbumButton">Create New Album</div>
+                            </div>
+                        </Link>
+                    )}
+
                     {/* No albums case, for logged in and non logged in user */}
                     {albums.length === 0 && !showCreateAlbum && (
                         <>
@@ -47,7 +56,9 @@ function Album({user, loggedInUser}) {
                                 <div className="noImages">
                                     <h3>Let's make an album.</h3>
                                     <h4>Easily organize all your photos into beautiful albums to share with friends, family, or even other Soccr members.</h4>
-                                    <div className="uploadPhotoLink" onClick={() => setShowCreateAlbum(true)}>Create Album</div>
+                                    <Link to="/create-album">
+                                        <div className="uploadPhotoLink">Create Album</div>
+                                    </Link>
                                 </div>
                             ):
                             (

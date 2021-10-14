@@ -7,7 +7,6 @@ import ImageHolder from '../ImageHolder/imageHolder';
 import Album from '../Album/album';
 
 import { getAllImages } from '../../store/images';
-import { loadAlbumContents } from '../../store/albumContents';
 import { loadUsers, updateProfilePic } from '../../store/users';
 import { restoreUser } from '../../store/session';
 
@@ -22,6 +21,7 @@ function Profile() {
     const sessionUser = useSelector(state => state.session.user);
 
     const images = useSelector(state => Object.values(state.images).filter(image => image.user_id === Number(userId)));
+
     const [isLoaded, setIsLoaded] = useState(false);
     const [profile_url, setProfileUrl] = useState('')
 
@@ -42,7 +42,7 @@ function Profile() {
         }
     }, [user]);
 
-    //Redirect if the image does not exist
+    //Redirect if the user does not exist
     useEffect(() => {
         if (isLoaded && !user) {
             history.push('/explore')

@@ -1,7 +1,7 @@
 .profilePageDetails {
     display: flex;
     position: relative;
-    max-width: 85vw;
+    max-width: 85%;
     margin: 20px auto 0 auto;
     align-items: center;
 }

@@ -1,0 +1,26 @@
+.selectionContainer {
+    margin-right: 30px;
+}
+
+.selectionContainer h1 {
+    color: white;
+    font-weight: 300;
+}
+
+#uploadAlbumImageContainer li {
+    height: 20vh;
+    margin: 5px;
+    border: 2px solid transparent;
+}
+
+#uploadAlbumImageContainer li p {
+    top: -20px;
+}
+
+#No_border {
+    border: 3px solid transparent;
+}
+
+#Yes_border {
+    border: 3px solid #FF0084;
+}
