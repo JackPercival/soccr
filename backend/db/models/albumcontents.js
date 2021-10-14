@@ -12,6 +12,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   AlbumContent.associate = function(models) {
     // associations can be defined here
+    AlbumContent.belongsTo(models.Image, {foreignKey: 'image_id'})
+
   };
   return AlbumContent;
 };

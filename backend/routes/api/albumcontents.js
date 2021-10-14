@@ -6,7 +6,9 @@ const router = express.Router();
 
 //Get all album contents
 router.get('/', asyncHandler(async (req, res) => {
-    const albumContents = await AlbumContent.findAll();
+    const albumContents = await AlbumContent.findAll({
+        include: Image
+    });
 
     return res.json(albumContents)
 }))
