@@ -6,6 +6,7 @@ import imagesReducer from "./images";
 import commentsReducer from "./comments";
 import usersReducer from "./users";
 import albumsReducer from "./albums";
+import albumContentReducer from "./albumContents";
 
 const rootReducer = combineReducers({
   // add reducer functions here
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   images: imagesReducer,
   comments: commentsReducer,
   albums: albumsReducer,
+  albumContents: albumContentReducer,
 });
 
 let enhancer;

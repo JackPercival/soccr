@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { loadAlbums } from '../../store/albums';
+import { loadAlbumContents } from '../../store/albumContents';
 
 import AlbumHolder from '../AlbumHolder/albumHolder';
 
@@ -15,7 +16,8 @@ function Album({user, loggedInUser}) {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        dispatch(loadAlbums()).then(() => setIsLoaded(true));
+        dispatch(loadAlbums())
+        dispatch(loadAlbumContents()).then(() => setIsLoaded(true));
 
         return () => {
             setIsLoaded(false)
@@ -31,7 +33,7 @@ function Album({user, loggedInUser}) {
                             {albums?.map(album => {
                                     if (album.id) {
                                         // return <ImageHolder key={`image_${image.id}`} image={image} />
-                                        return <AlbumHolder album={album}/>
+                                        return <AlbumHolder key={album.id} album={album}/>
                                     } else {
                                         return null;
                                     }

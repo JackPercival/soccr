@@ -7,6 +7,7 @@ import ImageHolder from '../ImageHolder/imageHolder';
 import Album from '../Album/album';
 
 import { getAllImages } from '../../store/images';
+import { loadAlbumContents } from '../../store/albumContents';
 import { loadUsers, updateProfilePic } from '../../store/users';
 import { restoreUser } from '../../store/session';
 
