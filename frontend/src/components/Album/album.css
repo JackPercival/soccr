@@ -1,6 +1,15 @@
 .userAlbumsDisplay {
     display: flex;
     flex-wrap: wrap;
-    max-width: 87vw;
+    max-width: 87%;
     margin: 0 auto;
+}
+
+.uploadAlbumButtonContainer {
+    max-width: 87%;
+    margin: 20px auto;
+}
+
+#uploadAlbumButton {
+    margin-left: 14px;
 }

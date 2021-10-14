@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Album, User, Image, AlbumContent } = require('../../db/models');
+const { User, Image, AlbumContent } = require('../../db/models');
 
 const router = express.Router();
 
@@ -15,5 +15,17 @@ router.get('/', asyncHandler(async (req, res) => {
 
     return res.json(albumContents)
 }))
+
+//Add album content
+router.post('/', asyncHandler(async (req, res) => {
+    const { image_id, album_id } = req.body;
+
+    const content = await AlbumContent.create({
+        image_id,
+        album_id
+    });
+
+    return res.json(content)
+  }))
 
 module.exports = router;

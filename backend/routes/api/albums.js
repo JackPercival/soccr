@@ -22,4 +22,16 @@ router.get('/', asyncHandler(async (req, res) => {
     return res.json(albums)
 }))
 
+//Add image
+router.post('/', validateAlbum, asyncHandler(async (req, res) => {
+  const { title, user_id } = req.body;
+
+  const album = await Album.create({
+     title,
+     user_id
+  });
+
+  return res.json(album)
+}))
+
 module.exports = router;

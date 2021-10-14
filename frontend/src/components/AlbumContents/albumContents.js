@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { loadAlbums } from '../../store/albums';
@@ -50,13 +50,6 @@ function AlbumContents() {
                 <div className="exploreHeader">
                     <h1>{album?.title}</h1>
                 </div>
-            {/* {isLoaded && (
-                <>
-                    {albumContents.map(row => (
-                        <img src={row.Image.image_url} />
-                    ))}
-                </>
-            )} */}
             {!isLoaded && (
                 <div className="loadingContainer">
                     <h3>Loading Images</h3>

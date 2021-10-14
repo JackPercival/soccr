@@ -1,0 +1,38 @@
+.selectionContainer {
+    margin-right: 30px;
+}
+
+.selectionContainer h1 {
+    color: white;
+    font-weight: 300;
+}
+
+.imagesContainer2 {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 85vw;
+    margin: 0 auto 20px auto;
+    padding: 0;
+}
+
+.divUploadHolder {
+    flex-grow: 1;
+}
+
+#uploadAlbumImageContainer li {
+    height: 20vh;
+    margin: 2px;
+    border: 2px solid transparent;
+}
+
+#divUploadHolder li p {
+    top: -10px;
+}
+
+#No_border {
+    border: 3px solid transparent;
+}
+
+#Yes_border {
+    border: 3px solid #FF0084;
+}
