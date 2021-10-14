@@ -9,6 +9,13 @@ module.exports = (sequelize, DataTypes) => {
   Image.associate = function(models) {
     Image.belongsTo(models.User, {foreignKey: 'user_id'})
     Image.hasMany(models.Comment, {foreignKey: 'image_id', onDelete: "CASCADE", hooks: true})
+
+    const columnMapping = {
+			through: "AlbumContent",
+			foreignKey: "image_id",
+			otherKey: "album_id"
+		}
+		Image.belongsToMany(models.Album, columnMapping)
   };
   return Image;
 };
