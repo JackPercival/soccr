@@ -5,13 +5,15 @@ import sessionReducer from './session';
 import imagesReducer from "./images";
 import commentsReducer from "./comments";
 import usersReducer from "./users";
+import albumsReducer from "./albums";
 
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
   users: usersReducer,
   images: imagesReducer,
-  comments: commentsReducer
+  comments: commentsReducer,
+  albums: albumsReducer,
 });
 
 let enhancer;

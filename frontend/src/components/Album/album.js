@@ -1,20 +1,64 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { loadAlbums } from '../../store/albums';
+
+import AlbumHolder from '../AlbumHolder/albumHolder';
 
 import './album.css';
 
 function Album({user, loggedInUser}) {
+    const dispatch = useDispatch();
 
-    const [showCreateAlbum, setShowCreateAlbum] = useState(false)
+    const albums = useSelector(state => Object.values(state.albums).filter(albums => albums.user_id === user.id));
+
+    const [showCreateAlbum, setShowCreateAlbum] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        dispatch(loadAlbums()).then(() => setIsLoaded(true));
+
+        return () => {
+            setIsLoaded(false)
+        }
+    }, [dispatch]);
 
     return (
         <>
-            {!showCreateAlbum && (
-                <div className="noImages">
-                    <h3>Let's make an album.</h3>
-                    <h4>Easily organize all your photos into beautiful albums to share with friends, family, or even other Soccr members.</h4>
-                    <div className="uploadPhotoLink" onClick={() => setShowCreateAlbum(true)}>Create Album</div>
-                </div>
+            {isLoaded && (
+                <>
+                    {albums.length > 0 && !showCreateAlbum && (
+                        <ul className="imagesContainer">
+                            {albums?.map(album => {
+                                    if (album.id) {
+                                        // return <ImageHolder key={`image_${image.id}`} image={image} />
+                                        return <AlbumHolder album={album}/>
+                                    } else {
+                                        return null;
+                                    }
+                                }
+                            )}
+                            <li id="emptyLi"></li>
+                        </ul>
+                    )}
+                    {/* No albums case, for logged in and non logged in user */}
+                    {albums.length === 0 && !showCreateAlbum && (
+                        <>
+                            {loggedInUser? (
+                                <div className="noImages">
+                                    <h3>Let's make an album.</h3>
+                                    <h4>Easily organize all your photos into beautiful albums to share with friends, family, or even other Soccr members.</h4>
+                                    <div className="uploadPhotoLink" onClick={() => setShowCreateAlbum(true)}>Create Album</div>
+                                </div>
+                            ):
+                            (
+                                <div className="noImages">
+                                    <h3>{`As soon as ${user.username} puts the camera down, we may have an album to view.`}</h3>
+                                </div>
+                            )
+                            }
+                        </>
+                    )}
+                </>
             )}
         </>
     )
