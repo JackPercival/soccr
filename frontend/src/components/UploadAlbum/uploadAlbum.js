@@ -8,6 +8,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import { getAllImages } from '../../store/images';
 import { addNewAlbum } from '../../store/albums';
+import { addNewAlbumContent } from '../../store/albumContents';
 
 import './uploadAlbum.css'
 
@@ -69,7 +70,27 @@ function UploadAlbum() {
         const newAlbum = await dispatch(addNewAlbum(payload));
 
         if (newAlbum) {
-            history.push(`/albums/${newAlbum.id}`)
+            let redirect = true;
+
+            for (const image of selectedImages) {
+
+                const payload = {
+                    album_id: newAlbum.id,
+                    image_id: image
+                }
+
+                const newRow = await dispatch(addNewAlbumContent(payload));
+
+                if (!newRow) {
+                    alert("An error occured. Refresh the page and try again.");
+                    redirect = false;
+                    break;
+                }
+            }
+
+            if (redirect) {
+                history.push(`/albums/${newAlbum.id}`)
+            }
         }
 
     }
