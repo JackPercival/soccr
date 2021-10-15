@@ -23,6 +23,11 @@ module.exports = {
         allowNull: true,
         unique: false,
       },
+      banner_pic: {
+        type: Sequelize.STRING(256),
+        allowNull: true,
+        unique: false,
+      },
       hashedPassword: {
         type: Sequelize.STRING.BINARY,
         allowNull: false,

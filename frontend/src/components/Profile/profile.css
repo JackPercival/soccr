@@ -1,3 +1,15 @@
+html {
+    overflow-y: scroll;
+}
+
+.banner {
+    width: 100%;
+    background-image: url('https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_1102/v1633737046/soccr/campnou_yod1kh.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 20px 0;
+}
+
 .profilePageDetails {
     display: flex;
     position: relative;
@@ -6,12 +18,22 @@
     align-items: center;
 }
 
-.profileDetailIcon img {
+.profileDetailIcon {
     width: auto;
     height: auto;
-    max-width: 200px;
-    max-height: 200px;
+    width: 160px;
+    height: 160px;
     box-shadow: 0 0 5px #898989;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-color: #c9c9c9
+}
+
+.profilePageDetails .profIcon {
+    font-size: 140px;
+    color: black;
+    text-shadow: 0 0 1px rgb(255, 255, 255);
 }
 
 .userNameAndButton {
@@ -20,8 +42,10 @@
 
 .userNameAndButton h1 {
     font-family: 'Roboto', helvetica,arial,sans-serif;
-    font-weight: 300;
+    font-weight: 200;
     margin: 0;
+    color: white;
+    text-shadow: 0 0 10px #000;
 }
 
 .changeProfPic {
@@ -134,10 +158,13 @@
     transition: all .2s ease-in-out;
 }
 
+.navHeaderContainer {
+    width: 100%;
+    background-color: #F3F5F6;
+}
+
 .navHeader {
-    border-top: 1px solid rgb(192, 192, 192);
     border-bottom: 1px solid rgb(192, 192, 192);
-    margin-top: 35px;
     margin-bottom: 20px;
 }
 

@@ -26,11 +26,14 @@ function Profile() {
     const [profile_url, setProfileUrl] = useState('')
 
     const [showChangePic, setShowChangePic] = useState(false)
+    const [showChangeBanner, setShowChangeBanner] = useState(false)
     const [showAlbum, setShowAlbum] = useState(false)
 
     useEffect(() => {
         dispatch(loadUsers())
-        dispatch(getAllImages()).then(() => setIsLoaded(true));
+        .then(dispatch(getAllImages()))
+        .then(() => setIsLoaded(true));
+
         return () => {
             setIsLoaded()
         }
@@ -88,43 +91,48 @@ function Profile() {
                 )}
                 {isLoaded && (
                     <>
-                        <div className="profilePageDetails">
-                            {user?.profile_pic? (
-                                <div className="profileDetailIcon">
-                                    <img src={user.profile_pic} alt="Profile"/>
-                                </div>
-                            ): (
-                                <div className="profIcon">
-                                    <i className="fas fa-user-circle" id="profileButton"/>
-                                </div>
-                            )}
-                            <div className="userNameAndButton">
-                                <h1>{user?.username}</h1>
-                                {!showChangePic && user?.id === sessionUser?.id && (
-                                    <div className="changeProfPic" onClick={() => setShowChangePic(true)}>Change Profile Picture</div>
-                                )}
-                                {showChangePic && user?.id === sessionUser?.id && (
-                                    <div className="updatePicContainer">
-                                        <form className="">
-                                            <input
-                                                className="profPicInput"
-                                                placeholder="Add a URL"
-                                                value={profile_url}
-                                                onChange={(e) => setProfileUrl(e.target.value)}
-                                            />
-                                            <div className="updatePicButtons">
-                                                <button onClick={handleProfilePictureUpdate}>Update</button>
-                                                <button type="button" id="cancelUpdate"onClick={handleCancel}>Cancel</button>
-                                            </div>
-                                        </form>
+                        <div className="banner" style={{backgroundImage: `url(${user?.banner_pic? user.banner_pic : 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1634328943/soccr/banner_wlerfs.jpg'})`}}>
+                            <div className="profilePageDetails">
+                                {user?.profile_pic? (
+                                    <div className="profileDetailIcon" style={{backgroundImage: `url(${user.profile_pic})`}}></div>
+                                ): (
+                                    <div className="profIcon">
+                                        <i className="fas fa-user-circle" id="profileButton"/>
                                     </div>
                                 )}
+                                <div className="userNameAndButton">
+                                    <h1>{user?.username}</h1>
+                                    {!showChangePic && user?.id === sessionUser?.id && (
+                                        <div className="changeProfPic" onClick={() => setShowChangePic(true)}>Change Profile Picture</div>
+                                    )}
+                                    {showChangePic && user?.id === sessionUser?.id && (
+                                        <div className="updatePicContainer">
+                                            <form className="">
+                                                <input
+                                                    className="profPicInput"
+                                                    placeholder="Add a URL"
+                                                    value={profile_url}
+                                                    onChange={(e) => setProfileUrl(e.target.value)}
+                                                />
+                                                <div className="updatePicButtons">
+                                                    <button onClick={handleProfilePictureUpdate}>Update</button>
+                                                    <button type="button" id="cancelUpdate"onClick={handleCancel}>Cancel</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    )}
+                                    {showChangeBanner && user?.id === sessionUser?.id && (
+                                        <h1>Hello</h1>
+                                    )}
+                                </div>
                             </div>
                         </div>
-                        <div className="navHeader">
-                            <div className="exploreHeader profileNav">
-                                <h3 id={!showAlbum? 'keepUnderline' : null} onClick={() => setShowAlbum(false)}>Photostream</h3>
-                                <h3 id={showAlbum? 'keepUnderline' : null} onClick={() => setShowAlbum(true)}>Albums</h3>
+                        <div className="navHeaderContainer">
+                            <div className="navHeader">
+                                <div className="exploreHeader profileNav">
+                                    <h3 id={!showAlbum? 'keepUnderline' : null} onClick={() => setShowAlbum(false)}>Photostream</h3>
+                                    <h3 id={showAlbum? 'keepUnderline' : null} onClick={() => setShowAlbum(true)}>Albums</h3>
+                                </div>
                             </div>
                         </div>
                         {!showAlbum && (
