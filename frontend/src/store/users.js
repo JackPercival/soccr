@@ -27,7 +27,20 @@ export const loadUsers = () => async dispatch => {
 }
 
 export const updateProfilePic = (payload) => async dispatch => {
-    const response = await csrfFetch('/api/users', {
+    const response = await csrfFetch('/api/users/profilepic', {
+        method: 'PUT',
+        body: JSON.stringify(payload)
+    })
+
+    if (response.ok) {
+        const updatedUser = await response.json();
+        dispatch(update(updatedUser));
+        return updatedUser;
+    }
+}
+
+export const updateBannerPic = (payload) => async dispatch => {
+    const response = await csrfFetch('/api/users/banner', {
         method: 'PUT',
         body: JSON.stringify(payload)
     })
