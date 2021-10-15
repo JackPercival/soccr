@@ -41,11 +41,11 @@ function Album({user, loggedInUser}) {
                         </div>
                     )}
                     {loggedInUser && albums.length > 0 && (
-                        <Link to="/create-album">
-                            <div className="uploadAlbumButtonContainer">
+                        <div className="uploadAlbumButtonContainer">
+                            <Link to="/create-album">
                                 <div className="uploadPhotoLink" id="uploadAlbumButton">Create New Album</div>
-                            </div>
-                        </Link>
+                            </Link>
+                        </div>
                     )}
 
                     {/* No albums case, for logged in and non logged in user */}

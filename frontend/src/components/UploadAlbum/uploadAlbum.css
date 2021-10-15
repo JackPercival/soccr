@@ -4,7 +4,7 @@
 
 .selectionContainer h1 {
     color: white;
-    font-weight: 300;
+    font-weight: 200;
 }
 
 .imagesContainer2 {
@@ -23,6 +23,10 @@
     height: 20vh;
     margin: 2px;
     border: 2px solid transparent;
+}
+
+#uploadAlbumImageContainer li img {
+    cursor: pointer;
 }
 
 #divUploadHolder li p {
