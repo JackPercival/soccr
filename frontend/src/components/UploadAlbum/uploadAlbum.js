@@ -29,7 +29,7 @@ function UploadAlbum() {
         }
     }, [isLoaded, dispatch]);
 
-    //Redirect if the image does not belong to the user
+    //Redirect if the user is not logged in
     useEffect(() => {
         if (isLoaded && !sessionUser?.id) {
             history.push('/explore')
