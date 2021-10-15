@@ -88,6 +88,19 @@ a {
     font-size: 13px;
 }
 
+#pic-info a h4:hover {
+    text-decoration: underline;
+}
+
+#pic-info h4 a {
+    color: white;
+    margin-left: 3px;
+}
+
+#pic-info h4 a:hover {
+    text-decoration: underline;
+}
+
 .main-image {
     position: absolute;
     bottom: 56px;

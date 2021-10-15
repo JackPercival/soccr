@@ -20,8 +20,15 @@ module.exports = {
       },
       {
         email: faker.internet.email(),
-        username: 'BradSimpson',
+        username: 'JuliaRose',
         hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        email: faker.internet.email(),
+        username: 'Soccer4Life',
+        hashedPassword: bcrypt.hashSync('password'),
+        profile_pic: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1634338784/soccr/manu_gilzcw.png',
+        banner_pic: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_1004/v1633734639/soccr/night_rkarsr.jpg'
       },
     ], {});
   },

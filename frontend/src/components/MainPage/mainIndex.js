@@ -13,52 +13,72 @@ function MainPage({ isLoaded }){
       1: {
         url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734639/soccr/soccerSunset_qtvwk2.jpg',
         title: "Sunset Stadium",
-        author: "Pascal Müller"
+        author: "JackPercival",
+        author_id: 2,
+        image_id: 14,
       },
       2: {
         url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734639/soccr/night_rkarsr.jpg',
         title: "Soccer at night",
-        author: "Abigail Keenan"
+        author: "Soccer4Life",
+        author_id: 4,
+        image_id: 22,
       },
       3: {
         url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734639/soccr/personPlaying_mlgfsm.jpg',
         title: "Dribble",
-        author: "Jannik Skorna"
+        author: "JackPercival",
+        author_id: 2,
+        image_id: 26,
       },
       4: {
         url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734639/soccr/goalLine_wprlza.jpg',
         title: "Goal Line",
-        author: "Nathan Rogers"
+        author: "JuliaRose",
+        author_id: 3,
+        image_id: 10,
       },
       5: {
         url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734639/soccr/groupama_gkihoy.jpg',
         title: "Groupama Stadium",
-        author: "Thomas Serer"
+        author: "JuliaRose",
+        author_id: 3,
+        image_id: 8,
       },
       6: {
         url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734638/soccr/flares_j2pqfh.jpg',
         title: "Fans with Flares",
-        author: "Alexandre Brondino"
+        author: "JackPercival",
+        author_id: 2,
+        image_id: 24,
       },
       7: {
         url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734639/soccr/freeKick_oocmzn.jpg',
         title: "Free kick",
-        author: "Omar Ram"
+        author: "Soccer4Life",
+        author_id: 4,
+        image_id: 6,
       },
       8: {
         url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734638/soccr/moreThan_s4lygy.jpg',
         title: "More than a club",
-        author: "Edgar Chaparro"
+        author: "Soccer4Life",
+        author_id: 4,
+        image_id: 19,
       },
       9: {
         url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734639/soccr/goal_ceeamz.jpg',
         title: "Goal!",
-        author: "Joshua Hoehne"
+        author: "JuliaRose",
+        author_id: 3,
+        image_id: 12,
       },
       10: {
         url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633734639/soccr/silhouette_inzqi2.jpg',
-        title: "Silhouette goalkeeper catching the ball",
-        author: "David Clarke"
+        title: "Silhouette Goalkeeper",
+        author: "Soccer4Life",
+        author_id: 4,
+        image_id: 15,
       },
 
   }
@@ -94,8 +114,12 @@ function MainPage({ isLoaded }){
                 <Link id="startFree" to="/signup">Start for free</Link>
             </div>
             <div id="pic-info">
-                <h4>{images[currentImage].title}</h4>
-                <h4>by {images[currentImage].author}</h4>
+                <Link to={`/images/${images[currentImage].image_id}`}>
+                  <h4>{images[currentImage].title}</h4>
+                </Link>
+                <h4>by
+                  <Link to={`/people/${images[currentImage].author_id}`}>{images[currentImage].author}</Link>
+                </h4>
             </div>
         </main>
         <div className="main-image" style={{backgroundImage: `url(${images[currentImage].url})`}}></div>

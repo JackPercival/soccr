@@ -34,15 +34,39 @@ module.exports = {
        user_id: 1
       },
      {
+      title: 'Santiago Bernabeu',
+      description: "House of Real Madrid. Awesome stadium, players, fans, and field!",
+      image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_1151/v1633737064/soccr/madrid_cttftd.jpg',
+      user_id: 4
+     },
+     {
+      title: 'Free kick',
+      description: "Got this photo with my pick up team at practice. I love the action captured.",
+      image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_957/v1633734639/soccr/freeKick_oocmzn.jpg',
+      user_id: 4
+     },
+     {
       title: 'Stack of balls',
       description: "The calm before practice, as all the balls are organized neatly on the field.",
       image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_734/v1633737045/soccr/ballstack_xg9h0u.jpg',
       user_id: 2
      },
      {
+      title: 'Groupama Stadium',
+      description: "Groupama Stadium during a game. Such a great atmosphere with all the fans. Love the field views.",
+      image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_1052/v1633734639/soccr/groupama_gkihoy.jpg',
+      user_id: 3
+     },
+     {
       title: "Messi",
       description: "Lionel Messi, the greatest player ever, celebrating after a final minute goal against Real Madrid. Showing his Barcelona jersey to the fans, while he stands alone on the field.",
       image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1633737875/soccr/goatjersey_ah03r9.jpg',
+      user_id: 1
+     },
+     {
+      title: "Goal Line",
+      description: "Simple shot of the goal line during a game. Green is such a good color.",
+      image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_1017/v1633734639/soccr/goalLine_wprlza.jpg',
       user_id: 3
      },
      {
@@ -52,10 +76,28 @@ module.exports = {
       user_id: 2
      },
      {
+      title: "Goal!",
+      description: "Love the colors of the ball contrasted with the white net.",
+      image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_1012/v1633734639/soccr/goal_ceeamz.jpg',
+      user_id: 3
+     },
+     {
       title: "Camp Nou",
       description: "Nothing beats a packed stadium full of fans chanting for Barcelona. Not a bad view of the field.",
       image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_1102/v1633737046/soccr/campnou_yod1kh.jpg',
+      user_id: 3
+     },
+     {
+      title: "Sunset Stadium",
+      description: "Great shot of the stadium at sunset. Beautiful view of the field too",
+      image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_1117/v1633734639/soccr/soccerSunset_qtvwk2.jpg',
       user_id: 2
+     },
+     {
+      title: "Silhouette goalkeeper",
+      description: "Captured these players just before the sun disappeared.",
+      image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_917/v1633734639/soccr/silhouette_inzqi2.jpg',
+      user_id: 4
      },
      {
       title: "Signal Iduna Park",
@@ -73,7 +115,13 @@ module.exports = {
       title: "Orange Cleat",
       description: "Simple colorful cleat",
       image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_1188/v1633737052/soccr/boot_erqo3w.jpg',
-      user_id: 2
+      user_id: 4
+     },
+     {
+      title: "More than a club",
+      description: "Cool shot of the Camp Nou stadium in Barcelona",
+      image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_997/v1633734638/soccr/moreThan_s4lygy.jpg',
+      user_id: 4
      },
      {
       title: "Corner Kick",
@@ -88,9 +136,21 @@ module.exports = {
       user_id: 2
      },
      {
+      title: "Soccer at night",
+      description: "I love night soccer. Thought this photo looked pretty cool with the lighting.",
+      image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_1004/v1633734639/soccr/night_rkarsr.jpg',
+      user_id: 4
+     },
+     {
       title: "Chang Arena",
       description: "Who knew Thailand had such cool stadiums (and great fans). Highly recommend catching a game here. Every seat offers a great view of the field. The clouds made for a beautful scene.",
       image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_1163/v1633737059/soccr/crave_bqygfz.jpg',
+      user_id: 1
+     },
+     {
+      title: "Fans with Flares",
+      description: "PSG fans lighting flares and marching to the stadium before a match.",
+      image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_899/v1633734638/soccr/flares_j2pqfh.jpg',
       user_id: 2
      },
      {
@@ -98,6 +158,12 @@ module.exports = {
       description: "Best seat in the world. I could see the grass growing on the field. The players are so much faster up close.",
       image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_1200/v1633737060/soccr/barca_xxluzb.jpg',
       user_id: 3
+     },
+     {
+      title: "Dribble",
+      description: "Love a good battle between two players to win the ball back",
+      image_url: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_1029/v1633734639/soccr/personPlaying_mlgfsm.jpg',
+      user_id: 2
      },
   ], {});
   },

@@ -16,6 +16,10 @@ module.exports = {
     {
       title: 'Stadium',
       user_id: 1
+     },
+     {
+      title: 'Soccer Ball',
+      user_id: 2
      }
   ], {});
   },
