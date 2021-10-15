@@ -91,8 +91,6 @@ function Profile() {
     const handleBannerPictureUpdate = async (e) => {
         e.preventDefault();
 
-        console.log("********************************",banner_url)
-
         const payload= {
             id: Number(userId),
             banner_pic: banner_url
@@ -113,9 +111,9 @@ function Profile() {
     }
 
     return (
-        <div className="container">
+        <div className="container" id="mainProfileContainer">
             <Header />
-            <main>
+            <main className="mainProfile">
                 {!isLoaded && (
                     <div className="loadingContainer">
                         <h3>Loading Page</h3>
@@ -129,7 +127,7 @@ function Profile() {
                                 {user?.profile_pic? (
                                     <div className="profileDetailIcon" style={{backgroundImage: `url(${user.profile_pic})`}}></div>
                                 ): (
-                                    <div className="profIcon">
+                                    <div id="defaultIcon">
                                         <i className="fas fa-user-circle" id="profileButton"/>
                                     </div>
                                 )}

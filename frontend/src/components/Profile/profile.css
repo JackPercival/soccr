@@ -1,7 +1,3 @@
-html {
-    overflow-y: scroll;
-}
-
 .banner {
     width: 100%;
     background-image: url('https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_1102/v1633737046/soccr/campnou_yod1kh.jpg');
@@ -28,10 +24,16 @@ html {
     background-color: #c9c9c9;
 }
 
-.profilePageDetails .profIcon {
+#defaultIcon {
     font-size: 140px;
-    color: black;
-    text-shadow: 0 0 1px rgb(255, 255, 255);
+}
+
+#defaultIcon i {
+    background-color: white;
+    color:black;
+    border-radius: 50%;
+    width: 135px;
+    height: 135px;
 }
 
 .userNameAndButton {
