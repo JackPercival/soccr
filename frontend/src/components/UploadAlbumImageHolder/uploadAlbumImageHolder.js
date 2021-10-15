@@ -3,12 +3,17 @@ import { useState, useEffect } from 'react';
 function UploadAlbumImageHolder({image, albumContents}) {
     const [hovered, setHovered] = useState('');
     const [border, setBorder] = useState('No');
+    const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
-        if (albumContents?.includes(image.id)) {
-            setBorder('Yes')
+        if (!isLoaded) {
+            if (albumContents?.includes(image.id)) {
+                setBorder('Yes')
+            }
+
+            setIsLoaded(true)
         }
-    }, [])
+    }, [isLoaded, albumContents, image])
 
     const toggleInfo = () => {
         if (hovered === 'imageHovered') {
