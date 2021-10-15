@@ -102,6 +102,8 @@ function UploadAlbum() {
 
     }
 
+    document.title = `Create Album | Soccr`;
+
     return (
         <div className="container">
             <Header />
@@ -139,7 +141,7 @@ function UploadAlbum() {
                             </div>
                         </div>
                         <div className="selectionContainer">
-                            <h1>Select Images to Add to Album</h1>
+                            <h1>Select Photos to Add to Album</h1>
                             <ul className="imagesContainer2" id="uploadAlbumImageContainer">
                                 {images?.map((image, index) => {
                                     if (image.id) {
