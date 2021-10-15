@@ -27,6 +27,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    banner_pic: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     hashedPassword: {
       type: DataTypes.STRING.BINARY,
       allowNull: false,

@@ -52,13 +52,26 @@ router.get('/', asyncHandler(async (req, res) => {
   return res.json(users)
 }))
 
-//Update comment
-router.put('/', asyncHandler(async (req, res) => {
+//Update profile pic
+router.put('/profilepic', asyncHandler(async (req, res) => {
   const { id, profile_pic } = req.body;
 
   const editedUser = await User.findByPk(id);
 
   editedUser.profile_pic = profile_pic;
+
+  await editedUser.save()
+
+  return res.json(editedUser)
+}))
+
+//Update banner pic
+router.put('/banner', asyncHandler(async (req, res) => {
+  const { id, banner_pic } = req.body;
+
+  const editedUser = await User.findByPk(id);
+
+  editedUser.banner_pic = banner_pic;
 
   await editedUser.save()
 

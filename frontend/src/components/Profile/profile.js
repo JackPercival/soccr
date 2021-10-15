@@ -7,7 +7,7 @@ import ImageHolder from '../ImageHolder/imageHolder';
 import Album from '../Album/album';
 
 import { getAllImages } from '../../store/images';
-import { loadUsers, updateProfilePic } from '../../store/users';
+import { loadUsers, updateProfilePic, updateBannerPic } from '../../store/users';
 import { restoreUser } from '../../store/session';
 
 import './profile.css'
@@ -23,22 +23,29 @@ function Profile() {
     const images = useSelector(state => Object.values(state.images).filter(image => image.user_id === Number(userId)));
 
     const [isLoaded, setIsLoaded] = useState(false);
-    const [profile_url, setProfileUrl] = useState('')
+    const [profile_url, setProfileUrl] = useState('');
+    const [banner_url, setBannerUrl] = useState();
 
     const [showChangePic, setShowChangePic] = useState(false)
+    const [showChangeBanner, setShowChangeBanner] = useState(false)
     const [showAlbum, setShowAlbum] = useState(false)
 
     useEffect(() => {
         dispatch(loadUsers())
-        dispatch(getAllImages()).then(() => setIsLoaded(true));
+        .then(dispatch(getAllImages()))
+        .then(() => setIsLoaded(true));
+
         return () => {
-            setIsLoaded()
+            setIsLoaded();
+
         }
     }, [dispatch]);
 
     useEffect(() => {
         if (user) {
             document.title = `${user?.username} | Soccr`;
+            setShowChangePic(false);
+            setShowChangeBanner(false);
         }
     }, [user]);
 
@@ -52,6 +59,11 @@ function Profile() {
     const handleCancel = () => {
         setShowChangePic(false);
         setProfileUrl('');
+    }
+
+    const handleBannerCancel = () => {
+        setShowChangeBanner(false);
+        setBannerUrl('');
     }
 
     const handleProfilePictureUpdate = async (e) => {
@@ -76,10 +88,32 @@ function Profile() {
         setProfileUrl('');
     }
 
+    const handleBannerPictureUpdate = async (e) => {
+        e.preventDefault();
+
+        const payload= {
+            id: Number(userId),
+            banner_pic: banner_url
+        }
+
+        const updatedBannerPic = await dispatch(updateBannerPic(payload))
+
+
+        if (!updatedBannerPic) {
+            alert("An error occured. Please refresh the page and try again.");
+        }
+
+        //This resets the icon in the header
+        dispatch(restoreUser())
+
+        setShowChangeBanner(false);
+        setBannerUrl('');
+    }
+
     return (
-        <div className="container">
+        <div className="container" id="mainProfileContainer">
             <Header />
-            <main>
+            <main className="mainProfile">
                 {!isLoaded && (
                     <div className="loadingContainer">
                         <h3>Loading Page</h3>
@@ -88,43 +122,65 @@ function Profile() {
                 )}
                 {isLoaded && (
                     <>
-                        <div className="profilePageDetails">
-                            {user?.profile_pic? (
-                                <div className="profileDetailIcon">
-                                    <img src={user.profile_pic} alt="Profile"/>
-                                </div>
-                            ): (
-                                <div className="profIcon">
-                                    <i className="fas fa-user-circle" id="profileButton"/>
-                                </div>
-                            )}
-                            <div className="userNameAndButton">
-                                <h1>{user?.username}</h1>
-                                {!showChangePic && user?.id === sessionUser?.id && (
-                                    <div className="changeProfPic" onClick={() => setShowChangePic(true)}>Change Profile Picture</div>
+                        <div className="banner" style={{backgroundImage: `url(${user?.banner_pic? user.banner_pic : 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1634328943/soccr/banner_wlerfs.jpg'})`}}>
+                            <div className="profilePageDetails">
+                                {user?.profile_pic? (
+                                    <div className="profileDetailIcon" style={{backgroundImage: `url(${user.profile_pic})`}}></div>
+                                ): (
+                                    <div id="defaultIcon">
+                                        <i className="fas fa-user-circle" id="profileButton"/>
+                                    </div>
                                 )}
-                                {showChangePic && user?.id === sessionUser?.id && (
-                                    <div className="updatePicContainer">
+                                <div className="userNameAndButton">
+                                         <h1>{user?.username}</h1>
+                                        {(!showChangePic && !showChangeBanner)  && user?.id === sessionUser?.id && (
+                                            <div className="editPhotos">
+                                                <div className="changeProfPic" onClick={() => setShowChangePic(true)}>Change Profile Picture</div>
+                                                <div className="changeProfPic" id="changeBanner" onClick={() => setShowChangeBanner(true)}>Change Banner Picture</div>
+                                            </div>
+                                        )}
+
+                                    {showChangePic && user?.id === sessionUser?.id && (
+                                        <div className="updatePicContainer">
+                                            <form className="">
+                                                <input
+                                                    className="profPicInput"
+                                                    placeholder="Add a Profile URL"
+                                                    value={profile_url}
+                                                    onChange={(e) => setProfileUrl(e.target.value)}
+                                                />
+                                                <div className="updatePicButtons">
+                                                    <button onClick={handleProfilePictureUpdate}>Update</button>
+                                                    <button type="button" id="cancelUpdate"onClick={handleCancel}>Cancel</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    )}
+                                    {showChangeBanner && user?.id === sessionUser?.id && (
+                                        <div className="updatePicContainer">
                                         <form className="">
                                             <input
                                                 className="profPicInput"
-                                                placeholder="Add a URL"
-                                                value={profile_url}
-                                                onChange={(e) => setProfileUrl(e.target.value)}
+                                                placeholder="Add a Banner URL"
+                                                value={banner_url}
+                                                onChange={(e) => setBannerUrl(e.target.value)}
                                             />
                                             <div className="updatePicButtons">
-                                                <button onClick={handleProfilePictureUpdate}>Update</button>
-                                                <button type="button" id="cancelUpdate"onClick={handleCancel}>Cancel</button>
+                                                <button onClick={handleBannerPictureUpdate}>Update</button>
+                                                <button type="button" id="cancelUpdate"onClick={handleBannerCancel}>Cancel</button>
                                             </div>
                                         </form>
                                     </div>
-                                )}
+                                    )}
+                                </div>
                             </div>
                         </div>
-                        <div className="navHeader">
-                            <div className="exploreHeader profileNav">
-                                <h3 id={!showAlbum? 'keepUnderline' : null} onClick={() => setShowAlbum(false)}>Photostream</h3>
-                                <h3 id={showAlbum? 'keepUnderline' : null} onClick={() => setShowAlbum(true)}>Albums</h3>
+                        <div className="navHeaderContainer">
+                            <div className="navHeader">
+                                <div className="exploreHeader profileNav">
+                                    <h3 id={!showAlbum? 'keepUnderline' : null} onClick={() => setShowAlbum(false)}>Photostream</h3>
+                                    <h3 id={showAlbum? 'keepUnderline' : null} onClick={() => setShowAlbum(true)}>Albums</h3>
+                                </div>
                             </div>
                         </div>
                         {!showAlbum && (

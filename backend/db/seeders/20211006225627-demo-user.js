@@ -15,7 +15,8 @@ module.exports = {
         email: faker.internet.email(),
         username: 'JackPercival',
         hashedPassword: bcrypt.hashSync('password'),
-        profile_pic: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1634139516/soccr/barcabadge_bzcfgk.png'
+        profile_pic: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/v1634139516/soccr/barcabadge_bzcfgk.png',
+        banner_pic: 'https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_1102/v1633737046/soccr/campnou_yod1kh.jpg'
       },
       {
         email: faker.internet.email(),

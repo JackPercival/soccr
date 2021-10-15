@@ -93,19 +93,15 @@ function EditableComment({comment, sessionUser}) {
                         (() => {
                             if (comment.User?.profile_pic) {
                                 return (
-                                    <div className="customCommentIcon">
-                                        <Link to={`/people/${comment.user_id}`}>
-                                            <img src={sessionUser.profile_pic} alt=""/>
-                                        </Link>
-                                    </div>
+                                    <Link to={`/people/${comment.user_id}`}>
+                                        <div className="customCommentIcon" style={{backgroundImage: `url(${comment.User.profile_pic})`}}></div>
+                                    </Link>
                                 )
                             } else if (comment.user_id === sessionUser.id && sessionUser.profile_pic) {
                                 return (
-                                    <div className="customCommentIcon">
-                                        <Link to={`/people/${comment.user_id}`}>
-                                            <img src={sessionUser.profile_pic} alt=""/>
-                                        </Link>
-                                    </div>
+                                    <Link to={`/people/${comment.user_id}`}>
+                                        <div className="customCommentIcon" style={{backgroundImage: `url(${sessionUser.profile_pic})`}}></div>
+                                    </Link>
                                 )
                             } else {
                                 return (

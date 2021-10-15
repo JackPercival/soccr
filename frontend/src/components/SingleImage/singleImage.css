@@ -130,11 +130,16 @@
     display: flex;
 }
 
-.customIcon img {
+.customIcon {
     width: 60px;
     height: 60px;
-    border-radius: 50%;
+    cursor: pointer;
     margin-right: 15px;
+    box-shadow: 0 0 5px #898989;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-color: #c9c9c9;
 }
 
 .profIcon {

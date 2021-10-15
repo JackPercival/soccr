@@ -97,9 +97,7 @@ function ProfileButton({ user }) {
   return (
     <>
       {user.profile_pic? (
-        <div onClick={openMenu} className="customProf">
-          <img src={user.profile_pic} alt="Profile Icon"/>
-        </div>
+        <div onClick={openMenu} className="customProf" style={{backgroundImage: `url(${user.profile_pic})`}}></div>
       ) : (
         <div onClick={openMenu} id="profButtonDiv">
           <i className="fas fa-user-circle" id="profileButton"/>

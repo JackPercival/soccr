@@ -76,11 +76,9 @@ function Comments({image}) {
                             <div key={`${comment.id} ${index}`} className="singleCommentContainer">
                                 <div className="commentDetails">
                                     {comment.User?.profile_pic? (
-                                        <div className="customCommentIcon">
-                                            <Link to={`/people/${comment.user_id}`}>
-                                                <img src={comment.User.profile_pic} alt=""/>
-                                            </Link>
-                                        </div>
+                                        <Link to={`/people/${comment.user_id}`}>
+                                            <div className="customCommentIcon" style={{backgroundImage: `url(${comment.User.profile_pic})`}}></div>
+                                        </Link>
                                     ):
                                     (
                                         <div className="commentProfIcon">
@@ -101,9 +99,7 @@ function Comments({image}) {
                         <div className="singleCommentContainer addCommentContainer">
                                 <div className="commentDetails">
                                     {sessionUser.profile_pic? (
-                                        <div className="customCommentIcon" id="addCommentProfIcon">
-                                            <img src={sessionUser.profile_pic} alt=""/>
-                                        </div>
+                                        <div className="customCommentIcon" id="addCommentCustomIcon" style={{backgroundImage: `url(${sessionUser.profile_pic})`}}></div>
                                     ):
                                     (
                                         <div className="commentProfIcon" id="addCommentProfIcon">
