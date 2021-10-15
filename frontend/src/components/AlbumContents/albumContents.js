@@ -60,7 +60,7 @@ function AlbumContents() {
             <main className="mainSingleImage">
                 <div className="exploreHeader" id="albumHeader">
                     <h1>{album?.title}</h1>
-                    {isLoaded && album?.user_id === sessionUser.id && (
+                    {isLoaded && album?.user_id === sessionUser?.id && (
                         <div className="editAlbumOnAlbumPageButtons">
                             <Link to={`/albums/${album.id}/edit`}>
                                 <div

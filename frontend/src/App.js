@@ -11,6 +11,7 @@ import EditImage from "./components/EditImage/editImage";
 import Profile from "./components/Profile/profile";
 import AlbumContents from "./components/AlbumContents/albumContents";
 import UploadAlbum from "./components/UploadAlbum/uploadAlbum";
+import EditAlbum from "./components/EditAlbum/editAlbum";
 import SearchResults from "./components/search/search";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import * as sessionActions from "./store/session";
@@ -56,6 +57,9 @@ function App() {
           </Route>
           <Route exact path="/create-album">
             <UploadAlbum />
+          </Route>
+          <Route exact path="/albums/:albumId/edit">
+            <EditAlbum />
           </Route>
           <Route exact path="/search/:searchParameters">
             <SearchResults />
