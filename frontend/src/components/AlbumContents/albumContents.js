@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { loadAlbumContents } from '../../store/albumContents';
 import { loadAlbums, deleteSingleAlbum,  } from '../../store/albums';
+import { getAllImages } from '../../store/images';
 
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
@@ -25,6 +26,7 @@ function AlbumContents() {
     const [showDelete, setShowDelete] = useState(false);
 
     useEffect(() => {
+        dispatch(getAllImages())
         dispatch(loadAlbums())
         dispatch(loadAlbumContents()).then(() => setIsLoaded(true));
 

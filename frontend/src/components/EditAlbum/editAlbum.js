@@ -7,8 +7,8 @@ import { useEffect, useState } from 'react';
 import { useHistory, useParams, Link } from 'react-router-dom';
 
 import { getAllImages } from '../../store/images';
-import { addNewAlbum, loadAlbums } from '../../store/albums';
-import { addNewAlbumContent, loadAlbumContents } from '../../store/albumContents';
+import { updateAlbum, loadAlbums } from '../../store/albums';
+import { addNewAlbumContent, loadAlbumContents, deleteRow } from '../../store/albumContents';
 
 import './editAlbum.css'
 
@@ -21,9 +21,9 @@ function EditAlbum() {
     const images = useSelector(state => Object.values(state.images));
     const sessionUser = useSelector(state => state.session.user);
     const album = useSelector(state => state.albums[albumId]);
-    console.log(album)
-    const albumContents = useSelector(state => Object.values(state.albumContents).filter(contents => contents.album_id === album.id).map(content => content.image_id));
-    console.log("********",albumContents);
+
+    //Extract the album contents of the single album
+    let albumContents = useSelector(state => Object.values(state.albumContents).filter(contents => contents?.album_id === album?.id))
 
     const [isLoaded, setIsLoaded] = useState(false);
     const [title, setTitle] = useState('');
@@ -31,19 +31,19 @@ function EditAlbum() {
     const [errors, setErrors] = useState([]);
 
     useEffect(() => {
-        if (!isLoaded) {
             dispatch(loadAlbums())
+            dispatch(getAllImages())
             dispatch(loadAlbumContents())
-            dispatch(getAllImages()).then(() => setIsLoaded(true));
-        }
+            .then(() => setIsLoaded(true))
     }, [isLoaded, dispatch]);
 
     useEffect(() => {
-        setTitle(album?.title)
+        setTitle(album?.title);
 
         return () => {
             setTitle();
         }
+
     }, [album?.title])
 
     //Redirect if the album does not belong to the user
@@ -66,57 +66,111 @@ function EditAlbum() {
         setSelectedImages(currentImages);
     }
 
-    //Check for no images and title length
-    //Then dispatch to create the album and return the album id
-    //Then for each image in the set, dispatch to create a row in album_contents
-    //Then redirect to the new album
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const checkErrors = (albumContentImages) => {
         const errors = [];
 
-        if (selectedImages.size === 0) {
+        //Check if Nothing is selected, by comparing the preSelected images to the currently selected images
+        //If they are the same, that means the user clicked on each image to deselect it (thus adding it to the selectedImages set)
+        //If they clicked on all preSelected images (to deselect all of them) AND did not select any new images, that would mean the
+        //two arrays are of equal values, meaning nothing was actually visibly selected, so we should throw an error
+        const array1 = [...selectedImages].sort()
+        const array2 = [...albumContentImages].sort()
+        const equalArrays = JSON.stringify(array1) === JSON.stringify(array2);
+
+        if ((selectedImages.size === 0 && albumContents.length === 0) || equalArrays) {
             errors.push("You must select at least 1 image.")
         }
         if (title.length === 0 || title.length > 30) {
             errors.push("Title must be between 1 and 30 characters.")
         }
 
+        return errors;
+    }
+
+    const editAlbum = async () => {
+        const payload = {
+            id: album.id,
+            title,
+        }
+
+        const changedAlbum = await dispatch(updateAlbum(payload));
+        return changedAlbum;
+    }
+
+    const handledAlbumContentEdits = async (albumContentImages) => {
+        let redirect = true;
+
+            for (const image of selectedImages) {
+
+                //If the original preselected images are in this list, that means the user want to delete them
+                if (albumContentImages.includes(image)) {
+                    //Delete it
+                    //Find the correct rowId
+                    let rowId = albumContents.filter(row => row.image_id === image).map(row => row.id)[0];
+
+                    const payload = {
+                        id: rowId
+                    }
+
+                    const deletedRow = await dispatch(deleteRow(payload));
+
+                    if (!deletedRow) {
+                        alert("An error occured. Refresh the page and try again.");
+                        redirect = false;
+                        break;
+                    }
+
+                // Else these are new images that we want to add
+                } else {
+
+                    const payload = {
+                        album_id: album.id,
+                        image_id: image
+                    }
+
+                    const newRow = await dispatch(addNewAlbumContent(payload));
+
+                    if (!newRow) {
+                        alert("An error occured. Refresh the page and try again.");
+                        redirect = false;
+                        break;
+                    }
+                }
+
+            }
+        return redirect;
+    }
+
+    //I could not figure out how to add the already selected images into the
+    //selectedImages state, so I have to do some weird stuff on submit
+
+    //The SelectedImages now includes images that need to be added and deleted
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        //Extract just the image Ids
+        const albumContentImages = albumContents.map(row => row.image_id)
+
+        const errors = checkErrors(albumContentImages);
+
         if (errors.length) {
             setErrors(errors)
             return;
         }
 
-        const payload = {
-            title,
-            user_id: sessionUser.id
-        }
+        //Update the Album Title
+        const editSuccess = editAlbum();
 
-        const newAlbum = await dispatch(addNewAlbum(payload));
+        //If editing the album title worked, edit the AlbumContents
+        if (editSuccess) {
 
-        if (newAlbum) {
-            let redirect = true;
+            const redirect = await handledAlbumContentEdits(albumContentImages);
 
-            for (const image of selectedImages) {
-
-                const payload = {
-                    album_id: newAlbum.id,
-                    image_id: image
-                }
-
-                const newRow = await dispatch(addNewAlbumContent(payload));
-
-                if (!newRow) {
-                    alert("An error occured. Refresh the page and try again.");
-                    redirect = false;
-                    break;
-                }
-            }
-
+            // Redirect to album if it all works
             if (redirect) {
-                history.push(`/albums/${newAlbum.id}`)
+                history.push(`/albums/${album.id}`)
             }
         }
-
     }
 
     document.title = `Edit Album | Soccr`;
@@ -137,7 +191,7 @@ function EditAlbum() {
                     </div>
                     <div className="imageEditorContainer">
                         <div className="imageEditFormContainer">
-                            <h3>Creating 1 Album:</h3>
+                            <h3>Editing 1 Album:</h3>
                             <ul>
                                 {errors.map(error => <li className="loginError" key={error}>{error}</li>)}
                             </ul>
@@ -149,11 +203,11 @@ function EditAlbum() {
                                         type="text"
                                         required
                                         autoComplete="off"
-                                        value={title}
+                                        value={(isLoaded? title : album?.title)}
                                         onChange={(e) => setTitle(e.target.value)}
                                         />
                                     </div>
-                                    <button className="uploadImage" type="submit">Create Album</button>
+                                    <button className="uploadImage" type="submit">Edit Album</button>
                                 </form>
                             </div>
                         </div>
@@ -164,7 +218,8 @@ function EditAlbum() {
                                     if (image.id) {
                                         return (
                                                 <div className="divUploadHolder" key={image.id} onClick={() => toggleSelectedImages(image.id)}>
-                                                    <UploadAlbumImageHolder image={image} albumContents={albumContents}/>
+                                                    {/* Pass  all the images in the albumContents to determine if the image should be pre-bordered or not */}
+                                                    <UploadAlbumImageHolder image={image} albumContents={albumContents.map(content => content?.image_id)}/>
                                                 </div>
                                             )
                                     } else {

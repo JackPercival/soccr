@@ -34,6 +34,19 @@ router.post('/', validateAlbum, asyncHandler(async (req, res) => {
   return res.json(album)
 }))
 
+//Update album
+router.put('/', validateAlbum, asyncHandler(async (req, res) => {
+  const { id, title } = req.body;
+
+  const editedAlbum = await Album.findByPk(id);
+
+  editedAlbum.title = title;
+
+  await editedAlbum.save()
+
+  return res.json(editedAlbum)
+}))
+
 //Delete an album
 router.delete('/', asyncHandler(async (req, res) => {
   const {albumId} = req.body;

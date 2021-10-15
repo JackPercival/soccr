@@ -26,6 +26,20 @@ router.post('/', asyncHandler(async (req, res) => {
     });
 
     return res.json(content)
-  }))
+}))
+
+//Delete a row
+router.delete('/', asyncHandler(async (req, res) => {
+    const { id } = req.body;
+
+    const findRow = await AlbumContent.findByPk(id)
+
+    if (findRow) {
+        await findRow.destroy();
+        res.status(204).end();
+    } else {
+        next();
+    }
+}))
 
 module.exports = router;
