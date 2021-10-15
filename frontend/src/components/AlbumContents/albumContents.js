@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { loadAlbumContents } from '../../store/albumContents';
 import { loadAlbums, deleteSingleAlbum,  } from '../../store/albums';
-import { getAllImages } from '../../store/images';
 
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
@@ -26,7 +25,6 @@ function AlbumContents() {
     const [showDelete, setShowDelete] = useState(false);
 
     useEffect(() => {
-        dispatch(getAllImages())
         dispatch(loadAlbums())
         dispatch(loadAlbumContents()).then(() => setIsLoaded(true));
 
@@ -61,7 +59,7 @@ function AlbumContents() {
             <Header />
             <main className="mainSingleImage">
                 <div className="exploreHeader" id="albumHeader">
-                    <h1>{album?.title}</h1>
+                    <h1>{`Album: ${album?.title}`}</h1>
                     {isLoaded && album?.user_id === sessionUser?.id && (
                         <div className="editAlbumOnAlbumPageButtons">
                             <Link to={`/albums/${album.id}/edit`}>
