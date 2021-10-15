@@ -1,122 +1,132 @@
 .commentsContainer {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .singleCommentContainer {
-    padding: 7px;
-    margin: 0 0 0 27px;
-    position: relative;
+  padding: 7px;
+  margin: 0 0 0 27px;
+  position: relative;
 }
 
 .singleCommentContainer:hover {
-    background-color: rgb(247, 247, 247);
+  background-color: rgb(247, 247, 247);
 }
 
 .commentDetails {
-    display: flex;
+  display: flex;
+  width: fit-content;
 }
 
-.customCommentIcon img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+.customCommentIcon {
+  width: 30px;
+  height: 30px;
+  box-shadow: 0 0 5px #898989;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-color: #c9c9c9;
+  z-index: 5;
 }
 
 .commentProfIcon {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .commentProfIcon a {
-    color: inherit;
+  color: inherit;
 }
 
 .commentUsername {
-    color: #006DAC;
-    height: fit-content;
+  color: #006dac;
+  height: fit-content;
 }
 
 .commentUsername:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .commentDetails h4 {
-    margin: 4px 0 0 10px;
-    padding: 0;
-    font-weight: 600;
-    font-size: 14px;
+  margin: 4px 0 0 10px;
+  padding: 0;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 .singleCommentContainer p {
-    font-size: 14px;
-    font-weight: 400;
-    margin: 0 0 0 40px;
-    overflow-wrap: break-word;
-    width: 438px;
-    position: relative;
-    top: -10px;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0 0 0 40px;
+  overflow-wrap: break-word;
+  width: 438px;
+  position: relative;
+  top: -10px;
 }
 
 .addCommentContainer {
-    height: 127px;
+  height: 127px;
 }
 
 .addCommentProfIcon {
-    position: relative;
-    top: -34px;
+  position: relative;
+  top: -34px;
+}
+
+#addCommentCustomIcon {
+    margin-top: 30px;
 }
 
 .addCommentContainer:hover {
-    background-color: white;
+  background-color: white;
 }
 
 .commentField {
-    resize: none;
-    width: 426px;
-    box-sizing: border-box;
-    height: 90px;
-    margin-left: 10px;
-    font-family: helvetica,arial,sans-serif;
-    padding: 10px;
-    border-radius: 3px;
-    border: 1px solid rgb(197, 197, 197);
+  resize: none;
+  width: 426px;
+  box-sizing: border-box;
+  height: 90px;
+  margin-left: 10px;
+  font-family: helvetica, arial, sans-serif;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid rgb(197, 197, 197);
 }
 
 .commentField:focus {
-    outline: none;
-    border: 1px solid rgb(159, 177, 255);
+  outline: none;
+  border: 1px solid rgb(159, 177, 255);
 }
 
 #addCommentProfIcon {
-    position: relative;
-    top: 20px;
+  position: relative;
+  top: 20px;
 }
 
 .addCommentForm {
-    position: relative;
+  position: relative;
 }
 
 .commentButton {
-    position: absolute;
-    right: 0px;
-    bottom: -38px;
-    font-family: helvetica,arial,sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    background-color: #128FDC;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
+  position: absolute;
+  right: 0px;
+  bottom: -38px;
+  font-family: helvetica, arial, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  background-color: #128fdc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
 }
 
 .commentButton:hover {
-    background-color: #319bdd;
-    cursor: pointer;
-    transition: all .2s ease-in-out;
+  background-color: #319bdd;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 .newCommentError {
-    font-size: 12px;
-    list-style-type:none;
-    width: fit-content;
+  font-size: 12px;
+  list-style-type: none;
+  width: fit-content;
 }

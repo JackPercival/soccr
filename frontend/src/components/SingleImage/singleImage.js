@@ -102,11 +102,9 @@ function SingleImage() {
                     <div className="imageDetailsContainer">
                         <div className="imageDetails">
                             {image?.User.profile_pic? (
-                                <div className="customIcon">
-                                    <Link to={`/people/${image?.user_id}`}>
-                                        <img src={image?.User.profile_pic} alt=""/>
-                                    </Link>
-                                </div>
+                                <Link to={`/people/${image?.user_id}`}>
+                                    <div className="customIcon" style={{backgroundImage: `url(${image?.User.profile_pic})`}}></div>
+                                </Link>
                             ): (
                                 <div className="profIcon">
                                     <Link to={`/people/${image?.user_id}`}>
