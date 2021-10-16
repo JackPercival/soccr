@@ -72,12 +72,12 @@
 
 #deleteAlbum:hover {
     color: #e0585a;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 #editAlbum:hover {
     color:#59a7d8;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .deleteAlbumConfirm {
