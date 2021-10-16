@@ -4,7 +4,6 @@ import Footer from '../Footer/footer';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import LoginFormPage from '../LoginFormPage/login';
 
 import { addNewImage } from '../../store/images';
 
