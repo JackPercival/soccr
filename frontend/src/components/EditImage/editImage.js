@@ -80,7 +80,7 @@ function EditImage() {
             { isLoaded && (
                 <>
                     <div className="addButtonContainer">
-                        <Link to='/explore'>
+                        <Link to={`/images/${image?.id}`}>
                             <div className="addButton">
                                 <i className="fas fa-ban"></i>
                                 <h4 className="addNewImageH4">Cancel Edit</h4>
