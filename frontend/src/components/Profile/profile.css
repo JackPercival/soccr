@@ -40,6 +40,8 @@
     margin-left: 20px;
     position: relative;
     margin-top: 30px;
+    display: flex;
+    align-items: center;
 }
 
 .userNameAndButton h1 {
@@ -50,6 +52,45 @@
     text-shadow: 0 0 10px #000;
 }
 
+.showEditOptions {
+    margin-left: 20px;
+    width: 39px;
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 3px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color .2s linear;
+}
+
+.dotHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dot {
+    width: 5px;
+    height: 5px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 1px #000;
+    margin: 1px;
+    transition: background-color .2s linear;
+}
+
+.showEditOptions:hover {
+    background-color: white;
+    transition: all .2s linear;
+}
+
+.showEditOptions:hover .dotHolder .dot {
+    background-color: black;
+    transition: all .2s linear;
+}
 
 .changeProfPic {
     background-color: #128FDC;

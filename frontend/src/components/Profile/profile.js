@@ -26,6 +26,7 @@ function Profile() {
     const [profile_url, setProfileUrl] = useState('');
     const [banner_url, setBannerUrl] = useState();
 
+    const [showEditButtons, setShowEditButtons] = useState(false)
     const [showChangePic, setShowChangePic] = useState(false)
     const [showChangeBanner, setShowChangeBanner] = useState(false)
     const [showAlbum, setShowAlbum] = useState(false)
@@ -132,48 +133,62 @@ function Profile() {
                                     </div>
                                 )}
                                 <div className="userNameAndButton">
-                                         <h1>{user?.username}</h1>
-                                        {(!showChangePic && !showChangeBanner)  && user?.id === sessionUser?.id && (
-                                            <div className="editPhotos">
-                                                <div className="changeProfPic" onClick={() => setShowChangePic(true)}>Change Profile Picture</div>
-                                                <div className="changeProfPic" id="changeBanner" onClick={() => setShowChangeBanner(true)}>Change Banner Picture</div>
+                                    <h1>{user?.username}</h1>
+                                    {!showEditButtons && user?.id === sessionUser?.id && (
+                                        <div className="showEditOptions" onClick={() => setShowEditButtons(true)}>
+                                            <div className="dotHolder">
+                                                <div className="dot"></div>
+                                                <div className="dot"></div>
+                                                <div className="dot"></div>
                                             </div>
-                                        )}
-
-                                    {showChangePic && user?.id === sessionUser?.id && (
-                                        <div className="updatePicContainer">
-                                            <form className="">
-                                                <input
-                                                    className="profPicInput"
-                                                    placeholder="Add a Profile URL"
-                                                    value={profile_url}
-                                                    onChange={(e) => setProfileUrl(e.target.value)}
-                                                />
-                                                <div className="updatePicButtons">
-                                                    <button onClick={handleProfilePictureUpdate}>Update</button>
-                                                    <button type="button" id="cancelUpdate"onClick={handleCancel}>Cancel</button>
-                                                </div>
-                                            </form>
                                         </div>
-                                    )}
-                                    {showChangeBanner && user?.id === sessionUser?.id && (
-                                        <div className="updatePicContainer">
-                                        <form className="">
-                                            <input
-                                                className="profPicInput"
-                                                placeholder="Add a Banner URL"
-                                                value={banner_url}
-                                                onChange={(e) => setBannerUrl(e.target.value)}
-                                            />
-                                            <div className="updatePicButtons">
-                                                <button onClick={handleBannerPictureUpdate}>Update</button>
-                                                <button type="button" id="cancelUpdate"onClick={handleBannerCancel}>Cancel</button>
-                                            </div>
-                                        </form>
-                                    </div>
                                     )}
                                 </div>
                             </div>
+
+                        {showEditButtons && (
+                            <>
+                                {(!showChangePic && !showChangeBanner) && (
+                                    <div className="editPhotos">
+                                        <div className="changeProfPic" onClick={() => setShowChangePic(true)}>Change Profile Picture</div>
+                                        <div className="changeProfPic" id="changeBanner" onClick={() => setShowChangeBanner(true)}>Change Banner Picture</div>
+                                        <div onClick={() => setShowEditButtons(false)}>Close</div>
+                                    </div>
+                                )}
+                            </>
+                        )}
+                            {showChangePic && (
+                                <div className="updatePicContainer">
+                                    <form className="">
+                                        <input
+                                            className="profPicInput"
+                                            placeholder="Add a Profile URL"
+                                            value={profile_url}
+                                            onChange={(e) => setProfileUrl(e.target.value)}
+                                        />
+                                        <div className="updatePicButtons">
+                                            <button onClick={handleProfilePictureUpdate}>Update</button>
+                                            <button type="button" id="cancelUpdate"onClick={handleCancel}>Cancel</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            )}
+                            {showChangeBanner && (
+                                <div className="updatePicContainer">
+                                <form className="">
+                                    <input
+                                        className="profPicInput"
+                                        placeholder="Add a Banner URL"
+                                        value={banner_url}
+                                        onChange={(e) => setBannerUrl(e.target.value)}
+                                    />
+                                    <div className="updatePicButtons">
+                                        <button onClick={handleBannerPictureUpdate}>Update</button>
+                                        <button type="button" id="cancelUpdate"onClick={handleBannerCancel}>Cancel</button>
+                                    </div>
+                                </form>
+                                </div>
+                            )}
                         </div>
                         <div className="navHeaderContainer">
                             <div className="navHeader">
