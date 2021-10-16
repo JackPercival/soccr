@@ -39,10 +39,23 @@
   transition: all 0.2s linear;
 }
 
+.triangle {
+  width: 15px;
+  height: 15px;
+  transform: rotate(45deg);
+  background-color: white;
+  border-top: .5px solid #dddddd;
+  border-left: .5px solid #dddddd;
+  position: absolute;
+  top: -8px;
+  left: 14px;
+  z-index: 10;
+}
+
 .editPhotos {
   position: absolute;
-  top: 50px;
-  left: -30px;
+  top: 55px;
+  right: -130px;
   background-color: white;
   box-shadow: 0 0 5px #898989;
   border-radius: 3px;

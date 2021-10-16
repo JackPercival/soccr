@@ -93,13 +93,14 @@ function EditProfPic({user}) {
             {showEditButtons && (
             <>
                 <div className="editPhotos">
+                    <div className="triangle"></div>
                     <div className="changeProfPic" onClick={() => setShowChangePic(!showChangePic)}>Edit Profile Picture</div>
                     {showChangePic && (
                         <div className="updatePicContainer">
                             <form className="">
                                 <input
                                     className="profPicInput"
-                                    placeholder="Add a Profile URL"
+                                    placeholder="Add Profile URL"
                                     value={profile_url}
                                     onChange={(e) => setProfileUrl(e.target.value)}
                                 />
@@ -116,7 +117,7 @@ function EditProfPic({user}) {
                             <form className="">
                                 <input
                                     className="profPicInput"
-                                    placeholder="Add a Cover Photo URL"
+                                    placeholder="Add Cover Photo URL"
                                     value={banner_url}
                                     onChange={(e) => setBannerUrl(e.target.value)}
                                 />
