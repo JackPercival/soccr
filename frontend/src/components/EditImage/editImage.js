@@ -61,17 +61,17 @@ function EditImage() {
              });
 
         if (updatedImg) {
-            history.push(`/images/${imageId}`)
+            history.push(`/images/${image.id}`)
         }
 
     }
 
     //Redirect if the image does not belong to the user
     useEffect(() => {
-        if (isLoaded && image?.User?.id !== sessionUser?.id) {
+        if (isLoaded && image?.user_id !== sessionUser?.id) {
             history.push('/explore')
         }
-    })
+    },)
 
     return (
         <div className="container">
