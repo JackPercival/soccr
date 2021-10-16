@@ -1,0 +1,126 @@
+.showEditOptions {
+  margin-left: 20px;
+  width: 39px;
+  height: 30px;
+  border: 2px solid white;
+  border-radius: 3px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s linear;
+  position: relative;
+}
+
+.dotHolder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 0 1px #000;
+  margin: 1px;
+  transition: background-color 0.2s linear;
+}
+
+.showEditOptions:hover {
+  background-color: white;
+  transition: all 0.2s linear;
+}
+
+.showEditOptions:hover .dotHolder .dot {
+  background-color: black;
+  transition: all 0.2s linear;
+}
+
+.editPhotos {
+  position: absolute;
+  top: 50px;
+  left: -30px;
+  background-color: white;
+  box-shadow: 0 0 5px #898989;
+  border-radius: 3px;
+  font-family: helvetica, arial, sans-serif;
+  padding: 10px 0;
+  z-index: 99;
+  width: 174px;
+}
+
+.changeProfPic {
+  width: 144px;
+  height: 16px;
+  padding: 5px 15px;
+  font-size: 14px;
+  font-weight: 500;
+  user-select: none;
+}
+
+.changeProfPic:hover {
+  background-color: rgb(235, 235, 235);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.profPicInput {
+  border-radius: 3px;
+  width: 140px;
+  border: 1px solid rgb(197, 197, 197);
+  padding: 2px;
+  user-select: none;
+}
+
+.profPicInput:focus {
+  outline: none;
+  border: 1px solid rgb(159, 177, 255);
+}
+
+.updatePicContainer {
+  position: relative;
+  border-bottom: 1px solid rgb(201, 201, 201);
+  margin: 0 15px;
+  margin-top: 3px;
+  padding-bottom: 5px;
+}
+
+.updatePicButtons {
+  margin-top: 4px;
+  user-select: none;
+}
+
+.updatePicButtons button {
+  margin-right: 4px;
+  user-select: none;
+}
+
+.updatePicButtons button {
+  background-color: #128fdc;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  width: fit-content;
+  border: none;
+}
+
+.updatePicButtons button:hover {
+  background-color: #54a7db;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+#cancelUpdate {
+  background-color: #e2292c;
+  user-select: none;
+}
+
+#cancelUpdate:hover {
+  background-color: #fa6e71;
+  cursor: pointer;
+  transition: background-color 0.25s 0s;
+}

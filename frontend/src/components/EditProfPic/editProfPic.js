@@ -2,15 +2,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { loadUsers, updateProfilePic, updateBannerPic } from '../../store/users';
 import { restoreUser } from '../../store/session';
+import './editProfPic.css'
 
 function EditProfPic({user}) {
     const dispatch = useDispatch();
     const [profile_url, setProfileUrl] = useState('');
     const [banner_url, setBannerUrl] = useState();
 
-    const [showEditButtons, setShowEditButtons] = useState(false)
-    const [showChangePic, setShowChangePic] = useState(false)
-    const [showChangeBanner, setShowChangeBanner] = useState(false)
+    const [showEditButtons, setShowEditButtons] = useState(false);
+    const [showChangePic, setShowChangePic] = useState(false);
+    const [showChangeBanner, setShowChangeBanner] = useState(false);
 
     const handleCancel = () => {
         setShowChangePic(false);
@@ -66,60 +67,73 @@ function EditProfPic({user}) {
         setBannerUrl('');
     }
 
+    const handleEditClose = () => {
+        if (showEditButtons) {
+            setShowEditButtons(false);
+            setShowChangePic(false);
+            setShowChangeBanner(false);
+            setProfileUrl('');
+            setBannerUrl('');
+        } else {
+            setShowEditButtons(true);
+        }
+    }
+
     return (
         <>
-            <div className="showEditOptions" onClick={() => setShowEditButtons(true)}>
-                <div className="dotHolder">
-                    <div className="dot"></div>
-                    <div className="dot"></div>
-                    <div className="dot"></div>
+            <div>
+                <div className="showEditOptions" onClick={handleEditClose}>
+                    <div className="dotHolder">
+                        <div className="dot"></div>
+                        <div className="dot"></div>
+                        <div className="dot"></div>
+                    </div>
                 </div>
-            </div>
 
             {showEditButtons && (
-                <>
-                    {(!showChangePic && !showChangeBanner) && (
-                        <div className="editPhotos">
-                            <div className="changeProfPic" onClick={() => setShowChangePic(true)}>Change Profile Picture</div>
-                            <div className="changeProfPic" id="changeBanner" onClick={() => setShowChangeBanner(true)}>Change Banner Picture</div>
-                            <div onClick={() => setShowEditButtons(false)}>Close</div>
+            <>
+                <div className="editPhotos">
+                    <div className="changeProfPic" onClick={() => setShowChangePic(!showChangePic)}>Edit Profile Picture</div>
+                    {showChangePic && (
+                        <div className="updatePicContainer">
+                            <form className="">
+                                <input
+                                    className="profPicInput"
+                                    placeholder="Add a Profile URL"
+                                    value={profile_url}
+                                    onChange={(e) => setProfileUrl(e.target.value)}
+                                />
+                                <div className="updatePicButtons">
+                                    <button onClick={handleProfilePictureUpdate}>Update</button>
+                                    <button type="button" id="cancelUpdate"onClick={handleCancel}>Cancel</button>
+                                </div>
+                            </form>
                         </div>
                     )}
-                </>
-            )}
-
-            {showChangePic && (
-                <div className="updatePicContainer">
-                    <form className="">
-                        <input
-                            className="profPicInput"
-                            placeholder="Add a Profile URL"
-                            value={profile_url}
-                            onChange={(e) => setProfileUrl(e.target.value)}
-                        />
-                        <div className="updatePicButtons">
-                            <button onClick={handleProfilePictureUpdate}>Update</button>
-                            <button type="button" id="cancelUpdate"onClick={handleCancel}>Cancel</button>
+                    <div className="changeProfPic" id="changeBanner" onClick={() => setShowChangeBanner(true)}>Edit Cover Photo</div>
+                    {showChangeBanner && (
+                        <div className="updatePicContainer">
+                            <form className="">
+                                <input
+                                    className="profPicInput"
+                                    placeholder="Add a Cover Photo URL"
+                                    value={banner_url}
+                                    onChange={(e) => setBannerUrl(e.target.value)}
+                                />
+                                <div className="updatePicButtons">
+                                    <button onClick={handleBannerPictureUpdate}>Update</button>
+                                    <button type="button" id="cancelUpdate"onClick={handleBannerCancel}>Cancel</button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    )}
+                    <div className="changeProfPic" onClick={handleEditClose}>Close</div>
+                    {/* <div onClick={() => setShowEditButtons(false)}>Close</div> */}
                 </div>
+
+            </>
             )}
-            {showChangeBanner && (
-                <div className="updatePicContainer">
-                <form className="">
-                    <input
-                        className="profPicInput"
-                        placeholder="Add a Banner URL"
-                        value={banner_url}
-                        onChange={(e) => setBannerUrl(e.target.value)}
-                    />
-                    <div className="updatePicButtons">
-                        <button onClick={handleBannerPictureUpdate}>Update</button>
-                        <button type="button" id="cancelUpdate"onClick={handleBannerCancel}>Cancel</button>
-                    </div>
-                </form>
-                </div>
-            )}
+            </div>
         </>
     )
 
