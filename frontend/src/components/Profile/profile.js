@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
+import EditProfPic from '../EditProfPic/editProfPic';
 import ImageHolder from '../ImageHolder/imageHolder';
 import Album from '../Album/album';
 
@@ -23,12 +24,12 @@ function Profile() {
     const images = useSelector(state => Object.values(state.images).filter(image => image.user_id === Number(userId)));
 
     const [isLoaded, setIsLoaded] = useState(false);
-    const [profile_url, setProfileUrl] = useState('');
-    const [banner_url, setBannerUrl] = useState();
+    // const [profile_url, setProfileUrl] = useState('');
+    // const [banner_url, setBannerUrl] = useState();
 
-    const [showEditButtons, setShowEditButtons] = useState(false)
-    const [showChangePic, setShowChangePic] = useState(false)
-    const [showChangeBanner, setShowChangeBanner] = useState(false)
+    // const [showEditButtons, setShowEditButtons] = useState(false)
+    // const [showChangePic, setShowChangePic] = useState(false)
+    // const [showChangeBanner, setShowChangeBanner] = useState(false)
     const [showAlbum, setShowAlbum] = useState(false)
 
     useEffect(() => {
@@ -45,8 +46,6 @@ function Profile() {
     useEffect(() => {
         if (user) {
             document.title = `${user?.username} | Soccr`;
-            setShowChangePic(false);
-            setShowChangeBanner(false);
         }
     }, [user]);
 
@@ -57,59 +56,59 @@ function Profile() {
         }
     })
 
-    const handleCancel = () => {
-        setShowChangePic(false);
-        setProfileUrl('');
-    }
+    // const handleCancel = () => {
+    //     setShowChangePic(false);
+    //     setProfileUrl('');
+    // }
 
-    const handleBannerCancel = () => {
-        setShowChangeBanner(false);
-        setBannerUrl('');
-    }
+    // const handleBannerCancel = () => {
+    //     setShowChangeBanner(false);
+    //     setBannerUrl('');
+    // }
 
-    const handleProfilePictureUpdate = async (e) => {
-        e.preventDefault();
+    // const handleProfilePictureUpdate = async (e) => {
+    //     e.preventDefault();
 
-        const payload= {
-            id: Number(userId),
-            profile_pic: profile_url
-        }
+    //     const payload= {
+    //         id: Number(userId),
+    //         profile_pic: profile_url
+    //     }
 
-        const updatedProfPic = await dispatch(updateProfilePic(payload))
-
-
-        if (!updatedProfPic) {
-            alert("An error occured. Please refresh the page and try again.");
-        }
-
-        //This resets the icon in the header
-        dispatch(restoreUser())
-
-        setShowChangePic(false);
-        setProfileUrl('');
-    }
-
-    const handleBannerPictureUpdate = async (e) => {
-        e.preventDefault();
-
-        const payload= {
-            id: Number(userId),
-            banner_pic: banner_url
-        }
-
-        const updatedBannerPic = await dispatch(updateBannerPic(payload))
+    //     const updatedProfPic = await dispatch(updateProfilePic(payload))
 
 
-        if (!updatedBannerPic) {
-            alert("An error occured. Please refresh the page and try again.");
-        }
+    //     if (!updatedProfPic) {
+    //         alert("An error occured. Please refresh the page and try again.");
+    //     }
 
-        //This resets the icon in the header
-        dispatch(restoreUser())
+    //     //This resets the icon in the header
+    //     dispatch(restoreUser())
 
-        setShowChangeBanner(false);
-        setBannerUrl('');
-    }
+    //     setShowChangePic(false);
+    //     setProfileUrl('');
+    // }
+
+    // const handleBannerPictureUpdate = async (e) => {
+    //     e.preventDefault();
+
+    //     const payload= {
+    //         id: Number(userId),
+    //         banner_pic: banner_url
+    //     }
+
+    //     const updatedBannerPic = await dispatch(updateBannerPic(payload))
+
+
+    //     if (!updatedBannerPic) {
+    //         alert("An error occured. Please refresh the page and try again.");
+    //     }
+
+    //     //This resets the icon in the header
+    //     dispatch(restoreUser())
+
+    //     setShowChangeBanner(false);
+    //     setBannerUrl('');
+    // }
 
     return (
         <div className="container" id="mainProfileContainer">
@@ -134,7 +133,8 @@ function Profile() {
                                 )}
                                 <div className="userNameAndButton">
                                     <h1>{user?.username}</h1>
-                                    {user?.id === sessionUser?.id && (
+                                    <EditProfPic user={user} />
+                                    {/* {user?.id === sessionUser?.id && (
                                         <div className="showEditOptions" onClick={() => setShowEditButtons(true)}>
                                             <div className="dotHolder">
                                                 <div className="dot"></div>
@@ -153,10 +153,10 @@ function Profile() {
                                                 </div>
                                             )}
                                         </>
-                                    )}
+                                    )} */}
                                 </div>
                             </div>
-                            {showChangePic && (
+                            {/* {showChangePic && (
                                 <div className="updatePicContainer">
                                     <form className="">
                                         <input
@@ -187,7 +187,7 @@ function Profile() {
                                     </div>
                                 </form>
                                 </div>
-                            )}
+                            )} */}
                         </div>
 
                         <div className="navHeaderContainer">
