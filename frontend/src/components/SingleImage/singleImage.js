@@ -25,8 +25,10 @@ function SingleImage() {
     }, [dispatch]);
 
     useEffect(() => {
-        document.title = `${image?.title} | Soccr`;
-    }, [image?.title]);
+        if (isLoaded) {
+            document.title = `${image?.title} | Soccr`;
+        }
+    }, [isLoaded, image?.title]);
 
     //Redirect if the image does not exist
     useEffect(() => {
@@ -92,8 +94,8 @@ function SingleImage() {
                                     </div>
                                     <div className="doYouWant">Do you want to permanently delete this photo?</div>
                                     <div className="bottomRowDelete">
-                                        <div className="cancelDelete" onClick={() => setShowDelete(false)}>Cancel</div>
                                         <div className="deleteDelete" onClick={deleteImage}>Delete</div>
+                                        <div className="cancelDelete" onClick={() => setShowDelete(false)}>Cancel</div>
                                     </div>
                                 </div>
                             </div>
