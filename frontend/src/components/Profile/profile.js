@@ -134,7 +134,7 @@ function Profile() {
                                 )}
                                 <div className="userNameAndButton">
                                     <h1>{user?.username}</h1>
-                                    {!showEditButtons && user?.id === sessionUser?.id && (
+                                    {user?.id === sessionUser?.id && (
                                         <div className="showEditOptions" onClick={() => setShowEditButtons(true)}>
                                             <div className="dotHolder">
                                                 <div className="dot"></div>
@@ -143,20 +143,19 @@ function Profile() {
                                             </div>
                                         </div>
                                     )}
+                                    {showEditButtons && (
+                                        <>
+                                            {(!showChangePic && !showChangeBanner) && (
+                                                <div className="editPhotos">
+                                                    <div className="changeProfPic" onClick={() => setShowChangePic(true)}>Change Profile Picture</div>
+                                                    <div className="changeProfPic" id="changeBanner" onClick={() => setShowChangeBanner(true)}>Change Banner Picture</div>
+                                                    <div onClick={() => setShowEditButtons(false)}>Close</div>
+                                                </div>
+                                            )}
+                                        </>
+                                    )}
                                 </div>
                             </div>
-
-                        {showEditButtons && (
-                            <>
-                                {(!showChangePic && !showChangeBanner) && (
-                                    <div className="editPhotos">
-                                        <div className="changeProfPic" onClick={() => setShowChangePic(true)}>Change Profile Picture</div>
-                                        <div className="changeProfPic" id="changeBanner" onClick={() => setShowChangeBanner(true)}>Change Banner Picture</div>
-                                        <div onClick={() => setShowEditButtons(false)}>Close</div>
-                                    </div>
-                                )}
-                            </>
-                        )}
                             {showChangePic && (
                                 <div className="updatePicContainer">
                                     <form className="">
@@ -190,6 +189,7 @@ function Profile() {
                                 </div>
                             )}
                         </div>
+
                         <div className="navHeaderContainer">
                             <div className="navHeader">
                                 <div className="exploreHeader profileNav">
