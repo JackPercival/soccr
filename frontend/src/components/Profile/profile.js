@@ -49,6 +49,17 @@ function Profile() {
         }
     })
 
+    //This is to avoid the scroll bar affecting the width of the page when you toggle between Photostream and Albums
+    //Now there will always be space for the scrollbar, even if there is no scroll bar visible
+    useEffect(() => {
+        document.body.style.overflowY = 'scroll';
+
+        return () => {
+            document.body.style.overflowY = 'visible';
+        }
+    })
+
+
     return (
         <div className="container" id="mainProfileContainer">
             <Header />
