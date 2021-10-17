@@ -28,6 +28,15 @@ function SignupFormPage() {
     document.title = "Sign Up | Soccr";
   }, []);
 
+  //Hide scroll bar on this page
+  useEffect(() => {
+    document.body.style.overflowY = 'visible';
+
+    return () => {
+        document.body.style.overflowY = 'scroll';
+    }
+  })
+
   useEffect(() => {
     if (email.length > 0 && emailLabelFocus !== 'formLabelDone') {
       setEmailLabelFocus('formLabelFocus')

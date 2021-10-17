@@ -95,6 +95,16 @@ function MainPage({ isLoaded }){
       return () => clearInterval(interval)
   }, [currentImage])
 
+
+  //Hide scroll bar on this page
+  useEffect(() => {
+    document.body.style.overflowY = 'visible';
+
+    return () => {
+        document.body.style.overflowY = 'scroll';
+    }
+  })
+
   //If there is a session user, add a component to the main layout page of a logged in user
   if (sessionUser) {
     document.title = "Explore | Soccr";

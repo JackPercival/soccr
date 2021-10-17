@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 // import { useDispatch } from 'react-redux';
@@ -24,10 +24,14 @@ function Header() {
 
         const searchParameters = search;
         const cleanedSearch = encodeURIComponent(searchParameters);
-        
+
         history.push(`/search/${cleanedSearch}`);
         setSearch('');
     }
+
+    //Avoid annoying page reloads causing the scroll bar to re-adjust width of page
+    //Which casuses things to re-shift
+    document.body.style.overflowY = 'scroll';
 
     return (
         <header id="normalHeader">

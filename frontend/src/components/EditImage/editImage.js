@@ -73,6 +73,15 @@ function EditImage() {
         }
     },)
 
+    //Hide scroll bar on this page
+    useEffect(() => {
+        document.body.style.overflowY = 'visible';
+
+        return () => {
+            document.body.style.overflowY = 'scroll';
+        }
+    })
+
     return (
         <div className="container">
             <Header />

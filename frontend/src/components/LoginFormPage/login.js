@@ -17,6 +17,15 @@ function LoginFormPage() {
   const [passwordLabelFocus, setPasswordLabelFocus] = useState('');
   const [passwordInputFocus, setPasswordInputFocus] = useState('');
 
+  //Hide scroll bar on this page
+  useEffect(() => {
+    document.body.style.overflowY = 'visible';
+
+    return () => {
+        document.body.style.overflowY = 'scroll';
+    }
+  })
+
   useEffect(() => {
     document.title = "Login | Soccr";
   }, []);
