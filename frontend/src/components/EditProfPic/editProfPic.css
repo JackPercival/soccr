@@ -63,6 +63,7 @@
   padding: 10px 0;
   z-index: 99;
   width: 174px;
+  height: 52px;
 }
 
 .changeProfPic {
@@ -95,14 +96,12 @@
 
 .updatePicContainer {
   position: relative;
-  border-bottom: 1px solid rgb(201, 201, 201);
   margin: 0 15px;
   margin-top: 3px;
-  padding-bottom: 5px;
 }
 
 .updatePicButtons {
-  margin-top: 4px;
+  margin-top: 6px;
   user-select: none;
 }
 
