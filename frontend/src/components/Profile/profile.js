@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
+import EditProfPic from '../EditProfPic/editProfPic';
 import ImageHolder from '../ImageHolder/imageHolder';
 import Album from '../Album/album';
 
 import { getAllImages } from '../../store/images';
-import { loadUsers, updateProfilePic, updateBannerPic } from '../../store/users';
-import { restoreUser } from '../../store/session';
+import { loadUsers } from '../../store/users';
 
 import './profile.css'
 
@@ -23,11 +23,6 @@ function Profile() {
     const images = useSelector(state => Object.values(state.images).filter(image => image.user_id === Number(userId)));
 
     const [isLoaded, setIsLoaded] = useState(false);
-    const [profile_url, setProfileUrl] = useState('');
-    const [banner_url, setBannerUrl] = useState();
-
-    const [showChangePic, setShowChangePic] = useState(false)
-    const [showChangeBanner, setShowChangeBanner] = useState(false)
     const [showAlbum, setShowAlbum] = useState(false)
 
     useEffect(() => {
@@ -44,8 +39,6 @@ function Profile() {
     useEffect(() => {
         if (user) {
             document.title = `${user?.username} | Soccr`;
-            setShowChangePic(false);
-            setShowChangeBanner(false);
         }
     }, [user]);
 
@@ -56,59 +49,16 @@ function Profile() {
         }
     })
 
-    const handleCancel = () => {
-        setShowChangePic(false);
-        setProfileUrl('');
-    }
+    //This is to avoid the scroll bar affecting the width of the page when you toggle between Photostream and Albums
+    //Now there will always be space for the scrollbar, even if there is no scroll bar visible
+    useEffect(() => {
+        document.body.style.overflowY = 'scroll';
 
-    const handleBannerCancel = () => {
-        setShowChangeBanner(false);
-        setBannerUrl('');
-    }
-
-    const handleProfilePictureUpdate = async (e) => {
-        e.preventDefault();
-
-        const payload= {
-            id: Number(userId),
-            profile_pic: profile_url
+        return () => {
+            document.body.style.overflowY = 'visible';
         }
+    })
 
-        const updatedProfPic = await dispatch(updateProfilePic(payload))
-
-
-        if (!updatedProfPic) {
-            alert("An error occured. Please refresh the page and try again.");
-        }
-
-        //This resets the icon in the header
-        dispatch(restoreUser())
-
-        setShowChangePic(false);
-        setProfileUrl('');
-    }
-
-    const handleBannerPictureUpdate = async (e) => {
-        e.preventDefault();
-
-        const payload= {
-            id: Number(userId),
-            banner_pic: banner_url
-        }
-
-        const updatedBannerPic = await dispatch(updateBannerPic(payload))
-
-
-        if (!updatedBannerPic) {
-            alert("An error occured. Please refresh the page and try again.");
-        }
-
-        //This resets the icon in the header
-        dispatch(restoreUser())
-
-        setShowChangeBanner(false);
-        setBannerUrl('');
-    }
 
     return (
         <div className="container" id="mainProfileContainer">
@@ -132,45 +82,9 @@ function Profile() {
                                     </div>
                                 )}
                                 <div className="userNameAndButton">
-                                         <h1>{user?.username}</h1>
-                                        {(!showChangePic && !showChangeBanner)  && user?.id === sessionUser?.id && (
-                                            <div className="editPhotos">
-                                                <div className="changeProfPic" onClick={() => setShowChangePic(true)}>Change Profile Picture</div>
-                                                <div className="changeProfPic" id="changeBanner" onClick={() => setShowChangeBanner(true)}>Change Banner Picture</div>
-                                            </div>
-                                        )}
-
-                                    {showChangePic && user?.id === sessionUser?.id && (
-                                        <div className="updatePicContainer">
-                                            <form className="">
-                                                <input
-                                                    className="profPicInput"
-                                                    placeholder="Add a Profile URL"
-                                                    value={profile_url}
-                                                    onChange={(e) => setProfileUrl(e.target.value)}
-                                                />
-                                                <div className="updatePicButtons">
-                                                    <button onClick={handleProfilePictureUpdate}>Update</button>
-                                                    <button type="button" id="cancelUpdate"onClick={handleCancel}>Cancel</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    )}
-                                    {showChangeBanner && user?.id === sessionUser?.id && (
-                                        <div className="updatePicContainer">
-                                        <form className="">
-                                            <input
-                                                className="profPicInput"
-                                                placeholder="Add a Banner URL"
-                                                value={banner_url}
-                                                onChange={(e) => setBannerUrl(e.target.value)}
-                                            />
-                                            <div className="updatePicButtons">
-                                                <button onClick={handleBannerPictureUpdate}>Update</button>
-                                                <button type="button" id="cancelUpdate"onClick={handleBannerCancel}>Cancel</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                    <h1>{user?.username}</h1>
+                                    {user?.id === sessionUser?.id && (
+                                        <EditProfPic user={user} />
                                     )}
                                 </div>
                             </div>
