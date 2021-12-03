@@ -1,4 +1,4 @@
-# soccr
+# Soccr
 Soccr, a [Flickr](https://www.flickr.com/) clone, is a website that allows users to search pictures about Soccer, create albums of pictures, and add comments to pictures. I built the site using React and Express. 
 
 Visit the site at [https://soccr-aa.herokuapp.com/](https://soccr-aa.herokuapp.com/)
