@@ -1,9 +1,17 @@
 # soccr
-Soccr, a [Flickr](https://www.flickr.com/) clone, is a website that allows users to search pictures about Soccer, create albums of pictures, and add comments to pictures.
+Soccr, a [Flickr](https://www.flickr.com/) clone, is a website that allows users to search pictures about Soccer, create albums of pictures, and add comments to pictures. I built the site using React and Express. 
 
-[Link to live site](https://soccr-aa.herokuapp.com/)
+Visit the site at [https://soccr-aa.herokuapp.com/](https://soccr-aa.herokuapp.com/)
 
-[Link to Project wiki](https://github.com/JackPercival/soccr/wiki)
+### Libraries and technologies
+Soccr uses:
+
+* [React.js](https://reactjs.org/)
+* [Redux](https://redux.js.org/)
+* [Express](https://expressjs.com/)
+* [Sequelize](https://sequelize.org/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [BCrypt](https://github.com/dcodeIO/bcrypt.js) for password hashing
 
 # Setup
 To launch the application on your local machine:
