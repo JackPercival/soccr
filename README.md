@@ -18,7 +18,7 @@ Soccr uses:
 
 ## Application Architecture
 
-Soccr is built on a React frontent and an Express backend, which uses Sequelize to connect to a PostgreSQL database.
+Soccr is built with a React frontend and an Express backend, which uses Sequelize to connect to a PostgreSQL database.
 
 ## Frontend Overview
 
