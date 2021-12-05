@@ -54,7 +54,7 @@ BCrypt was used for hashing user passwords during sign up and authentication. No
 
 #### Sequelize
 
-I used Sequelize as the ORM for Soccr, since it can quickly and efficiently integrate with PostgreSQL and Express. All database manipulation and seed data was implementing using Sequelize.
+I used Sequelize as the ORM for Soccr, since it can quickly and efficiently integrate with PostgreSQL and Express. All database manipulation and seed data was implemented using Sequelize.
 
 ## Workflow Examples
 
