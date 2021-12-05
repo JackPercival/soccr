@@ -1,5 +1,8 @@
 # Soccr
-Soccr, a [Flickr](https://www.flickr.com/) clone, is a website that allows users to search pictures about Soccer, create albums of pictures, and add comments to pictures. I built the site using React and Express. 
+
+![Soccr Home Page](https://res.cloudinary.com/dt8q1ngxj/image/upload/v1634667933/soccr/MainPage_onmmde.png)
+
+Soccr, a Flickr clone, is a website that allows users to search pictures about Soccer, create albums of pictures, and add comments to pictures. I built the site using React and Express. 
 
 Visit the site at [https://soccr-aa.herokuapp.com/](https://soccr-aa.herokuapp.com/)
 
@@ -29,7 +32,7 @@ Soccr is a React application. All display logic is determined by React libraries
 
 #### Redux
 
-Soccr uses Redux to disaplay and update state throughout the website. Redux is used with thunks to make APIs to the backend server to request and update data. 
+Soccr uses Redux to display and update state throughout the website. Redux is used with thunks to make API calls to the backend server to request and update data. 
 
 ## Backend Overview
 
@@ -37,7 +40,7 @@ Soccr uses an Express server with a PostgreSQL database, and uses Sequelize to r
 
 ### Backend Technologies Used
 
-#### Flask
+#### Express
 
 Soccr uses Express as the backend server to handle incoming requests and respond with information from the database.
 
@@ -45,7 +48,7 @@ Soccr uses Express as the backend server to handle incoming requests and respond
 
 I used PostgreSQL as the database, as it is easy to setup and use, and the integration with Sequelize is efficient and easy to use.
 
-#### Werkzeug
+#### BCrypt
 
 BCrypt was used for hashing user passwords during sign up and authentication. No plain text passwords are stored in the database, only hashed passwords.
 
