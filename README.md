@@ -64,12 +64,12 @@ On a single image page, you can view an image, details about the uploading user,
 ![Image Page](https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_688/v1638723570/soccr/singleImage_pffrte.png)
 
 #### User Profile
-On a user profile page, you can view photos uploaded and albums created by a user, as well as edit your profile and banner photos,  
+On a user profile page, you can view photos uploaded and albums created by a user, as well as edit your profile and banner photos.  
 
 ![Profile Page](https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_688/v1638723571/soccr/userProfile_ftof2s.png)
 
 #### Create an album
-On the Album Creation page, you can view all photos and click and choose which ones you want to add to your new album  
+On the Album Creation page, you can view all photos and click and choose which ones you want to add to your new album.
 
 ![Profile Page](https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_688/v1638723566/soccr/albumCreation_c5xhbr.png)
 
