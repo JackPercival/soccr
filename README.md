@@ -56,6 +56,23 @@ BCrypt was used for hashing user passwords during sign up and authentication. No
 
 I used Sequelize as the ORM for Soccr, since it can quickly and efficiently integrate with PostgreSQL and Express. All database manipulation and seed data was implementing using Sequelize.
 
+## Workflow Examples
+
+#### View an Image
+On a single image page, you can view an image, details about the uploading user, and view and add comments. 
+
+![Image Page](https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_688/v1638723570/soccr/singleImage_pffrte.png)
+
+#### User Profile
+On a user profile page, you can view photos uploaded and albums created by a user, as well as edit your profile and banner photos,  
+
+![Profile Page](https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_688/v1638723571/soccr/userProfile_ftof2s.png)
+
+#### Create an album
+On the Album Creation page, you can view all photos and click and choose which ones you want to add to your new album  
+
+![Profile Page](https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_688/v1638723566/soccr/albumCreation_c5xhbr.png)
+
 # Setup
 To launch the application on your local machine:
 
