@@ -59,7 +59,7 @@ I used Sequelize as the ORM for Soccr, since it can quickly and efficiently inte
 ## Workflow Examples
 
 #### View an Image
-On a single image page, you can view an image, details about the uploading user, and view and add comments. 
+On a single image page, you can view an image, read details about the image owner, and view and add comments. 
 
 ![Image Page](https://res.cloudinary.com/dt8q1ngxj/image/upload/c_scale,w_688/v1638723570/soccr/singleImage_pffrte.png)
 
