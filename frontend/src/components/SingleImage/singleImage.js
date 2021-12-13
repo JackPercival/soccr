@@ -5,7 +5,8 @@ import Footer from '../Footer/footer';
 import Comments from '../Comments/comments'
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllImages, deleteSingleImage } from '../../store/images';
-import FsLightbox from "fslightbox-react";
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css';
 
 import './singleImage.css'
 
@@ -60,7 +61,7 @@ function SingleImage() {
                             src={image?.image_url}
                             title={image?.title}
                             alt={`${image?.title} `}
-                            onClick={() => setToggler(!toggler)}/>
+                            onClick={() => setToggler(true)}/>
                         {image?.User.id === sessionUser?.id?
                             <div className="userEditContainer">
                                 <Link to={`/images/${image.id}/edit`}>
@@ -76,7 +77,9 @@ function SingleImage() {
                             </div>
                             : null}
                     </div>
-                    <FsLightbox toggler={toggler} sources={[image?.image_url]} exitFullscreenOnClose={true}/>
+                    {toggler && (
+                        <Lightbox mainSrc={image?.image_url} onCloseRequest={() => setToggler(false)} />
+                    )}
                     {showDelete && (
                         <>
                             <div className="modalBackground">
