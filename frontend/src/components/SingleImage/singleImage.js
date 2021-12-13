@@ -5,6 +5,7 @@ import Footer from '../Footer/footer';
 import Comments from '../Comments/comments'
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllImages, deleteSingleImage } from '../../store/images';
+import FsLightbox from "fslightbox-react";
 
 import './singleImage.css'
 
@@ -17,8 +18,8 @@ function SingleImage() {
     const image = useSelector(state => state.images[imageId]);
 
     const [isLoaded, setIsLoaded] = useState(false);
-    const [grow, setGrow] = useState('')
     const [showDelete, setShowDelete] = useState(false);
+    const [toggler, setToggler] = useState(false);
 
     useEffect(() => {
         dispatch(getAllImages()).then(() => setIsLoaded(true));
@@ -36,14 +37,6 @@ function SingleImage() {
             history.push('/explore')
         }
     })
-
-    const toggleGrow = () => {
-        if (grow === "grow") {
-            setGrow('')
-        } else {
-            setGrow('grow')
-        }
-    }
 
     const deleteImage = async () => {
         const wasDeleted = await dispatch(deleteSingleImage({imageId}))
@@ -66,9 +59,8 @@ function SingleImage() {
                         <img
                             src={image?.image_url}
                             title={image?.title}
-                            className={grow}
                             alt={`${image?.title} `}
-                            onClick={toggleGrow}/>
+                            onClick={() => setToggler(!toggler)}/>
                         {image?.User.id === sessionUser?.id?
                             <div className="userEditContainer">
                                 <Link to={`/images/${image.id}/edit`}>
@@ -84,6 +76,7 @@ function SingleImage() {
                             </div>
                             : null}
                     </div>
+                    <FsLightbox toggler={toggler} sources={[image?.image_url]} exitFullscreenOnClose={true}/>
                     {showDelete && (
                         <>
                             <div className="modalBackground">
